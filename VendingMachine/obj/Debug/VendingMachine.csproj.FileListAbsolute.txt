@@ -1,0 +1,23 @@
+N:\Kody\VS-Workspace\Vending Machine Sim\MNIS-Project\VendingMachine\bin\Debug\Resources\Header.jpg
+N:\Kody\VS-Workspace\Vending Machine Sim\MNIS-Project\VendingMachine\bin\Debug\Resources\wallpaper_ft.png
+N:\Kody\VS-Workspace\Vending Machine Sim\MNIS-Project\VendingMachine\bin\Debug\VendingMachine.exe.config
+N:\Kody\VS-Workspace\Vending Machine Sim\MNIS-Project\VendingMachine\bin\Debug\VendingMachine.exe
+N:\Kody\VS-Workspace\Vending Machine Sim\MNIS-Project\VendingMachine\bin\Debug\VendingMachine.pdb
+N:\Kody\VS-Workspace\Vending Machine Sim\MNIS-Project\VendingMachine\bin\Debug\SharpDX.dll
+N:\Kody\VS-Workspace\Vending Machine Sim\MNIS-Project\VendingMachine\bin\Debug\SharpDX.xml
+N:\Kody\VS-Workspace\Vending Machine Sim\MNIS-Project\VendingMachine\obj\Debug\VendingMachine.csprojResolveAssemblyReference.cache
+N:\Kody\VS-Workspace\Vending Machine Sim\MNIS-Project\VendingMachine\obj\Debug\MainWindow.baml
+N:\Kody\VS-Workspace\Vending Machine Sim\MNIS-Project\VendingMachine\obj\Debug\XAML\Pages\MainPage.baml
+N:\Kody\VS-Workspace\Vending Machine Sim\MNIS-Project\VendingMachine\obj\Debug\MainWindow.g.cs
+N:\Kody\VS-Workspace\Vending Machine Sim\MNIS-Project\VendingMachine\obj\Debug\XAML\Pages\MainPage.g.cs
+N:\Kody\VS-Workspace\Vending Machine Sim\MNIS-Project\VendingMachine\obj\Debug\App.g.cs
+N:\Kody\VS-Workspace\Vending Machine Sim\MNIS-Project\VendingMachine\obj\Debug\VendingMachine_Content.g.cs
+N:\Kody\VS-Workspace\Vending Machine Sim\MNIS-Project\VendingMachine\obj\Debug\VendingMachine_MarkupCompile.cache
+N:\Kody\VS-Workspace\Vending Machine Sim\MNIS-Project\VendingMachine\obj\Debug\VendingMachine.g.resources
+N:\Kody\VS-Workspace\Vending Machine Sim\MNIS-Project\VendingMachine\obj\Debug\VendingMachine.Properties.Resources.resources
+N:\Kody\VS-Workspace\Vending Machine Sim\MNIS-Project\VendingMachine\obj\Debug\VendingMachine.csproj.GenerateResource.Cache
+N:\Kody\VS-Workspace\Vending Machine Sim\MNIS-Project\VendingMachine\obj\Debug\VendingMachine.exe
+N:\Kody\VS-Workspace\Vending Machine Sim\MNIS-Project\VendingMachine\obj\Debug\VendingMachine.pdb
+N:\Kody\Vending-Machine-Simulator\VendingMachine\bin\Debug\VendingMachine.exe.config
+N:\Kody\Vending-Machine-Simulator\VendingMachine\obj\Debug\VendingMachine.exe
+N:\Kody\Vending-Machine-Simulator\VendingMachine\obj\Debug\VendingMachine.pdb
