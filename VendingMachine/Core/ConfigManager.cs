@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
-using VendingMachine.XAML.Pages;
 
 namespace VendingMachine.Core
 {
@@ -19,8 +18,7 @@ namespace VendingMachine.Core
         public static void initSim()
         {
             Config = new Dictionary<string, Property>();
-            ProductsPage VMmainPage = VMachine.MWindow.ProductsPage;
-            Grid productsGrid = VMmainPage.ProductsGrid;
+            Grid ProductsView = VMachine.MWindow.VMMainPage.ProductsView;
             if (!configFileExists())
             {
                 createNewConfig();

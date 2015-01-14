@@ -20,7 +20,7 @@ namespace VendingMachine
 	{
 		public MainPage()
 		{
-			this.InitializeComponent();
+			InitializeComponent();
 		}
 	}
 }

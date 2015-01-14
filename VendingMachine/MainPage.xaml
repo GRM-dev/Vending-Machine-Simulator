@@ -5,9 +5,9 @@
 	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 	mc:Ignorable="d"
 	x:Class="VendingMachine.MainPage"
-	x:Name="UserControl"
+	x:Name="MainVMPage"
 	d:DesignWidth="800" d:DesignHeight="600">
-    <DockPanel >
+    <DockPanel>
         <DockPanel.Background>
             <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
                 <GradientStop Color="#FF8F0000" Offset="0.004"/>
@@ -16,9 +16,16 @@
                 <GradientStop Color="#FF610000" Offset="0.765"/>
             </LinearGradientBrush>
         </DockPanel.Background>
-        <Image DockPanel.Dock="Top" Source="Resources/Header.png" Height="100" OpacityMask="Black"/>
-        <Frame x:Name="MainPanelFrame" Grid.IsSharedSizeScope="True" MinWidth="620"/>
-        <StackPanel DockPanel.Dock="Right" Width="160" HorizontalAlignment="Right" VerticalAlignment="Center">
+        <Image DockPanel.Dock="Top" Source="Resources/Header.png" Height="100"/>
+        <Grid DockPanel.Dock="Left" x:Name="ProductsView" Width="700">
+            <Grid.Background>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF764141" Offset="0"/>
+                    <GradientStop Color="#FF660101" Offset="0.857"/>
+                </RadialGradientBrush>
+            </Grid.Background>
+        </Grid>
+        <StackPanel DockPanel.Dock="Right" Width="160" HorizontalAlignment="Center" VerticalAlignment="Top">
             <Label x:Name="Wyswietlacz" Background="#FF1F1E28" Foreground="#FF0DED00" FontWeight="Bold" MinHeight="50">
                 <TextBlock TextWrapping="Wrap">____________________________________________________________</TextBlock>
             </Label>
@@ -50,7 +57,7 @@
                 <Button x:Name="_0" Width="30" Height="30" Grid.Column="1" Grid.Row="3" Content="0" />
                 <Button x:Name="_hash" Width="30" Height="30" Grid.Column="2" Grid.Row="3" Content="&lt;-" />
             </Grid>
-            <Button Content="Zwrot" Width="40" Foreground="White" Background="#FF151466"/>
+            <Button Content="Zwrot" Width="45" Foreground="White" Background="#FF726565"/>
             <Button Content="Reszta" Width="50" Background="#FF141A40" Foreground="White" MinHeight="40"/>
         </StackPanel>
     </DockPanel>

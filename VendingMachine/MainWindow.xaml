@@ -2,9 +2,9 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro" xmlns:local="clr-namespace:VendingMachine" x:Class="VendingMachine.MainWindow"
         ResizeMode="CanMinimize" EnableDWMDropShadow="True" UseLayoutRounding="True" SaveWindowPosition="True" IgnoreTaskbarOnMaximize="True" BorderThickness="1"
-        Title="Vending Machine" Height="600" Width="800" WindowStartupLocation="CenterScreen" MinWidth="300" MinHeight="350" FontWeight="Bold">
+        Title="Vending Machine" Height="600" Width="800" WindowStartupLocation="CenterScreen" FontWeight="Bold">
     <Controls:MetroWindow.Flyouts>
         <Controls:FlyoutsControl/>
     </Controls:MetroWindow.Flyouts>
-    <Frame x:Name="VMFrame" Source="/VendingMachine;component/MainPage.xaml" />
+    <Frame x:Name="VMFrame" />
 </Controls:MetroWindow>

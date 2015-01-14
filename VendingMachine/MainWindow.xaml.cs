@@ -14,7 +14,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using VendingMachine.Core;
-using VendingMachine.XAML.Pages;
 
 namespace VendingMachine
 {
@@ -31,13 +30,13 @@ namespace VendingMachine
         {
             InitializeComponent();
             VMMainPage = new MainPage(); 
-            ProductsPage = new ProductsPage();
+            ProductsView = VMMainPage.ProductsView;
             VMFrame.Navigate(VMMainPage);
-            VMMainPage.MainPanelFrame.Navigate(ProductsPage);
+            //VMMainPage.MainPanelFrame.Navigate(ProductsPage);
             vMachine = new VMachine(this);
         }
 
         public MainPage VMMainPage { get; private set; }
-        public ProductsPage ProductsPage { get; private set; }
+        public Grid ProductsView { get; private set; }
     }
 }
