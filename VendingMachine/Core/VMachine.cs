@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace VendingMachine.Core
 {
+    /// <summary>
+    /// Główna klasa programu, Model z MVC.
+    /// </summary>
     class VMachine
     {
         private static MainWindow _mainWindow;
@@ -13,7 +16,7 @@ namespace VendingMachine.Core
         public VMachine(MainWindow mainWindow)
         {
             MWindow = mainWindow;
-            ConfigManager.startSetup();
+            ConfigManager.initSim();
         }
 
         public static MainWindow MWindow

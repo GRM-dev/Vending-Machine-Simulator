@@ -6,21 +6,10 @@
       Title="MainPage" MinWidth="280" MinHeight="200">
     <Grid x:Name="ProductsGrid">
         <Grid.Background>
-            <ImageBrush ImageSource="pack://siteoforigin:,,,/Resources/wallpaper_ft.png"/>
+            <RadialGradientBrush Opacity="0.65">
+                <GradientStop Color="#FF312932" Offset="1"/>
+                <GradientStop Color="#FF180C19" Offset="0.017"/>
+            </RadialGradientBrush>
         </Grid.Background>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
     </Grid>
 </Page>

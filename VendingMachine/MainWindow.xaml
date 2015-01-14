@@ -5,20 +5,13 @@
     <DockPanel >
         <DockPanel.Background>
             <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
-                <LinearGradientBrush.RelativeTransform>
-                    <TransformGroup>
-                        <ScaleTransform CenterY="0.5" CenterX="0.5"/>
-                        <SkewTransform CenterY="0.5" CenterX="0.5"/>
-                        <RotateTransform Angle="45" CenterY="0.5" CenterX="0.5"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </LinearGradientBrush.RelativeTransform>
-                <GradientStop Color="#FF320B0B" Offset="0"/>
-                <GradientStop Color="#FF5A0E0E" Offset="1"/>
-                <GradientStop Color="#FF9F1717" Offset="0.759"/>
+                <GradientStop Color="#FF8F0000" Offset="0.004"/>
+                <GradientStop Color="#FF830000" Offset="0.422"/>
+                <GradientStop Color="#FFEA9292" Offset="0.109"/>
+                <GradientStop Color="#FF610000" Offset="0.765"/>
             </LinearGradientBrush>
         </DockPanel.Background>
-        <Image DockPanel.Dock="Top" Source="Resources/Header.jpg" Height="100"/>
+        <Image DockPanel.Dock="Top" Source="pack://siteoforigin:,,,/Resources/Header.png" Height="100"/>
         <Frame x:Name="MainPanelFrame" Width="470" />
         <StackPanel DockPanel.Dock="Right" Width="100" >
             <Label x:Name="Wyswietlacz" Content="Wyswietlacz" Background="#FF1F1E28" Foreground="#FF0DED00" FontWeight="Bold"/>

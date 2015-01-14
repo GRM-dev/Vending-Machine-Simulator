@@ -24,6 +24,8 @@ namespace VendingMachine.XAML.Pages
         public MainPage()
         {
             InitializeComponent();
+            ProductsGrid.ColumnDefinitions.Add(new ColumnDefinition());
+            ProductsGrid.RowDefinitions.Add(new RowDefinition());
         }
     }
 }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/header.jpg")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/header.png")]
 [assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("resources/wallpaper_ft.png")]
 
 

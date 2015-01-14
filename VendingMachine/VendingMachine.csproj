@@ -82,6 +82,7 @@
     <Compile Include="Core\CoinController.cs" />
     <Compile Include="Core\ConfigManager.cs" />
     <Compile Include="Core\IProduct.cs" />
+    <Compile Include="Core\Property.cs" />
     <Compile Include="XAML\Pages\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -131,7 +132,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Header.jpg">
+    <Content Include="Resources\Header.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\wallpaper_ft.png">
