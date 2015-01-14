@@ -17,8 +17,8 @@
             </LinearGradientBrush>
         </DockPanel.Background>
         <Image DockPanel.Dock="Top" Source="Resources/Header.png" Height="100" OpacityMask="Black"/>
-        <Frame x:Name="MainPanelFrame" Width="640" />
-        <StackPanel DockPanel.Dock="Right" Width="160" HorizontalAlignment="Center" VerticalAlignment="Center" >
+        <Frame x:Name="MainPanelFrame" Grid.IsSharedSizeScope="True" MinWidth="620"/>
+        <StackPanel DockPanel.Dock="Right" Width="160" HorizontalAlignment="Right" VerticalAlignment="Center">
             <Label x:Name="Wyswietlacz" Background="#FF1F1E28" Foreground="#FF0DED00" FontWeight="Bold" MinHeight="50">
                 <TextBlock TextWrapping="Wrap">____________________________________________________________</TextBlock>
             </Label>
