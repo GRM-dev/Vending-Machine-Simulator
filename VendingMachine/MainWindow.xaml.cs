@@ -29,11 +29,14 @@ namespace VendingMachine
         public MainWindow()
         {
             InitializeComponent();
-            VMMainPage = new MainPage();
+            VMMainPage = new MainPage(); 
+            ProductsPage = new ProductsPage();
+            VMFrame.Navigate(VMMainPage);
+            VMMainPage.MainPanelFrame.Navigate(ProductsPage);
             vMachine = new VMachine(this);
-            MainPanelFrame.Navigate(VMMainPage);
         }
 
         public MainPage VMMainPage { get; private set; }
+        public ProductsPage ProductsPage { get; private set; }
     }
 }

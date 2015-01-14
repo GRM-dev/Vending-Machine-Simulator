@@ -19,9 +19,9 @@ namespace VendingMachine.XAML.Pages
     /// Interaction logic for MainPage.xaml
     /// Strona wyswietla glowny panel automatu prezentujacy posiadane produkty.
     /// </summary>
-    public partial class MainPage : Page
+    public partial class ProductsPage : Page
     {
-        public MainPage()
+        public ProductsPage()
         {
             InitializeComponent();
             ProductsGrid.ColumnDefinitions.Add(new ColumnDefinition());

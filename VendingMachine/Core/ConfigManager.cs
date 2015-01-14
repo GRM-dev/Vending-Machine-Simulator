@@ -19,7 +19,7 @@ namespace VendingMachine.Core
         public static void initSim()
         {
             Config = new Dictionary<string, Property>();
-            MainPage VMmainPage = VMachine.MWindow.VMMainPage;
+            ProductsPage VMmainPage = VMachine.MWindow.ProductsPage;
             Grid productsGrid = VMmainPage.ProductsGrid;
             if (!configFileExists())
             {

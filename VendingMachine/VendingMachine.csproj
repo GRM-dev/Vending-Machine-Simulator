@@ -33,6 +33,7 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <ExpressionBlendVersion>12.0.51020.0</ExpressionBlendVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -83,9 +84,16 @@
     <Compile Include="Core\ConfigManager.cs" />
     <Compile Include="Core\IProduct.cs" />
     <Compile Include="Core\Property.cs" />
-    <Compile Include="XAML\Pages\MainPage.xaml.cs">
+    <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="XAML\Pages\ProductsPage.xaml.cs">
+      <DependentUpon>ProductsPage.xaml</DependentUpon>
+    </Compile>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -99,7 +107,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="XAML\Pages\MainPage.xaml">
+    <Page Include="XAML\Pages\ProductsPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -135,6 +143,7 @@
     <Content Include="Resources\Header.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Header2.png" />
     <Content Include="Resources\wallpaper_ft.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
