@@ -91,6 +91,7 @@
     <Compile Include="Core\CoinController.cs" />
     <Compile Include="Core\ConfigManager.cs" />
     <Compile Include="Core\IProduct.cs" />
+    <Compile Include="Core\ProductController.cs" />
     <Compile Include="Core\Property.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
