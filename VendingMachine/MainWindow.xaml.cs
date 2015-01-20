@@ -32,7 +32,6 @@ namespace VendingMachine
             VMMainPage = new MainPage(); 
             ProductsView = VMMainPage.ProductsView;
             VMFrame.Navigate(VMMainPage);
-            //VMMainPage.MainPanelFrame.Navigate(ProductsPage);
             vMachine = new VMachine(this);
         }
 

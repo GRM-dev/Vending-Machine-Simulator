@@ -17,7 +17,7 @@
             </LinearGradientBrush>
         </DockPanel.Background>
         <Image DockPanel.Dock="Top" Source="Resources/Header.png" Height="100"/>
-        <Grid DockPanel.Dock="Left" x:Name="ProductsView" Width="700">
+        <Grid DockPanel.Dock="Left" x:Name="ProductsView" Width="680">
             <Grid.Background>
                 <RadialGradientBrush>
                     <GradientStop Color="#FF764141" Offset="0"/>
