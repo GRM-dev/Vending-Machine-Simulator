@@ -37,5 +37,16 @@ namespace VendingMachine
 
         public MainPage VMMainPage { get; private set; }
         public Grid ProductsView { get; private set; }
+
+        private void Simulation_Button_Click(object sender, RoutedEventArgs e)
+        {
+            var flyout = this.Flyouts.Items[0] as Flyout;
+            flyout.IsOpen = !flyout.IsOpen;
+        }
+
+        private void Servis_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
