@@ -17,6 +17,10 @@ namespace VendingMachine.Core
     /// </summary>
     class ConfigManager
     {
+        /// <summary>
+        /// Checks config file
+        /// </summary>
+        /// <returns>true if exists</returns>
         public static bool configExists()
         {
             if (!Directory.Exists(Config.APP_PATH_MAIN))
@@ -26,6 +30,10 @@ namespace VendingMachine.Core
             return File.Exists(Config.CONFIG_FILE_PATH);
         }
 
+        /// <summary>
+        /// Read config nodes
+        /// </summary>
+        /// <returns></returns>
         public static Dictionary<XName, String> loadConfigFileOptions()
         {
             Dictionary<XName, String> configXml = new Dictionary<XName, String>();
@@ -39,6 +47,9 @@ namespace VendingMachine.Core
             return configXml;
         }
 
+        /// <summary>
+        /// Saves whole config
+        /// </summary>
         public static void saveConfig()
         {
 
@@ -54,6 +65,9 @@ namespace VendingMachine.Core
             xDoc.Save(Config.CONFIG_FILE_PATH);
         }
 
+        /// <summary>
+        /// Creates new config file
+        /// </summary>
         public static void createNewConfig()
         {
             XDocument xDoc = new XDocument(new XElement("GRM", new XElement("VendingMachine")));

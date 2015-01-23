@@ -31,14 +31,11 @@ namespace VendingMachine
         public MainWindow()
         {
             InitializeComponent();
-            VMMainPage = new MainPage(); 
+            VMMainPage = new MainPage();
             ProductsView = VMMainPage.ProductsView;
             VMFrame.Navigate(VMMainPage);
             vMachine = new VMachine(this);
         }
-
-        public MainPage VMMainPage { get; private set; }
-        public Grid ProductsView { get; private set; }
 
         private void Simulation_Button_Click(object sender, RoutedEventArgs e)
         {
@@ -56,5 +53,8 @@ namespace VendingMachine
             e.Cancel = true;
             VMDialogManager.ShowClosingDialog(this);
         }
+
+        public MainPage VMMainPage { get; private set; }
+        public Grid ProductsView { get; private set; }
     }
 }

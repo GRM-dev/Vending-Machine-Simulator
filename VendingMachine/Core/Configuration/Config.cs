@@ -21,6 +21,10 @@ namespace VendingMachine.Core.Configuration
             ConfigProperties.instance.initDefaultProperties();
         }
 
+        /// <summary>
+        /// Check if config file exists. (If not than create one).
+        /// Loads configs from file
+        /// </summary>
         public void readConfigFromFile()
         {
             try
@@ -47,6 +51,9 @@ namespace VendingMachine.Core.Configuration
             }
         }
 
+        /// <summary>
+        /// Implements read parameters from file to program
+        /// </summary>
         public void loadConfigToProgram()
         {
             foreach (ConfigPropertyType prop in Enum.GetValues(typeof(ConfigPropertyType)))

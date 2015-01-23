@@ -8,6 +8,8 @@ namespace VendingMachine.VMDialogs
 {
     partial class HOInputDialog : BaseMetroDialog
     {
+        private bool OK_Clicked=false;
+
         internal HOInputDialog(MetroWindow parentWindow)
             : this(parentWindow, null)
         {
@@ -21,7 +23,7 @@ namespace VendingMachine.VMDialogs
 
         private void Ok_Button_Click(object sender, RoutedEventArgs e)
         {
-            ConfigProperties.Update(ConfigPropertyType.TEST_PROP, PART_TextBox.Text);
+            OK_Clicked = true;
             RequestCloseAsync();
         }
 
@@ -30,6 +32,21 @@ namespace VendingMachine.VMDialogs
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)
         {
             RequestCloseAsync();
+        }
+
+        protected void setQuestion(string ask)
+        {
+            QuestionBlock.Text = ask;
+        }
+
+        public string getInputText()
+        {
+            return TextInputBox.Text;
+        }
+
+        public bool wasOKClicked()
+        {
+            return OK_Clicked;
         }
     }
 }
