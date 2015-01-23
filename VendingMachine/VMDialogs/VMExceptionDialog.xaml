@@ -1,0 +1,45 @@
+﻿<Dialogs:BaseMetroDialog
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
+      xmlns:Dialogs="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
+	xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="VendingMachine.VMDialogs.HOExceptionDialog"
+	Title="       Error" FontWeight="Bold" Foreground="White" Background="Firebrick" MinWidth="200" MinHeight="160" >
+    <Grid x:Name="MGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <ScrollViewer >
+            <TextBox Style="{StaticResource ReadOnlyTextBox}" ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+         ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="ExceptionTextBlock" />
+        </ScrollViewer>
+        <Button Content="Close" Click="Close_Button_Click" Grid.Row="1" Background="Wheat" IsDefault="True" FontWeight="Bold" Foreground="White" MinWidth="40" MinHeight="20" >
+            <Button.Triggers>
+                <EventTrigger RoutedEvent="Button.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation  To="Red" Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" FillBehavior="Stop" Duration="0:0:5"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Button.MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation  To="Green" Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" FillBehavior="Stop" Duration="0:0:1"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Button.MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <ColorAnimation  To="Red" Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)" FillBehavior="Stop" Duration="0:0:9"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Button.Triggers>
+        </Button>
+    </Grid>
+</Dialogs:BaseMetroDialog>

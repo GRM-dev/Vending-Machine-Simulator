@@ -90,10 +90,22 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Core\CoinController.cs" />
+    <Compile Include="Core\Configuration\Config.cs" />
     <Compile Include="Core\ConfigManager.cs" />
+    <Compile Include="Core\Configuration\ConfigProperties.cs" />
+    <Compile Include="Core\Configuration\ConfigProperty.cs" />
+    <Compile Include="Core\Configuration\ConfigPropertyType.cs" />
     <Compile Include="Core\IProduct.cs" />
+    <Compile Include="Core\Misc\Logger.cs" />
     <Compile Include="Core\ProductController.cs" />
     <Compile Include="Core\Property.cs" />
+    <Compile Include="VMDialogs\VMDialogManager.cs" />
+    <Compile Include="VMDialogs\VMExceptionDialog.xaml.cs">
+      <DependentUpon>VMExceptionDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VMDialogs\VMInputDialog.xaml.cs">
+      <DependentUpon>VMInputDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="XAML\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -104,6 +116,14 @@
     <Page Include="XAML\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="VMDialogs\VMExceptionDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VMDialogs\VMInputDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
