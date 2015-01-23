@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VendingMachine.Core.Configuration;
+using VendingMachine.VMDialogs;
 
 namespace VendingMachine.Core
 {
@@ -14,26 +15,45 @@ namespace VendingMachine.Core
     public class VMachine
     {
         private static MainWindow _mainWindow;
-        private Configuration.Config _config;
+        private Config _config;
 
+        /// <summary>
+        /// Constructs machine, load defaults, 
+        /// override with values from file 
+        /// and lods to machine
+        /// </summary>
+        /// <param name="mainWindow">The Main Window of program</param>
         public VMachine(MainWindow mainWindow)
         {
+            instance = this;
             MWindow = mainWindow;
-            ConfigManager = new Configuration.Config(this);
-            ConfigManager.readConfigFromFile();
-            ConfigManager.loadConfigToProgram();
+            Config = new Config();
+            Config.readConfigFromFile();
+            Config.loadConfigToProgram();
         }
 
-        public static MainWindow MWindow
+        /// <summary>
+        /// Correctly closes program.
+        /// </summary>
+        public static void closeProgram()
+        {
+            ConfigFileManager.saveConfig();
+            VMDialogManager.ShowClosingDialog(instance.MWindow);
+        }
+
+        public MainWindow MWindow
         {
             get { return _mainWindow; }
             private set { _mainWindow = value; }
         }
 
-        public Config ConfigManager
+        public Config Config
         {
             get { return _config; }
             private set { _config = value; }
         }
+
+        public static VMachine instance
+        { get; private set; }
     }
 }

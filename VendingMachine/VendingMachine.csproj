@@ -91,7 +91,7 @@
     </ApplicationDefinition>
     <Compile Include="Core\CoinController.cs" />
     <Compile Include="Core\Configuration\Config.cs" />
-    <Compile Include="Core\ConfigManager.cs" />
+    <Compile Include="Core\Configuration\ConfigFileManager.cs" />
     <Compile Include="Core\Configuration\ConfigProperties.cs" />
     <Compile Include="Core\Configuration\ConfigProperty.cs" />
     <Compile Include="Core\Configuration\ConfigPropertyType.cs" />
@@ -172,7 +172,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Simulations\" />
+  </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
       <Visible>False</Visible>

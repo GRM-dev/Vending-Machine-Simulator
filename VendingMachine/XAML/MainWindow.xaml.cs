@@ -51,7 +51,7 @@ namespace VendingMachine
         protected override void OnClosing(CancelEventArgs e)
         {
             e.Cancel = true;
-            VMDialogManager.ShowClosingDialog(this);
+            VMachine.closeProgram();
         }
 
         public MainPage VMMainPage { get; private set; }

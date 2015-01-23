@@ -47,5 +47,80 @@ namespace VendingMachine
         {
             //TODO: implement method
         }
+
+        private void wrzut_Monety_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Nmb_1_Button_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void Nmb_2_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Nmb_3_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Nmb_4_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Nmb_5_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Nmb_6_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Nmb_7_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Nmb_8_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Nmb_9_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Nmb_0_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Nmb_C_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Nmb_H_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Zwrot_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Reszta_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
 	}
 }

@@ -7,15 +7,14 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Xml;
 using System.Xml.Linq;
-using VendingMachine.Core.Configuration;
 
-namespace VendingMachine.Core
+namespace VendingMachine.Core.Configuration
 {
     /// <summary>
     /// Wczytuje, zapisuje dane z/do pliku xml.
     /// Kazda zmiana w maszynie powoduje zmiane w pliku w ramach synchronizacji.
     /// </summary>
-    class ConfigManager
+    class ConfigFileManager
     {
         /// <summary>
         /// Checks config file
@@ -31,10 +30,10 @@ namespace VendingMachine.Core
         }
 
         /// <summary>
-        /// Read config nodes
+        /// Read config nodes from file and saves hem to dictionary
         /// </summary>
-        /// <returns></returns>
-        public static Dictionary<XName, String> loadConfigFileOptions()
+        /// <returns>dictionary of options nodes</returns>
+        public static Dictionary<XName, String> getConfigFileOptions()
         {
             Dictionary<XName, String> configXml = new Dictionary<XName, String>();
             XmlDocument xmlDoc = new XmlDocument();
@@ -52,7 +51,6 @@ namespace VendingMachine.Core
         /// </summary>
         public static void saveConfig()
         {
-
             XDocument xDoc = XDocument.Load(Config.CONFIG_FILE_PATH);
             XElement elList = xDoc.Element("GRM").Element("VendingMachine");
             elList.RemoveAll();

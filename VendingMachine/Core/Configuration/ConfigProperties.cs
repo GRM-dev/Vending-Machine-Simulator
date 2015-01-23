@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using VendingMachine.Core.Misc;
 
 namespace VendingMachine.Core.Configuration
 {
@@ -14,10 +15,10 @@ namespace VendingMachine.Core.Configuration
         private ConfigProperty FullScreen = new ConfigProperty("FullScreen", "false", ConfigPropertyType.WINDOW_FULLSCREEN);
         private ConfigProperty WindowWidth = new ConfigProperty("Width", "600", ConfigPropertyType.WINDOWS_WIDTH);
         private ConfigProperty WindowHeight = new ConfigProperty("Height", "800", ConfigPropertyType.WINDOW_HEIGHT);
-        private ConfigProperty  SlotsCount= new ConfigProperty("SlotsCount", "24", ConfigPropertyType.SLOTS_COUNT);
+        private ConfigProperty SlotsCount = new ConfigProperty("SlotsCount", "24", ConfigPropertyType.SLOTS_COUNT);
         private ConfigProperty MoneyCollected = new ConfigProperty("MoneyInMachine", "10", ConfigPropertyType.MONEY_COLLECTED);
         private ConfigProperty ServiceNeeded = new ConfigProperty("ServiceNeed", "0", ConfigPropertyType.SERVICE_NEEDED);
-        private ConfigProperty  ServicePasswd= new ConfigProperty("ServicePasswd", "654321", ConfigPropertyType.SERVICE_PASSWD);
+        private ConfigProperty ServicePasswd = new ConfigProperty("ServicePasswd", "654321", ConfigPropertyType.SERVICE_PASSWD);
         //private ConfigProperty  = new ConfigProperty("", "", ConfigPropertyType.);
 
         private ConfigProperties()
@@ -68,10 +69,10 @@ namespace VendingMachine.Core.Configuration
         }
 
         /// <summary>
-        /// Loads config from config file
+        /// Loads config from defined dictionary
         /// </summary>
         /// <param name="fileConfig">dictionary to update its entries from file</param>
-        internal static void LoadFromFile(Dictionary<XName, string> fileConfig)
+        internal static void LoadFromDictionary(Dictionary<XName, string> fileConfig)
         {
             foreach (ConfigPropertyType propertyType in Enum.GetValues(typeof(ConfigPropertyType)))
             {

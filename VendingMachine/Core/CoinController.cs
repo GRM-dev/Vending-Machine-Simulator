@@ -13,5 +13,6 @@ namespace VendingMachine.Core
     /// </summary>
     class CoinController
     {
+
     }
 }

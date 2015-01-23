@@ -15,9 +15,8 @@ namespace VendingMachine.Core.Configuration
         public static String LOG_FILE_NAME = "VMachine.log";
         public static String CONFIG_FILE_PATH = APP_PATH_MAIN + "VM-config.xml";
 
-        public Config(VMachine vMachine)
+        public Config()
         {
-            Machine = vMachine;
             ConfigProperties.instance.initDefaultProperties();
         }
 
@@ -29,14 +28,14 @@ namespace VendingMachine.Core.Configuration
         {
             try
             {
-                if (!ConfigManager.configExists())
+                if (!ConfigFileManager.configExists())
                 {
                     Logger.Log("Not found config file.\nCreating one.");
-                    ConfigManager.createNewConfig();
+                    ConfigFileManager.createNewConfig();
                 }
                 else
                 {
-                    ConfigProperties.LoadFromFile(ConfigManager.loadConfigFileOptions());
+                    ConfigProperties.LoadFromDictionary(ConfigFileManager.getConfigFileOptions());
                 }
                 Console.WriteLine("-------- Config Start --------");
                 foreach (KeyValuePair<int, ConfigProperty> entry in ConfigProperties.instance.Properties)
@@ -64,15 +63,17 @@ namespace VendingMachine.Core.Configuration
                     Logger.Log("There is no proprty " + prop.ToString() + " in properties.");
                     continue;
                 }
-                switch (property.PropertyType)
+                switch (prop)
                 {
-                    case ConfigPropertyType.WINDOW_HEIGHT: VMachine.MWindow.Height = Convert.ToInt32(property.Value); break;
-                    case ConfigPropertyType.WINDOWS_WIDTH: VMachine.MWindow.Width = Convert.ToInt32(property.Value); break;
-                    default: Logger.Log("There is no " + property.PropertyType.ToString() + " property in configuration loader."); break;
+                    case ConfigPropertyType.WINDOW_HEIGHT: VMachine.instance.MWindow.Height = Convert.ToInt32(property.Value); break;
+                    case ConfigPropertyType.WINDOWS_WIDTH: VMachine.instance.MWindow.Width = Convert.ToInt32(property.Value); break;
+                    case ConfigPropertyType.MONEY_COLLECTED: break;
+                    case ConfigPropertyType.SERVICE_NEEDED: break;
+                    case ConfigPropertyType.SERVICE_PASSWD: break;
+                    case ConfigPropertyType.SLOTS_COUNT: break;
+                    default: Logger.Log("There is no " + property.PropertyType.ToString() + " property in configuration loader switch statement!"); break;
                 }
             }
         }
-
-        public static VMachine Machine { get; private set; }
-    }
+}
 }
