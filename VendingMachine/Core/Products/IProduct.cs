@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Windows;
 
-namespace VendingMachine.Core
+namespace VendingMachine.Core.Products
 {
     public abstract class IProduct : UIElement
     {
+        
     }
 }
