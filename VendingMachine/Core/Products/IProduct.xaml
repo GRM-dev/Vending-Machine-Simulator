@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="VendingMachine.Core.Products.IProduct"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="100">
+    <Border BorderBrush="#FF1A059C">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition MaxHeight="20" MinHeight="20"/>
+            <RowDefinition MinHeight="50"/>
+            <RowDefinition MaxHeight="20" MinHeight="20"/>
+        </Grid.RowDefinitions>
+        <Label x:Name="Product_Left"/>
+        <Image x:Name="Product_Image" Grid.Row="1"/>
+        <Label x:Name="Product_Price" Content="0,00" Grid.Row="2" />
+        </Grid>
+    </Border>
+</UserControl>

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace VendingMachine.Core.Configuration
 {
+    /// <summary>
+    /// Enum of available properties to config program properties
+    /// </summary>
     public enum ConfigPropertyType
     {
         WINDOW_FULLSCREEN = 0, WINDOW_HEIGHT = 2, WINDOWS_WIDTH = 3, SLOTS_COUNT=4, MONEY_COLLECTED=5, SERVICE_NEEDED=6, SERVICE_PASSWD=7

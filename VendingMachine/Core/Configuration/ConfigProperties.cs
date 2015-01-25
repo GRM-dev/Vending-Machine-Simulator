@@ -8,8 +8,14 @@ using VendingMachine.Core.Misc;
 
 namespace VendingMachine.Core.Configuration
 {
+    /// <summary>
+    /// Config Properties handler having its own instance object
+    /// </summary>
     public class ConfigProperties
     {
+        /// <summary>
+        /// Config Properties Instance
+        /// </summary>
         public static ConfigProperties instance = new ConfigProperties();
         private Dictionary<int, ConfigProperty> _properties;
         private ConfigProperty FullScreen = new ConfigProperty("FullScreen", "false", ConfigPropertyType.WINDOW_FULLSCREEN);

@@ -48,6 +48,7 @@
     <WarningLevel>4</WarningLevel>
     <Prefer32Bit>false</Prefer32Bit>
     <RunCodeAnalysis>true</RunCodeAnalysis>
+    <DocumentationFile>bin\Debug\VendingMachine.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -95,9 +96,12 @@
     <Compile Include="Core\Configuration\ConfigProperties.cs" />
     <Compile Include="Core\Configuration\ConfigProperty.cs" />
     <Compile Include="Core\Configuration\ConfigPropertyType.cs" />
-    <Compile Include="Core\Products\IProduct.cs" />
     <Compile Include="Core\Misc\Logger.cs" />
+    <Compile Include="Core\Products\IProduct.xaml.cs">
+      <DependentUpon>IProduct.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Core\Products\ProductController.cs" />
+    <Compile Include="Core\Products\ProductTypes.cs" />
     <Compile Include="Core\Property.cs" />
     <Compile Include="VMDialogs\VMDialogManager.cs" />
     <Compile Include="VMDialogs\VMExceptionDialog.xaml.cs">
@@ -109,6 +113,14 @@
     <Compile Include="XAML\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="Core\Products\IProduct.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="XAML\VMDictionary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="XAML\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

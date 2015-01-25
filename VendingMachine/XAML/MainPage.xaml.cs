@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using VendingMachine.Core;
+using VendingMachine.Core.Products;
 
 namespace VendingMachine
 {
@@ -20,6 +21,9 @@ namespace VendingMachine
 	/// </summary>
 	public partial class MainPage : Page
 	{
+        /// <summary>
+        /// Initialize components and product grid
+        /// </summary>
 		public MainPage()
 		{
 			InitializeComponent();
@@ -27,7 +31,13 @@ namespace VendingMachine
             AddProductTo(2, 3, null); // delete after ready
 		}
 
-        public void AddProductTo(int row, int column, IProduct product)
+        /// <summary>
+        /// Adds a product to Product Grid
+        /// </summary>
+        /// <param name="row">row number from 0</param>
+        /// <param name="column">column number from 0</param>
+        /// <param name="product">product to add</param>
+        public void AddProductTo(int row, int column, String product)
         {
             ColumnDefinitionCollection columns=ProductsView.ColumnDefinitions;
             RowDefinitionCollection rows = ProductsView.RowDefinitions;
@@ -43,7 +53,11 @@ namespace VendingMachine
            // Grid.SetRow(product, row);
         }
 
-        public void RemoveProduct(IProduct product)
+        /// <summary>
+        /// Removes a product from Grid
+        /// </summary>
+        /// <param name="product"></param>
+        public void RemoveProduct(String product)
         {
             //TODO: implement method
         }

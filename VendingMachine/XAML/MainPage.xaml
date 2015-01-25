@@ -17,14 +17,7 @@
             </LinearGradientBrush>
         </DockPanel.Background>
         <Image DockPanel.Dock="Top" Source="Resources/Header.png" Height="100"/>
-        <Grid DockPanel.Dock="Left" x:Name="ProductsView" Width="680">
-            <Grid.Background>
-                <RadialGradientBrush>
-                    <GradientStop Color="#FF764141" Offset="0"/>
-                    <GradientStop Color="#FF660101" Offset="0.857"/>
-                </RadialGradientBrush>
-            </Grid.Background>
-        </Grid>
+        <Grid DockPanel.Dock="Left" x:Name="ProductsView" Width="680" Background="{DynamicResource RedGridBrush}"/>
         <StackPanel DockPanel.Dock="Right" Width="160" HorizontalAlignment="Center" VerticalAlignment="Top">
             <Label x:Name="Wyswietlacz" Background="#FF1F1E28" Foreground="#FF0DED00" FontWeight="Bold" MinHeight="50">
                 <StackPanel>
@@ -47,18 +40,18 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition></RowDefinition>
                 </Grid.RowDefinitions>
-                <Button x:Name="_1" Width="30" Height="30" Content="1" Click="Nmb_1_Button_Click" />
-                <Button x:Name="_2" Width="30" Height="30" Grid.Column="1" Content="2" Click="Nmb_2_Button_Click" />
-                <Button x:Name="_3" Width="30" Height="30" Grid.Column="2" Content="3" Click="Nmb_3_Button_Click" />
-                <Button x:Name="_4" Width="30" Height="30" Grid.Row="1" Content="4" Click="Nmb_4_Button_Click"/>
-                <Button x:Name="_5" Width="30" Height="30" Grid.Column="1" Grid.Row="1" Content="5" Click="Nmb_5_Button_Click"/>
-                <Button x:Name="_6" Width="30" Height="30" Grid.Column="2" Grid.Row="1" Content="6" Click="Nmb_6_Button_Click"/>
-                <Button x:Name="_7" Width="30" Height="30" Grid.Row="2" Content="7" Click="Nmb_7_Button_Click"/>
-                <Button x:Name="_8" Width="30" Height="30" Grid.Column="1" Grid.Row="2" Content="8" Click="Nmb_8_Button_Click"/>
-                <Button x:Name="_9" Width="30" Height="30" Grid.Column="2" Grid.Row="2" Content="9" Click="Nmb_9_Button_Click"/>
-                <Button x:Name="_gwiazdka" Width="30" Height="30" Grid.Row="3" Content="c" Click="Nmb_C_Button_Click"/>
-                <Button x:Name="_0" Width="30" Height="30" Grid.Column="1" Grid.Row="3" Content="0" Click="Nmb_0_Button_Click"/>
-                <Button x:Name="_hash" Width="30" Height="30" Grid.Column="2" Grid.Row="3" Content="&lt;-" Click="Nmb_H_Button_Click"/>
+                <Button x:Name="_1" Content="1" Click="Nmb_1_Button_Click" Style="{DynamicResource Nmb}" />
+                <Button x:Name="_2" Grid.Column="1" Content="2" Click="Nmb_2_Button_Click" Style="{DynamicResource Nmb}" />
+                <Button x:Name="_3" Grid.Column="2" Content="3" Click="Nmb_3_Button_Click" Style="{DynamicResource Nmb}" />
+                <Button x:Name="_4" Grid.Row="1" Content="4" Click="Nmb_4_Button_Click" Style="{DynamicResource Nmb}" />
+                <Button x:Name="_5" Grid.Column="1" Grid.Row="1" Content="5" Click="Nmb_5_Button_Click" Style="{DynamicResource Nmb}" />
+                <Button x:Name="_6" Grid.Column="2" Grid.Row="1" Content="6" Click="Nmb_6_Button_Click" Style="{DynamicResource Nmb}" />
+                <Button x:Name="_7" Grid.Row="2" Content="7" Click="Nmb_7_Button_Click" Style="{DynamicResource Nmb}" />
+                <Button x:Name="_8" Grid.Column="1" Grid.Row="2" Content="8" Click="Nmb_8_Button_Click" Style="{DynamicResource Nmb}" />
+                <Button x:Name="_9" Grid.Column="2" Grid.Row="2" Content="9" Click="Nmb_9_Button_Click" Style="{DynamicResource Nmb}" />
+                <Button x:Name="_gwiazdka" Grid.Row="3" Content="c" Click="Nmb_C_Button_Click" Style="{DynamicResource Nmb}" />
+                <Button x:Name="_0" Grid.Column="1" Grid.Row="3" Content="0" Click="Nmb_0_Button_Click" Style="{DynamicResource Nmb}" />
+                <Button x:Name="_hash" Grid.Column="2" Grid.Row="3" Content="&lt;-" Click="Nmb_H_Button_Click" Style="{DynamicResource Nmb}" />
             </Grid>
             <Button Content="Zwrot" Width="45" Foreground="White" Background="#FF726565" Click="Zwrot_Button_Click"/>
             <Button Content="Reszta" Width="50" Background="#FF141A40" Foreground="White" MinHeight="40" Click="Reszta_Button_Click"/>

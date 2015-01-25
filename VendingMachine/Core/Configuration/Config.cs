@@ -8,13 +8,31 @@ using VendingMachine.VMDialogs;
 
 namespace VendingMachine.Core.Configuration
 {
+    /// <summary>
+    /// Main configuration handler
+    /// </summary>
     public class Config
     {
+        /// <summary>
+        /// Path to %appdata% folder
+        /// </summary>
         public static String APP_DATA = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+        /// <summary>
+        /// Path to program config/log files
+        /// </summary>
         public static String APP_PATH_MAIN = APP_DATA + @"\VMachine\";
+        /// <summary>
+        /// Name of log file
+        /// </summary>
         public static String LOG_FILE_NAME = "VMachine.log";
+        /// <summary>
+        /// Name of config file
+        /// </summary>
         public static String CONFIG_FILE_PATH = APP_PATH_MAIN + "VM-config.xml";
 
+        /// <summary>
+        /// Main configuration handler creator
+        /// </summary>
         public Config()
         {
             ConfigProperties.instance.initDefaultProperties();
@@ -46,7 +64,7 @@ namespace VendingMachine.Core.Configuration
             }
             catch (Exception e)
             {
-                 VMDialogManager.ShowExceptionMessage(e);
+                VMDialogManager.ShowExceptionMessage(e);
             }
         }
 
@@ -75,5 +93,5 @@ namespace VendingMachine.Core.Configuration
                 }
             }
         }
-}
+    }
 }

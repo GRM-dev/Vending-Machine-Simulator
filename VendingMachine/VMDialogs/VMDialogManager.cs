@@ -7,18 +7,34 @@ using VendingMachine.Core.Misc;
 
 namespace VendingMachine.VMDialogs
 {
+    /// <summary>
+    /// Manager of program all dialog boxes
+    /// </summary>
     public class VMDialogManager
     {
+        /// <summary>
+        /// Shows Info Dialog Box with OK button
+        /// </summary>
+        /// <param name="message">Message to display</param>
         public static void ShowInfoMessage(string message)
         {
             ShowInfoMessage("Info", message);
         }
 
+        /// <summary>
+        /// Shows Info Dialog Box with OK button
+        /// </summary>
+        /// <param name="title">Title of Box</param>
+        /// <param name="message">Message to display</param>
         public static async void ShowInfoMessage(string title, string message)
         {
             await ShowMessage(title, message, MessageDialogStyle.Affirmative);
         }
 
+        /// <summary>
+        /// Show exception message
+        /// </summary>
+        /// <param name="e">Exception</param>
         public static void ShowExceptionMessage(Exception e)
         {
             string message = e.Message;
@@ -26,6 +42,11 @@ namespace VendingMachine.VMDialogs
             ShowExceptionMessage(message, exception);
         }
 
+        /// <summary>
+        /// Show exception message
+        /// </summary>
+        /// <param name="message">Additional message</param>
+        /// <param name="exception">Exception</param>
         public static async void ShowExceptionMessage(String message, string exception)
         {
             var metroWindow = (Application.Current.MainWindow as MainWindow);
@@ -41,6 +62,13 @@ namespace VendingMachine.VMDialogs
             Logger.Log(exception);
         }
 
+        /// <summary>
+        /// Shows Message with only confirm action
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="message"></param>
+        /// <param name="dialogStyle"></param>
+        /// <returns></returns>
         public static async Task<MessageDialogResult> ShowMessage(string title, string message, MessageDialogStyle dialogStyle)
         {
             var metroWindow = (Application.Current.MainWindow as MainWindow);
@@ -49,12 +77,22 @@ namespace VendingMachine.VMDialogs
             return MessageDialogResult.Affirmative;
         }
 
+        /// <summary>
+        /// Shows input dialog box to input value
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="message"></param>
+        /// <param name="propertyType"></param>
         public static async void ShowInputMessage(string title, string message, ConfigPropertyType propertyType)
         {
             var metroWindow = (Application.Current.MainWindow as MainWindow);
             await DialogManager.ShowMetroDialogAsync(metroWindow, new HOInputDialog(metroWindow));
         }
 
+        /// <summary>
+        /// Shows closing box to confirm exiting
+        /// </summary>
+        /// <param name="window"></param>
         public static async void ShowClosingDialog(MainWindow window)
         {
             MessageDialogStyle bt;
