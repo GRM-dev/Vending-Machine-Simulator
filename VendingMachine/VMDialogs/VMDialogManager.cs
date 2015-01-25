@@ -86,7 +86,16 @@ namespace VendingMachine.VMDialogs
         public static async void ShowInputMessage(string title, string message, ConfigPropertyType propertyType)
         {
             var metroWindow = (Application.Current.MainWindow as MainWindow);
-            await DialogManager.ShowMetroDialogAsync(metroWindow, new HOInputDialog(metroWindow));
+            await DialogManager.ShowMetroDialogAsync(metroWindow, new VMInputDialog(metroWindow));
+        }
+
+        /// <summary>
+        /// Shows servis dialog box
+        /// </summary>
+        public static async void ShowServiceDialog()
+        {
+            var metroWindow = (Application.Current.MainWindow as MainWindow);
+            await DialogManager.ShowMetroDialogAsync(metroWindow, new ServisDialog(metroWindow));
         }
 
         /// <summary>

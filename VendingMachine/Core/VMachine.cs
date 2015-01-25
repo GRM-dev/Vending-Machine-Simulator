@@ -14,7 +14,7 @@ namespace VendingMachine.Core
     /// </summary>
     public class VMachine
     {
-        private static MainWindow _mainWindow;
+        private MainWindow _mainWindow;
         private Config _config;
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace VendingMachine.Core
         /// </summary>
         public static void closeProgram()
         {
-            ConfigFileManager.saveConfig();
+            ConfigFileManager.saveConfigFile();
             VMDialogManager.ShowClosingDialog(instance.MWindow);
         }
 

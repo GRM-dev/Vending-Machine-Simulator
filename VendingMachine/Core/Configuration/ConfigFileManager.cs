@@ -20,7 +20,7 @@ namespace VendingMachine.Core.Configuration
         /// Checks config file
         /// </summary>
         /// <returns>true if exists</returns>
-        public static bool configExists()
+        public static bool configFileExists()
         {
             if (!Directory.Exists(Config.APP_PATH_MAIN))
             {
@@ -43,13 +43,18 @@ namespace VendingMachine.Core.Configuration
             {
                 configXml[node.Attributes["key"].Value] = node.InnerText;
             }
+            XmlNodeList cHOSlotElems = xmlDoc.SelectNodes("GRM/VendingMachine/slot");
+            foreach (XmlNode node in cHOSlotElems)
+            {
+                configXml["Slot_" + node.Attributes["number"].Value] = node.InnerText;
+            }
             return configXml;
         }
 
         /// <summary>
         /// Saves whole config
         /// </summary>
-        public static void saveConfig()
+        public static void saveConfigFile()
         {
             XDocument xDoc = XDocument.Load(Config.CONFIG_FILE_PATH);
             XElement elList = xDoc.Element("GRM").Element("VendingMachine");
@@ -66,7 +71,7 @@ namespace VendingMachine.Core.Configuration
         /// <summary>
         /// Creates new config file
         /// </summary>
-        public static void createNewConfig()
+        public static void createNewConfigFile()
         {
             XDocument xDoc = new XDocument(new XElement("GRM", new XElement("VendingMachine")));
             XElement el = xDoc.Element("GRM").Element("VendingMachine");

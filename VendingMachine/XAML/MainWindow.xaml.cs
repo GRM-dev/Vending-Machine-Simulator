@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using VendingMachine.Core;
+using VendingMachine.Core.Configuration;
 using VendingMachine.VMDialogs;
 
 namespace VendingMachine
@@ -28,6 +29,9 @@ namespace VendingMachine
     {
         private VMachine vMachine;
 
+        /// <summary>
+        /// Main Window of program containing frame for pages
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
@@ -45,7 +49,7 @@ namespace VendingMachine
 
         private void Servis_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            VMDialogManager.ShowServiceDialog();
         }
 
         protected override void OnClosing(CancelEventArgs e)

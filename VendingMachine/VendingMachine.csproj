@@ -53,11 +53,12 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>VendingMachine.App</StartupObject>
@@ -107,6 +108,9 @@
     <Compile Include="VMDialogs\VMExceptionDialog.xaml.cs">
       <DependentUpon>VMExceptionDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VMDialogs\ServisDialog.xaml.cs">
+      <DependentUpon>ServisDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VMDialogs\VMInputDialog.xaml.cs">
       <DependentUpon>VMInputDialog.xaml</DependentUpon>
     </Compile>
@@ -116,6 +120,10 @@
     <Page Include="Core\Products\IProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VMDialogs\ServisDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="XAML\VMDictionary.xaml">
       <SubType>Designer</SubType>

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using VendingMachine.Core.Misc;
+using VendingMachine.Core.Products;
 using VendingMachine.VMDialogs;
 
 namespace VendingMachine.Core.Configuration
@@ -46,10 +48,10 @@ namespace VendingMachine.Core.Configuration
         {
             try
             {
-                if (!ConfigFileManager.configExists())
+                if (!ConfigFileManager.configFileExists())
                 {
                     Logger.Log("Not found config file.\nCreating one.");
-                    ConfigFileManager.createNewConfig();
+                    ConfigFileManager.createNewConfigFile();
                 }
                 else
                 {
@@ -88,7 +90,7 @@ namespace VendingMachine.Core.Configuration
                     case ConfigPropertyType.MONEY_COLLECTED: break;
                     case ConfigPropertyType.SERVICE_NEEDED: break;
                     case ConfigPropertyType.SERVICE_PASSWD: break;
-                    case ConfigPropertyType.SLOTS_COUNT: break;
+                    case ConfigPropertyType.SLOTS_COUNT: ProductController.setupSlots(property.Value); break;
                     default: Logger.Log("There is no " + property.PropertyType.ToString() + " property in configuration loader switch statement!"); break;
                 }
             }

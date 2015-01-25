@@ -13,6 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using VendingMachine.Core;
 using VendingMachine.Core.Products;
+using VendingMachine.VMDialogs;
 
 namespace VendingMachine
 {
@@ -28,53 +29,22 @@ namespace VendingMachine
 		{
 			InitializeComponent();
             ProductsView.ShowGridLines = true; //TODO: just to test
-            AddProductTo(2, 3, null); // delete after ready
 		}
-
-        /// <summary>
-        /// Adds a product to Product Grid
-        /// </summary>
-        /// <param name="row">row number from 0</param>
-        /// <param name="column">column number from 0</param>
-        /// <param name="product">product to add</param>
-        public void AddProductTo(int row, int column, String product)
-        {
-            ColumnDefinitionCollection columns=ProductsView.ColumnDefinitions;
-            RowDefinitionCollection rows = ProductsView.RowDefinitions;
-            while (columns.Count < column)
-            {
-                columns.Add(new ColumnDefinition());
-            }
-            while (rows.Count < row)
-            {
-                rows.Add(new RowDefinition());
-            }
-            //Grid.SetColumn(product,column);
-           // Grid.SetRow(product, row);
-        }
-
-        /// <summary>
-        /// Removes a product from Grid
-        /// </summary>
-        /// <param name="product"></param>
-        public void RemoveProduct(String product)
-        {
-            //TODO: implement method
-        }
 
         private void wrzut_Monety_Click(object sender, RoutedEventArgs e)
         {
-
+            ProductController.AddProductTo(1, 1, new IProduct("aa",2,4.0));
+            
         }
 
         private void Nmb_1_Button_Click(object sender, RoutedEventArgs e)
         {
-            
+            ProductController.AddProductTo(3, 3, new IProduct("OWE",5, 2.5));
         }
 
         private void Nmb_2_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            ProductController.RemoveProduct("aa");
         }
 
         private void Nmb_3_Button_Click(object sender, RoutedEventArgs e)

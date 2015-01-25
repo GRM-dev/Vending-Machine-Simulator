@@ -20,9 +20,29 @@ namespace VendingMachine.Core.Products
     /// </summary>
     public partial class IProduct : UserControl
     {
-        public IProduct()
+
+        /// <summary>
+        /// Creates Product place holder
+        /// </summary>
+        private IProduct()
         {
             InitializeComponent();
+        }
+
+        public IProduct(string name, int left, float price)
+            : this()
+        {
+            Product_Left.Content = left.ToString();
+            Product_Price.Content = price.ToString();
+            Name = name;
+        }
+
+        public IProduct(string name, int left, double price)
+            : this()
+        {
+            Product_Left.Content = left.ToString();
+            Product_Price.Content = price.ToString();
+            Name = name;
         }
     }
 }

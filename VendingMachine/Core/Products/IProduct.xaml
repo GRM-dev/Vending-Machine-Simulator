@@ -9,11 +9,11 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition MaxHeight="20" MinHeight="20"/>
-            <RowDefinition MinHeight="50"/>
-            <RowDefinition MaxHeight="20" MinHeight="20"/>
+            <RowDefinition MinHeight="40"/>
+            <RowDefinition MaxHeight="20" MinHeight="25"/>
         </Grid.RowDefinitions>
         <Label x:Name="Product_Left"/>
-        <Image x:Name="Product_Image" Grid.Row="1"/>
+        <Image x:Name="Product_Image" Grid.Row="1" Source="../../Resources/wallpaper_ft.png"/>
         <Label x:Name="Product_Price" Content="0,00" Grid.Row="2" />
         </Grid>
     </Border>
