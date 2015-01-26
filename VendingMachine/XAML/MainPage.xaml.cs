@@ -22,6 +22,7 @@ namespace VendingMachine
     /// </summary>
     public partial class MainPage : Page
     {
+        private double _restMoney = 0;
         /// <summary>
         /// Initialize components and product grid
         /// </summary>
@@ -43,78 +44,128 @@ namespace VendingMachine
 
         private void Nmb_2_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            Nmb_Button_Clicked(2);
         }
 
         private void Nmb_3_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            Nmb_Button_Clicked(3);
         }
 
         private void Nmb_4_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            Nmb_Button_Clicked(4);
         }
 
         private void Nmb_5_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            Nmb_Button_Clicked(5);
         }
 
         private void Nmb_6_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            Nmb_Button_Clicked(6);
         }
 
         private void Nmb_7_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            Nmb_Button_Clicked(7);
         }
 
         private void Nmb_8_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            Nmb_Button_Clicked(8);
         }
 
         private void Nmb_9_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            Nmb_Button_Clicked(9);
         }
 
         private void Nmb_0_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            Nmb_Button_Clicked(0);
         }
 
         private void Nmb_C_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            Nmb_Button_Clicked(100);
         }
 
         private void Nmb_H_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            Nmb_Button_Clicked(110);
         }
 
         private void Zwrot_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            RestMoney = CoinController.ReturnTempDepo();
+            if (Console_1.Text.Contains("Stan konta"))
+            {
+                Console_1.Text = "Stan konta: 0";
+            }
+            Reszta.Content = RestMoney;
         }
 
         private void Reszta_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            RestMoney = 0; //TODO: zwracanie do klienta
+            Reszta.Content = RestMoney;
         }
 
         /// <summary>
-        /// 
+        /// Base input number buton method
         /// </summary>
         /// <param name="number"></param>
         private void Nmb_Button_Clicked(int number)
         {
-                        
+            if (!checkingIn)
+            {
+                Console_2.Text = "";
+                checkingIn = true;
+            }
+            switch (number)
+            {
+                case 100:
+                    Console_2.Text = "";
+                    checkingIn = false;
+                    break;
+                case 110:
+                    if (!Console_2.Text.Equals(""))
+                    {
+                        Console_2.Text = Console_2.Text.Substring(0, Console_2.Text.Length - 1);
+                    }
+                    break;
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                    Console_2.Text = Console_2.Text + number;
+                    break;
+                default: break;
+            }
 
-            Console_2.Text = "";
+
         }
+
+        /// <summary>
+        /// Rest of money to take on by client
+        /// </summary>
+        public double RestMoney
+        {
+            get { return _restMoney; }
+            set { _restMoney = value; }
+        }
+
+        /// <summary>
+        /// is number of slot checking in?
+        /// </summary>
+        public Boolean checkingIn { get; set; }
     }
 }

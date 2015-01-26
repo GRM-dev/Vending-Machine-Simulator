@@ -7,7 +7,7 @@
 	mc:Ignorable="d"
 	x:Class="VendingMachine.MainPage"
 	x:Name="MainVMPage"
-	d:DesignWidth="800" d:DesignHeight="600">
+	d:DesignWidth="800" d:DesignHeight="800">
     <DockPanel>
         <DockPanel.Background>
             <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
@@ -18,14 +18,12 @@
             </LinearGradientBrush>
         </DockPanel.Background>
         <Image DockPanel.Dock="Top" Source="Resources/Header.png" Height="100"/>
-        <Grid DockPanel.Dock="Left" x:Name="ProductsView" Width="680" Background="{DynamicResource RedGridBrush}">
-
-        </Grid>
+        <Grid DockPanel.Dock="Left" x:Name="ProductsView" Width="640" Background="{DynamicResource RedGridBrush}" />
         <StackPanel DockPanel.Dock="Right" Width="160" HorizontalAlignment="Center" VerticalAlignment="Top">
-            <Label x:Name="Wyswietlacz" Background="#FF1F1E28" Foreground="#FF0DED00" FontWeight="Bold" MinHeight="50">
-                <StackPanel>
-                    <TextBlock x:Name="Console_1" TextWrapping="Wrap" HorizontalAlignment="Right">_____________________________</TextBlock>
-                    <TextBlock x:Name="Console_2" TextWrapping="Wrap" HorizontalAlignment="Right">_____________________________</TextBlock>
+            <Label x:Name="Console" Background="#FF1F1E28" Foreground="#FF0DED00" MinHeight="50" HorizontalContentAlignment="Right">
+                <StackPanel HorizontalAlignment="Right">
+                    <TextBlock x:Name="Console_1" TextWrapping="NoWrap" HorizontalAlignment="Right" VerticalAlignment="Top">____________________________</TextBlock>
+                    <TextBlock x:Name="Console_2" TextWrapping="NoWrap" HorizontalAlignment="Right" VerticalAlignment="Bottom">____________________________</TextBlock>
                 </StackPanel>
             </Label>
             <Button x:Name="Wrzut_Monety" IsDefault="True" Cursor="Arrow" Background="#FF2A2840" Foreground="White" MinHeight="50" MaxWidth="48" VerticalContentAlignment="Center" UseLayoutRounding="False" Click="wrzut_Monety_Click" >
@@ -57,7 +55,12 @@
                 <Button x:Name="_hash" Grid.Column="2" Grid.Row="3" Content="&lt;-" Click="Nmb_H_Button_Click" Style="{DynamicResource Nmb}" />
             </Grid>
             <Button Content="Zwrot" Width="45" Foreground="White" Background="#FF726565" Click="Zwrot_Button_Click"/>
-            <Button Content="Reszta" Width="50" Background="#FF141A40" Foreground="White" MinHeight="40" Click="Reszta_Button_Click"/>
+            <Button  Width="50" Background="#FF141A40"  MinHeight="40" Click="Reszta_Button_Click">
+                <StackPanel>
+                    <Label Content="Reszta" Foreground="White" HorizontalAlignment="Center" />
+                    <Label x:Name="Reszta" Content="0" Foreground="White" HorizontalAlignment="Center" />
+                </StackPanel>
+            </Button>
         </StackPanel>
     </DockPanel>
 </Page>

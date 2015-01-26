@@ -29,18 +29,18 @@ namespace VendingMachine.Core.Products
             InitializeComponent();
         }
 
-        public IProduct(string name, int left, float price)
+        public IProduct(string name, int number, float price)
             : this()
         {
-            Product_Left.Content = left.ToString();
+            Product_Number.Content = number.ToString();
             Product_Price.Content = price.ToString();
             Name = name;
         }
 
-        public IProduct(string name, int left, double price)
+        public IProduct(string name, int number, double price)
             : this()
         {
-            Product_Left.Content = left.ToString();
+            Product_Number.Content = number.ToString();
             Product_Price.Content = price.ToString();
             Name = name;
         }

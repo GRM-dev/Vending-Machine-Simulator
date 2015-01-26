@@ -42,13 +42,26 @@ namespace VendingMachine.Core.Products
             ProductsView.Children.Remove(product);
         }
 
-        public static void RemoveProduct(String productName)
+        public static void RemoveProduct(String productNumber)
         {
             IProduct product = null;
-            if (products.ContainsKey(productName))
+            if (products.ContainsKey(productNumber))
             {
-                product = products[productName]; Grid ProductsView = VMachine.instance.MWindow.VMMainPage.ProductsView;
+                product = products[productNumber]; 
+                Grid ProductsView = VMachine.instance.MWindow.VMMainPage.ProductsView;
                 ProductsView.Children.Remove(product);
+            }
+        }
+
+        public Boolean isProductWithNumber(String number)
+        {
+            if (products.ContainsKey(number))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
