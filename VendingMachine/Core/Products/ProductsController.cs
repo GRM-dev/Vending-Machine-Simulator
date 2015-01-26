@@ -7,9 +7,10 @@ using System.Windows.Controls;
 
 namespace VendingMachine.Core.Products
 {
-    class ProductController
+    class ProductsController
     {
-        private static Dictionary<String, IProduct> products = new Dictionary<string, IProduct>();
+        private static Dictionary<String, Product> activeProducts = new Dictionary<String, Product>();
+        private static Dictionary<String, ProductData> allProducts = new Dictionary<String, ProductData>();
 
         /// <summary>
         /// Adds a product to Product Grid starting from collumn and row 1
@@ -17,7 +18,7 @@ namespace VendingMachine.Core.Products
         /// <param name="row">row number from 0</param>
         /// <param name="column">column number from 0</param>
         /// <param name="product">product to add</param>
-        public static void AddProductTo(int row, int column, IProduct product)
+        public static void AddProductTo(int row, int column, Product product)
         {
             Grid ProductsView = VMachine.instance.MWindow.VMMainPage.ProductsView;
             ColumnDefinitionCollection columns = ProductsView.ColumnDefinitions;
@@ -26,7 +27,7 @@ namespace VendingMachine.Core.Products
             {
                 return;
             }
-            products[product.Name] = product;
+            activeProducts[product.Name] = product;
             ProductsView.Children.Add(product);
             Grid.SetColumn(product, --column);
             Grid.SetRow(product, --row);
@@ -36,26 +37,35 @@ namespace VendingMachine.Core.Products
         /// Removes a product from Grid
         /// </summary>
         /// <param name="product"></param>
-        public static void RemoveProduct(IProduct product)
+        public static void RemoveProduct(Product product)
         {
             Grid ProductsView = VMachine.instance.MWindow.VMMainPage.ProductsView;
             ProductsView.Children.Remove(product);
         }
 
+        /// <summary>
+        /// Removes specified Product
+        /// </summary>
+        /// <param name="productNumber"></param>
         public static void RemoveProduct(String productNumber)
         {
-            IProduct product = null;
-            if (products.ContainsKey(productNumber))
+            Product product = null;
+            if (activeProducts.ContainsKey(productNumber))
             {
-                product = products[productNumber]; 
+                product = activeProducts[productNumber]; 
                 Grid ProductsView = VMachine.instance.MWindow.VMMainPage.ProductsView;
                 ProductsView.Children.Remove(product);
             }
         }
 
-        public Boolean isProductWithNumber(String number)
+        /// <summary>
+        /// Checks if there is any product with specified number
+        /// </summary>
+        /// <param name="number">product number</param>
+        /// <returns>true if exists already</returns>
+        public Boolean hasProductWithNumber(String number)
         {
-            if (products.ContainsKey(number))
+            if (activeProducts.ContainsKey(number))
             {
                 return true;
             }
@@ -104,5 +114,10 @@ namespace VendingMachine.Core.Products
                 rows.Add(new RowDefinition());
             }
         }
+
+        private static void initProductsDictionary(){
+           // allProducts.Add("",)
+        }
+
     }
 }

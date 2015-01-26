@@ -90,10 +90,18 @@ namespace VendingMachine.Core.Configuration
                     case ConfigPropertyType.MONEY_COLLECTED: break;
                     case ConfigPropertyType.SERVICE_NEEDED: break;
                     case ConfigPropertyType.SERVICE_PASSWD: break;
-                    case ConfigPropertyType.SLOTS_COUNT: ProductController.setupSlots(property.Value); break;
+                    case ConfigPropertyType.SLOTS_COUNT: ProductsController.setupSlots(property.Value); break;
                     default: Logger.Log("There is no " + property.PropertyType.ToString() + " property in configuration loader switch statement!"); break;
                 }
             }
+        }
+
+        /// <summary>
+        /// Loads products to window page
+        /// </summary>
+        public void loadProducts()
+        {
+
         }
     }
 }

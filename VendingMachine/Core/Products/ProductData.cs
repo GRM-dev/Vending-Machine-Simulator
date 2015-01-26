@@ -6,7 +6,7 @@ using System.Windows;
 
 namespace VendingMachine.Core.Products
 {
-    public abstract class IProduct : UIElement
+    public class ProductData
     {
         
     }

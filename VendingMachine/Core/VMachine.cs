@@ -10,7 +10,7 @@ using VendingMachine.VMDialogs;
 namespace VendingMachine.Core
 {
     /// <summary>
-    /// Główna klasa programu, Model z MVC.
+    /// Main Model (MVC) of program
     /// </summary>
     public class VMachine
     {

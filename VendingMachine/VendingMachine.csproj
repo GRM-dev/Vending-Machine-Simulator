@@ -124,12 +124,13 @@
     <Compile Include="Core\Configuration\ConfigProperty.cs" />
     <Compile Include="Core\Configuration\ConfigPropertyType.cs" />
     <Compile Include="Core\Misc\Logger.cs" />
-    <Compile Include="Core\Products\IProduct.xaml.cs">
-      <DependentUpon>IProduct.xaml</DependentUpon>
+    <Compile Include="Core\Products\ProductData.cs" />
+    <Compile Include="Core\Products\Product.xaml.cs">
+      <DependentUpon>Product.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Core\Products\ProductController.cs" />
+    <Compile Include="Core\Products\ProductsController.cs" />
     <Compile Include="Core\Products\ProductTypes.cs" />
-    <Compile Include="Core\Misc\Property.cs" />
+    <Compile Include="Core\Misc\ValueHandler.cs" />
     <Compile Include="VMDialogs\InputCoinDialog.xaml.cs">
       <DependentUpon>InputCoinDialog.xaml</DependentUpon>
     </Compile>
@@ -146,7 +147,7 @@
     <Compile Include="XAML\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
-    <Page Include="Core\Products\IProduct.xaml">
+    <Page Include="Core\Products\Product.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -213,12 +214,35 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="VendingMachine_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Drinks\Cappy.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Drinks\Coca Cola.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Drinks\Red Bull.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Drinks\Sprite.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Bars\3Bit.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Bars\Mars.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Bars\Princessa.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Bars\Snicers.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\favicon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -226,6 +250,18 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\Header2.png" />
+    <Content Include="Resources\Snacks\Ciastka.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Snacks\Paluszki.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Snacks\Rogal.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Snacks\Sandwich.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\wallpaper_ft.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

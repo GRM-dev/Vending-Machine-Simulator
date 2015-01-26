@@ -130,4 +130,40 @@
   <data name="wallpaper_ft" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wallpaper_ft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Cappy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Drinks\Cappy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Ciastka" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Snacks\Ciastka.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Coca_Cola" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Drinks\Coca Cola.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Mars" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bars\Mars.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Paluszki" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Snacks\Paluszki.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Princessa" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bars\Princessa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Red_Bull" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Drinks\Red Bull.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Rogal" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Snacks\Rogal.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Sandwich" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Snacks\Sandwich.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Snicers" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bars\Snicers.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Sprite" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Drinks\Sprite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_3Bit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bars\3Bit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

@@ -34,8 +34,8 @@ namespace VendingMachine.Core
         /// <returns>true if coin is correct</returns>
         public static Boolean isCoinCorrect(string value)
         {
-            Property prop = new Property(value);
-            if (prop.PropertyType != Property.ValueTypes.STRING && isCoinCorrect(Convert.ToDouble(prop.Value)))
+            ValueHandler prop = new ValueHandler(value);
+            if (prop.PropertyType != ValueHandler.ValueTypes.STRING && isCoinCorrect(Convert.ToDouble(prop.Value)))
             {
                 return true;
             }

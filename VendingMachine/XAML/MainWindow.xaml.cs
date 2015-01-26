@@ -22,7 +22,7 @@ namespace VendingMachine
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
-    /// Automat. Zawiera cala kontrole automate wraz widokiem MVC
+    /// Automat. Contains main view page of program
     /// Klasa Main
     /// </summary>
     public partial class MainWindow : MetroWindow

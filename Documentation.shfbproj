@@ -14,8 +14,8 @@
     <Name>Documentation</Name>
     <!-- SHFB properties -->
     <FrameworkVersion>.NET Framework 3.5</FrameworkVersion>
-    <OutputPath>..\VS-Workspace\Docs\</OutputPath>
-    <HtmlHelpName>Documentation</HtmlHelpName>
+    <OutputPath>docs\</OutputPath>
+    <HtmlHelpName>VMS-Documentation</HtmlHelpName>
     <Language>en-US</Language>
     <BuildAssemblerVerbosity>OnlyWarningsAndErrors</BuildAssemblerVerbosity>
     <HelpFileFormat>HtmlHelp1</HelpFileFormat>
@@ -29,7 +29,7 @@
       <DocumentationSource sourceFile="VendingMachine\bin\Debug\VendingMachine.xml" xmlns="" />
     </DocumentationSources>
     <MaximumGroupParts>2</MaximumGroupParts>
-    <NamespaceGrouping>False</NamespaceGrouping>
+    <NamespaceGrouping>True</NamespaceGrouping>
     <SyntaxFilters>C#, Visual Basic, Managed C++, F#, XAML Usage, ASP.NET</SyntaxFilters>
     <SdkLinkTarget>Blank</SdkLinkTarget>
     <RootNamespaceContainer>False</RootNamespaceContainer>
@@ -47,14 +47,17 @@
     <MSHelpViewerSdkLinkType>Msdn</MSHelpViewerSdkLinkType>
     <CatalogVersion>100</CatalogVersion>
     <CatalogProductId>VS</CatalogProductId>
-    <VisibleItems>Attributes, ExplicitInterfaceImplementations, InheritedMembers, InheritedFrameworkMembers, Internals, Privates, PrivateFields, Protected, ProtectedInternalAsProtected</VisibleItems>
+    <VisibleItems>Attributes, ExplicitInterfaceImplementations, Internals, Privates, PrivateFields, Protected, ProtectedInternalAsProtected</VisibleItems>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="VendingMachine" isDocumented="True">Vending Machine Simulator</NamespaceSummaryItem>
 <NamespaceSummaryItem name="VendingMachine.Core" isDocumented="True">Core operations classes</NamespaceSummaryItem>
 <NamespaceSummaryItem name="VendingMachine.Core.Configuration" isDocumented="True">reading, applying saving configurations</NamespaceSummaryItem>
 <NamespaceSummaryItem name="VendingMachine.Core.Misc" isDocumented="True">additional classes</NamespaceSummaryItem>
 <NamespaceSummaryItem name="VendingMachine.Core.Products" isDocumented="True">Products</NamespaceSummaryItem>
-<NamespaceSummaryItem name="VendingMachine.VMDialogs" isDocumented="True">Dialog Boxes XAML</NamespaceSummaryItem></NamespaceSummaries>
+<NamespaceSummaryItem name="VendingMachine.VMDialogs" isDocumented="True">Dialog Boxes XAML</NamespaceSummaryItem>
+<NamespaceSummaryItem name="(global)" isDocumented="True" /></NamespaceSummaries>
+    <HeaderText>MNIS Project for learning purposes</HeaderText>
+    <WorkingPath>..\VS-Workspace\Docs\</WorkingPath>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in order for Visual Studio to perform
 			 the build.  The others are optional common platform types that may appear. -->

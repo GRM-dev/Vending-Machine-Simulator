@@ -5,14 +5,39 @@ using System.Text;
 
 namespace VendingMachine.Core
 {
-    class Property
+    /// <summary>
+    /// Keeps value with its type
+    /// </summary>
+    public class ValueHandler
     {
+        /// <summary>
+        /// Type of values
+        /// </summary>
         public enum ValueTypes
         {
-            INT, FLOAT, DOUBLE, STRING, NULL
+            /// <summary>
+            /// Integer
+            /// </summary>
+            INT, 
+            /// <summary>
+            /// Float
+            /// </summary>
+            FLOAT, 
+            /// <summary>
+            /// Double
+            /// </summary>
+            DOUBLE, 
+            /// <summary>
+            /// String. It's setted when the value is not Numeric
+            /// </summary>
+            STRING, 
+            /// <summary>
+            /// Empty Value
+            /// </summary>
+            NULL
         }
 
-        internal Property(ValueType value)
+        internal ValueHandler(ValueType value)
         {
             try
             {
@@ -54,7 +79,11 @@ namespace VendingMachine.Core
             }
         }
 
-        internal Property(String value)
+        /// <summary>
+        /// Creates handle to specified value.
+        /// </summary>
+        /// <param name="value">Value to be handled</param>
+        public ValueHandler(String value)
         {
             double dValue;
             if (double.TryParse(value, out dValue))
@@ -69,6 +98,11 @@ namespace VendingMachine.Core
             }
         }
 
+        /// <summary>
+        /// Checks if value is is numeric
+        /// </summary>
+        /// <param name="value">param to check</param>
+        /// <returns>true if numeric</returns>
         public static bool IsNumeric(ValueType value)
         {
             if (!(value is Byte ||
@@ -87,6 +121,11 @@ namespace VendingMachine.Core
                 return true;
         }
 
+        /// <summary>
+        /// Checks if value is is numeric integer
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static bool IsInteger(ValueType value)
         {
             return (value is SByte || value is Int16 || value is Int32
@@ -94,13 +133,24 @@ namespace VendingMachine.Core
                     || value is UInt32 || value is UInt64);
         }
 
+        /// <summary>
+        /// Checks if value is is numeric float
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public static bool IsFloat(ValueType value)
         {
             return (value is float | value is double | value is Decimal);
         }
 
-        public Object Value { get; set; }
+        /// <summary>
+        /// Handled value
+        /// </summary>
+        public Object Value { get; private set; }
 
-        public ValueTypes PropertyType { get; set; }
+        /// <summary>
+        /// Type of handled property
+        /// </summary>
+        public ValueTypes PropertyType { get; private set; }
     }
 }
