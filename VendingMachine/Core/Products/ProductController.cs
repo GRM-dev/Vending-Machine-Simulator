@@ -61,21 +61,21 @@ namespace VendingMachine.Core.Products
             int slotsNmb = Convert.ToInt32(slots);
             int rowsNmb = 1;
             int columnsNmb = 1;
-            if (slotsNmb > 20)
+            if (slotsNmb >= 20)
             {
                 rowsNmb = 4;
                 columnsNmb = 5;
             }
-            else if (slotsNmb < 3)
+            else if (slotsNmb < 4)
             {
-                rowsNmb = slotsNmb;
+                columnsNmb = slotsNmb;
             }
             else
             {
-                rowsNmb = 4;
-                while (columnsNmb < slotsNmb - 4)
+                columnsNmb = 4;
+                while (rowsNmb < slotsNmb - 4)
                 {
-                    columnsNmb += 4;
+                    rowsNmb += 4;
                 }
             }
 

@@ -16,15 +16,30 @@ namespace VendingMachine.Core
         /// <summary>
         /// When the v param is correct coin value than returns true
         /// </summary>
-        /// <param name="v">coin value to check</param>
+        /// <param name="value">coin value to check</param>
         /// <returns>true if coin is correct</returns>
-        public static Boolean isCoinCorrect(float v)
+        public static Boolean isCoinCorrect(double value)
         {
-            if (v > 0 && (v == 0.10 || v == 0.20 ||
-                v == 0.50 || v == 1.00 || v == 2.00 || v == 5.00))
+            if (value > 0 && (value == 0.10 || value == 0.20 ||
+                value == 0.50 || value == 1.00 || value == 2.00 || value == 5.00))
             {
                 return true;
             } return false;
+        }
+
+        /// <summary>
+        /// Checks if specified value is correct coin
+        /// </summary>
+        /// <param name="value">string</param>
+        /// <returns>true if coin is correct</returns>
+        public static Boolean isCoinCorrect(string value)
+        {
+            Property prop = new Property(value);
+            if (prop.PropertyType != Property.ValueTypes.STRING && isCoinCorrect(Convert.ToDouble(prop.Value)))
+            {
+                return true;
+            }
+            return false;
         }
 
         /// <summary>
@@ -37,33 +52,32 @@ namespace VendingMachine.Core
         }
 
         /// <summary>
-        /// Returns the rest of money al if operation cancelled whole stored temp depo value
-        /// </summary>
-        /// <param name="r"></param>
-        public static void ReturnRest(float r)
-        {
-            MainCoinDepository -= r;
-        }
-
-        /// <summary>
         /// Gets temporary depository
         /// </summary>
         /// <returns>total value of temp depo</returns>
-        public static float ReturnTempDepo()
+        public static double ReturnTempDepo()
         {
-            return TempCoinDepository;
+            double returnV = TempCoinDepository;
+            TempCoinDepository = 0;
+            return returnV;
         }
 
         /// <summary>
         /// When user throws coin into machine this method adds it to temp depo
         /// </summary>
         /// <param name="m"></param>
-        public static void ThrowInCoin(float m)
+        public static void ThrowInCoin(double m)
         {
             TempCoinDepository += m;
         }
 
-        public static float MainCoinDepository { get; set; }
-        public static float TempCoinDepository { get; set; }
+        /// <summary>
+        /// Main secure Coin Depo
+        /// </summary>
+        public static double MainCoinDepository { get; private set; }
+        /// <summary>
+        /// Temporary coin depo which current client uses
+        /// </summary>
+        public static double TempCoinDepository { get; private set; }
     }
 }

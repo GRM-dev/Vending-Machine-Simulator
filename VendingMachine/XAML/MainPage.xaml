@@ -24,8 +24,8 @@
         <StackPanel DockPanel.Dock="Right" Width="160" HorizontalAlignment="Center" VerticalAlignment="Top">
             <Label x:Name="Wyswietlacz" Background="#FF1F1E28" Foreground="#FF0DED00" FontWeight="Bold" MinHeight="50">
                 <StackPanel>
-                    <TextBlock x:Name="Console_1" TextWrapping="Wrap">_____________________________</TextBlock>
-                    <TextBlock x:Name="Console_2" TextWrapping="Wrap">_____________________________</TextBlock>
+                    <TextBlock x:Name="Console_1" TextWrapping="Wrap" HorizontalAlignment="Right">_____________________________</TextBlock>
+                    <TextBlock x:Name="Console_2" TextWrapping="Wrap" HorizontalAlignment="Right">_____________________________</TextBlock>
                 </StackPanel>
             </Label>
             <Button x:Name="Wrzut_Monety" IsDefault="True" Cursor="Arrow" Background="#FF2A2840" Foreground="White" MinHeight="50" MaxWidth="48" VerticalContentAlignment="Center" UseLayoutRounding="False" Click="wrzut_Monety_Click" >

@@ -103,7 +103,10 @@
     </Compile>
     <Compile Include="Core\Products\ProductController.cs" />
     <Compile Include="Core\Products\ProductTypes.cs" />
-    <Compile Include="Core\Property.cs" />
+    <Compile Include="Core\Misc\Property.cs" />
+    <Compile Include="VMDialogs\InputCoinDialog.xaml.cs">
+      <DependentUpon>InputCoinDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="VMDialogs\VMDialogManager.cs" />
     <Compile Include="VMDialogs\VMExceptionDialog.xaml.cs">
       <DependentUpon>VMExceptionDialog.xaml</DependentUpon>
@@ -120,6 +123,10 @@
     <Page Include="Core\Products\IProduct.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VMDialogs\InputCoinDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="VMDialogs\ServisDialog.xaml">
       <Generator>MSBuild:Compile</Generator>

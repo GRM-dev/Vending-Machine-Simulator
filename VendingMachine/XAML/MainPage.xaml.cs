@@ -17,34 +17,33 @@ using VendingMachine.VMDialogs;
 
 namespace VendingMachine
 {
-	/// <summary>
-	/// Interaction logic for MainPage.xaml
-	/// </summary>
-	public partial class MainPage : Page
-	{
+    /// <summary>
+    /// Interaction logic for MainPage.xaml
+    /// </summary>
+    public partial class MainPage : Page
+    {
         /// <summary>
         /// Initialize components and product grid
         /// </summary>
-		public MainPage()
-		{
-			InitializeComponent();
+        public MainPage()
+        {
+            InitializeComponent();
             ProductsView.ShowGridLines = true; //TODO: just to test
-		}
+        }
 
         private void wrzut_Monety_Click(object sender, RoutedEventArgs e)
         {
-            ProductController.AddProductTo(1, 1, new IProduct("aa",2,4.0));
-            
+            VMDialogManager.ShowInputCoinDialog();
         }
 
         private void Nmb_1_Button_Click(object sender, RoutedEventArgs e)
         {
-            ProductController.AddProductTo(3, 3, new IProduct("OWE",5, 2.5));
+            Nmb_Button_Clicked(1);
         }
 
         private void Nmb_2_Button_Click(object sender, RoutedEventArgs e)
         {
-            ProductController.RemoveProduct("aa");
+
         }
 
         private void Nmb_3_Button_Click(object sender, RoutedEventArgs e)
@@ -106,5 +105,16 @@ namespace VendingMachine
         {
 
         }
-	}
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="number"></param>
+        private void Nmb_Button_Clicked(int number)
+        {
+                        
+
+            Console_2.Text = "";
+        }
+    }
 }

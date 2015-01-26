@@ -32,6 +32,15 @@ namespace VendingMachine.VMDialogs
         }
 
         /// <summary>
+        /// Shows Input Coin Dialog Box
+        /// </summary>
+        public static async void ShowInputCoinDialog()
+        {
+            var metroWindow = (Application.Current.MainWindow as MainWindow);
+            await DialogManager.ShowMetroDialogAsync(metroWindow, new InputCoinDialog(metroWindow));
+        }
+
+        /// <summary>
         /// Show exception message
         /// </summary>
         /// <param name="e">Exception</param>
