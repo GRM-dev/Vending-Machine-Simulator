@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 using VendingMachine.Core.Misc;
 using VendingMachine.Core.Products;
 using VendingMachine.VMDialogs;
@@ -94,6 +95,15 @@ namespace VendingMachine.Core.Configuration
                     default: Logger.Log("There is no " + property.PropertyType.ToString() + " property in configuration loader switch statement!"); break;
                 }
             }
+            Product p1 = new Product(1,2.3);
+            BitmapImage im1 = new BitmapImage();
+            /*im1.BeginInit();
+            im1.UriSource = new Uri("../Resources/Header.png");
+            im1.EndInit();
+            p1.ProductImageSource = im1;*/
+            Product p2 = new Product(2,3.0);
+            ProductsController.AddProductTo(1, 1,p1);
+            ProductsController.AddProductTo(1, 2, p2);
         }
 
         /// <summary>

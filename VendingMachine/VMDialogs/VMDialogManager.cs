@@ -120,7 +120,7 @@ namespace VendingMachine.VMDialogs
             MetroDialogSettings diagSettings = new MetroDialogSettings();
             diagSettings.AnimateShow = true;
             bt = MessageDialogStyle.AffirmativeAndNegative;
-            messageBoxText = "Napewno chcesz wyjść z programu?";
+            messageBoxText = "Jesteś pewny, że chcesz wyjść z programu?";
             diagSettings.AffirmativeButtonText = "Wyjdź";
             diagSettings.NegativeButtonText = "Anuluj";
             result = await window.ShowMessageAsync(titleMessage, messageBoxText, bt, diagSettings);

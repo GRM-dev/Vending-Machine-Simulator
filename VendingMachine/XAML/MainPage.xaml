@@ -17,7 +17,7 @@
                 <GradientStop Color="#FF610000" Offset="0.765"/>
             </LinearGradientBrush>
         </DockPanel.Background>
-        <Image DockPanel.Dock="Top" Source="Resources/Header.png" Height="100"/>
+        <Image DockPanel.Dock="Top" Source="../Resources/Header.png" Height="100"/>
         <Grid DockPanel.Dock="Left" x:Name="ProductsView" Width="640" Background="{DynamicResource RedGridBrush}" />
         <StackPanel DockPanel.Dock="Right" Width="160" HorizontalAlignment="Center" VerticalAlignment="Top">
             <Label x:Name="Console" Background="#FF1F1E28" Foreground="#FF0DED00" MinHeight="50" HorizontalContentAlignment="Right">

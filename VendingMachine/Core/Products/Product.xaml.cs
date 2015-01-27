@@ -24,6 +24,7 @@ namespace VendingMachine.Core.Products
         private String _product_Name;
         private int _product_ID;
         private double _product_Price;
+        private BitmapImage _image;
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
@@ -38,13 +39,13 @@ namespace VendingMachine.Core.Products
         public Product(int ID, double price)
             : this()
         {
-           // Name = name;
+            // Name = name;
             Product_ID = ID;
             Product_Price = price;
         }
 
-        public Product(int ID, double price,int count)
-            : this(ID,price)
+        public Product(int ID, double price, int count)
+            : this(ID, price)
         {
 
         }
@@ -67,8 +68,21 @@ namespace VendingMachine.Core.Products
         /// Product Price
         /// </summary>
         public double Product_Price { get { return _product_Price; } private set { _product_Price = value; NotifyPropertyChanged("Product_Price"); } }
-
+        /// <summary>
+        /// 
+        /// </summary>
         public int Product_Count { get; set; }
-        public BitmapImage ProductImageSource { get; set; }
+        /// <summary>
+        /// 
+        /// </summary>
+        public BitmapImage ProductImageSource
+        {
+            get { return _image; }
+            set
+            {
+                _image = value;
+                Product_Image.Source = _image;
+            }
+        }
     }
 }
