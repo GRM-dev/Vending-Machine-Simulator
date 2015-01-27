@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using VendingMachine.Core.Misc;
 using VendingMachine.Core.Products;
+using VendingMachine.Properties;
 using VendingMachine.VMDialogs;
 
 namespace VendingMachine.Core.Configuration
@@ -32,6 +38,10 @@ namespace VendingMachine.Core.Configuration
         /// Name of config file
         /// </summary>
         public static String CONFIG_FILE_PATH = APP_PATH_MAIN + "VM-config.xml";
+        /// <summary>
+        /// local resource dictionary VMDictionary
+        /// </summary>
+        public static ResourceDictionary vmRD;
 
         /// <summary>
         /// Main configuration handler creator
@@ -39,6 +49,10 @@ namespace VendingMachine.Core.Configuration
         public Config()
         {
             ConfigProperties.instance.initDefaultProperties();
+            vmRD = new ResourceDictionary();
+            vmRD.Source =
+                new Uri("pack://application:,,,/VendingMachine;component/XAML/VMDictionary.xaml",
+                        UriKind.RelativeOrAbsolute);
         }
 
         /// <summary>
@@ -95,15 +109,21 @@ namespace VendingMachine.Core.Configuration
                     default: Logger.Log("There is no " + property.PropertyType.ToString() + " property in configuration loader switch statement!"); break;
                 }
             }
-            Product p1 = new Product(1,2.3);
-            BitmapImage im1 = new BitmapImage();
-            /*im1.BeginInit();
-            im1.UriSource = new Uri("../Resources/Header.png");
-            im1.EndInit();
-            p1.ProductImageSource = im1;*/
-            Product p2 = new Product(2,3.0);
-            ProductsController.AddProductTo(1, 1,p1);
-            ProductsController.AddProductTo(1, 2, p2);
+            Product p1 = new Product(1, 2.3);
+            try
+            {
+                var im1 = vmRD["Mars"];
+                p1.ProductImageSource = (ImageSource)im1;
+                Product p2 = new Product(2, 3.0);
+                ProductsController.AddProductTo(1, 1, p1);
+                ProductsController.AddProductTo(1, 2, p2);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine(e.Source);
+                VMDialogManager.ShowExceptionMessage(e);
+            }
         }
 
         /// <summary>

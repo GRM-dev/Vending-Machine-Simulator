@@ -9,4 +9,5 @@
         <Setter Property="Width" Value="30"/>
         <Setter Property="Height" Value="30"/>
     </Style>
+    <BitmapImage x:Key="Mars" UriSource="../Resources/Bars/Mars.png"/>
 </ResourceDictionary>

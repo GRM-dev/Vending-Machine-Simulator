@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,7 +25,7 @@ namespace VendingMachine.Core.Products
         private String _product_Name;
         private int _product_ID;
         private double _product_Price;
-        private BitmapImage _image;
+        private ImageSource _image;
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
@@ -75,7 +76,7 @@ namespace VendingMachine.Core.Products
         /// <summary>
         /// 
         /// </summary>
-        public BitmapImage ProductImageSource
+        public ImageSource ProductImageSource
         {
             get { return _image; }
             set
