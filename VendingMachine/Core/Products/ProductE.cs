@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace VendingMachine.Core.Products
 {
     /// <summary>
-    /// Enum containing product type to sort on machine grid
+    /// List of products (enum id is its own unique ID)
     /// </summary>
-    public enum ProductType
+    public enum ProductE
     {
-        SODA_BOTTLE, SODA_CAN, STILL_DRINK_BOTTLE, STILL_DRINK_CAN, BAR, CHIPS, ENERGETIC_DRINK_CAN, OTHER 
+        _3Bit=0, Mars=1,Cappy=2,Rogal=3
     }
 }

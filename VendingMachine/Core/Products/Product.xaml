@@ -13,7 +13,7 @@
             <RowDefinition MaxHeight="20" MinHeight="25"/>
         </Grid.RowDefinitions>
         <Label x:Name="Product_ID_Lbl" Content="{Binding Path=Product_ID, Mode=TwoWay}"/>
-        <Image x:Name="Product_Image" Grid.Row="1" Source="../../Resources/Drinks/Cappy.png"/>
+        <Image x:Name="Product_Image" Grid.Row="1" Source="../../Resources/wallpaper_ft.png"/>
             <Label x:Name="Product_Price_Lbl" Content="{Binding Path=Product_Price, Mode=TwoWay}" Grid.Row="2" />
         </Grid>
     </Border>

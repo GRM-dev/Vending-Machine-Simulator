@@ -43,9 +43,19 @@ namespace VendingMachine.Core
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
+        public static void transferMoney(double value)
+        {
+            TempCoinDepository -= value;
+            MainCoinDepository += value;
+        }
+
+        /// <summary>
         /// Throws temporary container to the main money container.
         /// </summary>
-        public static void addTempToMainCoinDepository()
+        public static void addAllTempToMainCoinDepository()
         {
             MainCoinDepository += TempCoinDepository;
             TempCoinDepository = 0f;

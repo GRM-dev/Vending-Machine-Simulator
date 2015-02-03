@@ -9,5 +9,9 @@
         <Setter Property="Width" Value="30"/>
         <Setter Property="Height" Value="30"/>
     </Style>
+    <BitmapImage x:Key="Default" UriSource="../Resources/wallpaper_ft.png"/>
     <BitmapImage x:Key="Mars" UriSource="../Resources/Bars/Mars.png"/>
+    <BitmapImage x:Key="_3Bit" UriSource="../Resources/Bars/_3Bit.png"/>
+    <BitmapImage x:Key="Cappy" UriSource="../Resources/Drinks/Cappy.png"/>
+    <BitmapImage x:Key="Rogal" UriSource="../Resources/Snacks/Rogal.png"/>
 </ResourceDictionary>

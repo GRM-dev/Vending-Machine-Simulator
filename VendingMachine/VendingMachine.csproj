@@ -128,6 +128,7 @@
     <Compile Include="Core\Products\Product.xaml.cs">
       <DependentUpon>Product.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Core\Products\ProductE.cs" />
     <Compile Include="Core\Products\ProductsController.cs" />
     <Compile Include="Core\Products\ProductTypes.cs" />
     <Compile Include="Core\Misc\ValueHandler.cs" />
@@ -231,7 +232,7 @@
     <Content Include="Resources\Drinks\Sprite.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Resources\Bars\3Bit.png">
+    <Content Include="Resources\Bars\_3Bit.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Resources\Bars\Mars.png">

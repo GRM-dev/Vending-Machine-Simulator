@@ -22,10 +22,11 @@ namespace VendingMachine.Core.Products
     /// </summary>
     public partial class Product : UserControl, INotifyPropertyChanged
     {
-        private String _product_Name;
-        private int _product_ID;
-        private double _product_Price;
         private ImageSource _image;
+        private ProductData _productData;
+        /// <summary>
+        /// 
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
@@ -37,18 +38,27 @@ namespace VendingMachine.Core.Products
             this.DataContext = this;
         }
 
-        public Product(int ID, double price)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="productE"></param>
+        public Product(ProductE productE)
             : this()
         {
-            // Name = name;
-            Product_ID = ID;
-            Product_Price = price;
+            ProductDatas = new ProductData(productE);
         }
 
-        public Product(int ID, double price, int count)
-            : this(ID, price)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="productE"></param>
+        /// <param name="price"></param>
+        /// <param name="count"></param>
+        public Product(ProductE productE, double price, int count)
+            : this(productE)
         {
-
+            ProductDatas.Product_Price = price;
+            ProductDatas.Product_Count = count;
         }
 
         private void NotifyPropertyChanged(string info)
@@ -57,22 +67,6 @@ namespace VendingMachine.Core.Products
                 PropertyChanged(this, new PropertyChangedEventArgs(info));
         }
 
-        /// <summary>
-        /// Name of product
-        /// </summary>
-        public String Product_Name { get { return _product_Name; } private set { _product_Name = value; NotifyPropertyChanged("Product_Name"); } }
-        /// <summary>
-        /// Product ID
-        /// </summary>
-        public int Product_ID { get { return _product_ID; } private set { _product_ID = value; NotifyPropertyChanged("Product_ID"); } }
-        /// <summary>
-        /// Product Price
-        /// </summary>
-        public double Product_Price { get { return _product_Price; } private set { _product_Price = value; NotifyPropertyChanged("Product_Price"); } }
-        /// <summary>
-        /// 
-        /// </summary>
-        public int Product_Count { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -83,6 +77,18 @@ namespace VendingMachine.Core.Products
             {
                 _image = value;
                 Product_Image.Source = _image;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ProductData ProductDatas
+        {
+            get { return _productData; }
+            set { _productData = value;
+            ProductImageSource = _productData.ProductImageSource;
+            NotifyPropertyChanged("ProductDatas");
             }
         }
     }

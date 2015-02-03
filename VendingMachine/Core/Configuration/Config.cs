@@ -109,12 +109,18 @@ namespace VendingMachine.Core.Configuration
                     default: Logger.Log("There is no " + property.PropertyType.ToString() + " property in configuration loader switch statement!"); break;
                 }
             }
-            Product p1 = new Product(1, 2.3);
+            loadProducts();
+                   }
+
+        /// <summary>
+        /// Loads products to window page
+        /// </summary>
+        public void loadProducts()
+        {
             try
             {
-                var im1 = vmRD["Mars"];
-                p1.ProductImageSource = (ImageSource)im1;
-                Product p2 = new Product(2, 3.0);
+                Product p1 = new Product(ProductE._3Bit);
+                Product p2 = new Product(ProductE.Mars);
                 ProductsController.AddProductTo(1, 1, p1);
                 ProductsController.AddProductTo(1, 2, p2);
             }
@@ -124,14 +130,6 @@ namespace VendingMachine.Core.Configuration
                 Console.WriteLine(e.Source);
                 VMDialogManager.ShowExceptionMessage(e);
             }
-        }
-
-        /// <summary>
-        /// Loads products to window page
-        /// </summary>
-        public void loadProducts()
-        {
-
         }
     }
 }
