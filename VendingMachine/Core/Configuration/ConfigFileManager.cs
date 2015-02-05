@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -38,15 +39,27 @@ namespace VendingMachine.Core.Configuration
             Dictionary<XName, String> configXml = new Dictionary<XName, String>();
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load(Config.CONFIG_FILE_PATH);
-            XmlNodeList cHOElems = xmlDoc.SelectNodes("GRM/VendingMachine/option");
+            XmlNodeList cHOElems = xmlDoc.SelectNodes("GRM/VendingMachine/Options/option");
             foreach (XmlNode node in cHOElems)
             {
-                configXml[node.Attributes["key"].Value] = node.InnerText;
+                configXml[node.Attributes["name"].Value] = node.InnerText;
             }
-            XmlNodeList cHOSlotElems = xmlDoc.SelectNodes("GRM/VendingMachine/slot");
+            return configXml;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public static Dictionary<XName, String> getProductsFromFile()
+        {
+            Dictionary<XName, String> configXml = new Dictionary<XName, String>();
+            XmlDocument xmlDoc = new XmlDocument();
+            xmlDoc.Load(Config.CONFIG_FILE_PATH);
+            XmlNodeList cHOSlotElems = xmlDoc.SelectNodes("GRM/VendingMachine/Slots/slot");
             foreach (XmlNode node in cHOSlotElems)
             {
-                configXml["Slot_" + node.Attributes["number"].Value] = node.InnerText;
+                configXml[node.Attributes["number"].Value] = node.InnerText;
             }
             return configXml;
         }
@@ -54,18 +67,101 @@ namespace VendingMachine.Core.Configuration
         /// <summary>
         /// Saves whole config
         /// </summary>
-        public static void saveConfigFile()
+        public static void saveConfigsToFile()
         {
-            XDocument xDoc = XDocument.Load(Config.CONFIG_FILE_PATH);
-            XElement elList = xDoc.Element("GRM").Element("VendingMachine");
-            elList.RemoveAll();
-            foreach (var pair in ConfigProperties.instance.Properties)
+            XDocument xDoc; 
+            XElement grmElem; 
+            XElement vmElem; 
+            XElement elList;
+            try
             {
-                XElement cElement = new XElement("option", pair.Value.Value);
-                cElement.SetAttributeValue("key", pair.Value.Name);
-                elList.Add(cElement);
+                xDoc = XDocument.Load(Config.CONFIG_FILE_PATH);
+                grmElem = xDoc.Element("GRM");
+                if (grmElem == null)
+                {
+                    grmElem = new XElement("GRM");
+                    xDoc.Root.Add(grmElem);
+                }
+
+                if (!grmElem.Elements("VendingMachine").Any())
+                {
+                    vmElem = new XElement("VendingMachine");
+                    grmElem.Add(vmElem);
+                }
+                else
+                {
+                    vmElem = grmElem.Element("VendingMachine");
+                }
+
+                if (!vmElem.Elements("Options").Any())
+                {
+                    elList = new XElement("Options");
+                    vmElem.Add(elList);
+                }
+                else
+                {
+                    elList = vmElem.Element("Options");
+                }
+       
+                if (!elList.IsEmpty)
+                {
+                    elList.RemoveAll();
+                }
+                foreach (var pair in ConfigProperties.instance.Properties)
+                {
+                    XElement cElement = new XElement("option", pair.Value.Value);
+                    cElement.SetAttributeValue("name", pair.Value.Name);
+                    elList.Add(cElement);
+                }
+                xDoc.Save(Config.CONFIG_FILE_PATH);
             }
-            xDoc.Save(Config.CONFIG_FILE_PATH);
+            catch (Exception e)
+            {
+                Console.Out.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!");
+                Console.Out.WriteLine(e.ToString());
+            }
+        }
+
+        public static void saveProductsToFile()
+        {
+            try
+            {
+                XDocument xDoc = XDocument.Load(Config.CONFIG_FILE_PATH);
+                XElement grmElem = xDoc.Element("GRM");
+                if (grmElem == null)
+                {
+                    grmElem = new XElement("GRM");
+                    xDoc.Add(grmElem);
+                }
+                XElement vmElem = grmElem.Element("VendingMachine");
+                if (vmElem == null)
+                {
+                    vmElem = new XElement("VendingMachine");
+                    grmElem.Add(vmElem);
+                }
+                XElement elList = vmElem.Element("Slots");
+                if (elList == null)
+                {
+                    elList = new XElement("Slots");
+                    vmElem.Add(elList);
+                }
+                if (!elList.IsEmpty)
+                {
+                    elList.RemoveAll();
+                }
+                foreach (var pair in ConfigProperties.instance.Properties)
+                {
+                    XElement cElement = new XElement("option", pair.Value.Value);
+                    cElement.SetAttributeValue("name", pair.Value.Name);
+                    elList.Add(cElement);
+                }
+                xDoc.Save(Config.CONFIG_FILE_PATH);
+            }
+            catch (Exception e)
+            {
+                Console.Out.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!");
+                Console.Out.WriteLine(e.ToString());
+            }
         }
 
         /// <summary>
@@ -74,12 +170,12 @@ namespace VendingMachine.Core.Configuration
         public static void createNewConfigFile()
         {
             XDocument xDoc = new XDocument(new XElement("GRM", new XElement("VendingMachine")));
-            XElement el = xDoc.Element("GRM").Element("VendingMachine");
+            XElement el = xDoc.Element("GRM").Element("VendingMachine").Element("Options");
             Dictionary<int, ConfigProperty> defConf = ConfigProperties.instance.Properties;
             foreach (var pair in defConf)
             {
                 XElement cElement = new XElement("option", pair.Value.Value);
-                cElement.SetAttributeValue("key", pair.Value.Name);
+                cElement.SetAttributeValue("name", pair.Value.Name);
                 el.Add(cElement);
             }
             xDoc.Save(Config.CONFIG_FILE_PATH);

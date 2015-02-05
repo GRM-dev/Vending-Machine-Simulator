@@ -109,13 +109,12 @@ namespace VendingMachine.Core.Configuration
                     default: Logger.Log("There is no " + property.PropertyType.ToString() + " property in configuration loader switch statement!"); break;
                 }
             }
-            loadProducts();
-                   }
+        }
 
         /// <summary>
         /// Loads products to window page
         /// </summary>
-        public void loadProducts()
+        public void loadProductsToProgram()
         {
             try
             {

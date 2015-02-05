@@ -46,7 +46,7 @@ namespace VendingMachine.Core
         /// 
         /// </summary>
         /// <param name="value"></param>
-        public static void transferMoney(double value)
+        public static void transferMoneyToMainDepo(double value)
         {
             TempCoinDepository -= value;
             MainCoinDepository += value;
@@ -59,6 +59,15 @@ namespace VendingMachine.Core
         {
             MainCoinDepository += TempCoinDepository;
             TempCoinDepository = 0f;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static Boolean hasEnoughMoney(double value) {
+            return value < TempCoinDepository ? true : false;
         }
 
         /// <summary>

@@ -30,6 +30,7 @@ namespace VendingMachine.Core
             Config = new Config();
             Config.readConfigFromFile();
             Config.loadConfigToProgram();
+            Config.loadProductsToProgram();
         }
 
         /// <summary>
@@ -37,7 +38,7 @@ namespace VendingMachine.Core
         /// </summary>
         public static void closeProgram()
         {
-            ConfigFileManager.saveConfigFile();
+            ConfigFileManager.saveConfigsToFile();
             VMDialogManager.ShowClosingDialog(instance.MWindow);
         }
 

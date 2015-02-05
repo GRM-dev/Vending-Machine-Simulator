@@ -9,6 +9,8 @@ namespace VMUnitTestProject
         [TestMethod]
         public void TestMethod1()
         {
+            Assert.AreEqual(5, 5);
+           
         }
     }
 }
