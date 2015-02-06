@@ -28,9 +28,7 @@ namespace VendingMachine.Core
             instance = this;
             MWindow = mainWindow;
             Config = new Config();
-            Config.readConfigFromFile();
-            Config.loadConfigToProgram();
-            Config.loadProductsToProgram();
+            Config.Load();
         }
 
         /// <summary>

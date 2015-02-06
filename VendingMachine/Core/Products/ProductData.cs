@@ -29,7 +29,7 @@ namespace VendingMachine.Core.Products
 
         private void initProps()
         {
-            vmRD = Config.vmRD;
+            vmRD = Config.VMRD;
             var image = vmRD["Default"];
             switch (ProductEn)
             {

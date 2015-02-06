@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Xml;
 using System.Xml.Linq;
+using VendingMachine.Core.Products;
 
 namespace VendingMachine.Core.Configuration
 {
@@ -51,9 +52,10 @@ namespace VendingMachine.Core.Configuration
         /// 
         /// </summary>
         /// <returns></returns>
-        public static Dictionary<XName, String> getProductsFromFile()
+        public static Dictionary<ProductE, ProductData> getProductsFromFile()
         {
             Dictionary<XName, String> configXml = new Dictionary<XName, String>();
+            Dictionary<ProductE, ProductData> products = new Dictionary<ProductE, ProductData>();
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load(Config.CONFIG_FILE_PATH);
             XmlNodeList cHOSlotElems = xmlDoc.SelectNodes("GRM/VendingMachine/Slots/slot");
@@ -61,7 +63,8 @@ namespace VendingMachine.Core.Configuration
             {
                 configXml[node.Attributes["number"].Value] = node.InnerText;
             }
-            return configXml;
+            //TODO: convert dictionary to ProductE,ProductData
+            return products;
         }
 
         /// <summary>
@@ -69,9 +72,9 @@ namespace VendingMachine.Core.Configuration
         /// </summary>
         public static void saveConfigsToFile()
         {
-            XDocument xDoc; 
-            XElement grmElem; 
-            XElement vmElem; 
+            XDocument xDoc;
+            XElement grmElem;
+            XElement vmElem;
             XElement elList;
             try
             {
@@ -102,7 +105,7 @@ namespace VendingMachine.Core.Configuration
                 {
                     elList = vmElem.Element("Options");
                 }
-       
+
                 if (!elList.IsEmpty)
                 {
                     elList.RemoveAll();

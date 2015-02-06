@@ -41,7 +41,7 @@ namespace VendingMachine.Core.Configuration
         /// <summary>
         /// local resource dictionary VMDictionary
         /// </summary>
-        public static ResourceDictionary vmRD;
+        public static ResourceDictionary VMRD;
 
         /// <summary>
         /// Main configuration handler creator
@@ -49,10 +49,20 @@ namespace VendingMachine.Core.Configuration
         public Config()
         {
             ConfigProperties.instance.initDefaultProperties();
-            vmRD = new ResourceDictionary();
-            vmRD.Source =
+            VMRD = new ResourceDictionary();
+            VMRD.Source =
                 new Uri("pack://application:,,,/VendingMachine;component/XAML/VMDictionary.xaml",
                         UriKind.RelativeOrAbsolute);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Load()
+        {
+            readConfigFromFile();
+            loadConfigToProgram();
+            loadProductsToProgram(ConfigFileManager.getProductsFromFile());
         }
 
         /// <summary>
@@ -114,8 +124,10 @@ namespace VendingMachine.Core.Configuration
         /// <summary>
         /// Loads products to window page
         /// </summary>
-        public void loadProductsToProgram()
+        public void loadProductsToProgram(Dictionary<ProductE,ProductData> products)
         {
+
+
             try
             {
                 Product p1 = new Product(ProductE._3Bit);
