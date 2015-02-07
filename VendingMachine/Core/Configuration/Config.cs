@@ -80,7 +80,7 @@ namespace VendingMachine.Core.Configuration
                 }
                 else
                 {
-                    ConfigProperties.LoadFromDictionary(ConfigFileManager.getConfigFileOptions());
+                    ConfigProperties.LoadFromDictionary(ConfigFileManager.getOptionsFromFile());
                 }
                 printConfig();
             }
@@ -129,17 +129,27 @@ namespace VendingMachine.Core.Configuration
         /// <summary>
         /// Loads products to window page
         /// </summary>
-        public void loadProductsToProgram(Dictionary<ProductE,ProductData> products)
+        public void loadProductsToProgram(Dictionary<ProductE, ProductData> products)
         {
+           // testAddNewProducts();
+            foreach (KeyValuePair<ProductE, ProductData> node in products)
+            {
+                Product product = new Product(node.Value);
+                ProductsController.Products.Add(node.Value.Product_Name,product);
+            }
+            ProductsController.ParseProductsOnView();
+        }
 
+        private static void testAddNewProducts() //TODO: delete after creating service panel
+        {
             try
             {
                 Product p1 = new Product(ProductE._3Bit);
                 Product p2 = new Product(ProductE.Mars);
                 Product p3 = new Product(ProductE.Cappy);
-                ProductsController.AddProduct(1, 1, p1);
-                ProductsController.AddProduct(1, 2, p2);
-                ProductsController.AddProduct(2, 2, p3);
+                ProductsController.AddProductToListAndView(1, 1, p1);
+                ProductsController.AddProductToListAndView(1, 2, p2);
+                ProductsController.AddProductToListAndView(2, 2, p3);
             }
             catch (Exception e)
             {

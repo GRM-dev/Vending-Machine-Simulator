@@ -17,15 +17,9 @@ namespace VendingMachine.Core.Products
         /// <param name="row">row number from 0</param>
         /// <param name="column">column number from 0</param>
         /// <param name="product">product to add</param>
-        public static void AddProduct(int row, int column, Product product)
+        public static void AddProductToListAndView(int row, int column, Product product)
         {
-            Grid ProductsView = VMachine.instance.MWindow.VMMainPage.ProductsView;
-            ColumnDefinitionCollection columns = ProductsView.ColumnDefinitions;
-            RowDefinitionCollection rows = ProductsView.RowDefinitions;
-            if (column > columns.Count || column < 1 || row > rows.Count || row < 1)
-            {
-                return;
-            } Console.Out.WriteLine("Adding " + product.Name + "  Total: " + Products.Count);
+            Console.Out.WriteLine("Adding " + product.Name + "  Total: " + Products.Count);
             if (Products.ContainsKey(product.Name))
             {
                 Products[product.Name] = product;
@@ -33,6 +27,18 @@ namespace VendingMachine.Core.Products
             else
             {
                 Products.Add(product.Name, product);
+            }
+            AddProductToView(row, column, product);
+        }
+
+        public static void AddProductToView(int row, int column, Product product)
+        {
+            Grid ProductsView = VMachine.instance.MWindow.VMMainPage.ProductsView;
+            ColumnDefinitionCollection columns = ProductsView.ColumnDefinitions;
+            RowDefinitionCollection rows = ProductsView.RowDefinitions;
+            if (column > columns.Count || column < 1 || row > rows.Count || row < 1)
+            {
+                return;
             }
             ProductsView.Children.Add(product);
             Grid.SetColumn(product, --column);
@@ -93,15 +99,17 @@ namespace VendingMachine.Core.Products
             {
                 columnsNmb = slotsNmb;
             }
-            else if (slotsNmb <= 20){
+            else if (slotsNmb <= 20)
+            {
                 columnsNmb = 4;
                 rowsNmb = (slotsNmb % 4) == 0 ? (slotsNmb / 4) : ((slotsNmb + 1) % 4) == 0 ? ((slotsNmb + 1) / 4) : ((slotsNmb + 2) % 4) == 0 ? ((slotsNmb + 2) / 4) : ((slotsNmb + 3) / 4);
-            } else
+            }
+            else
             {
                 rowsNmb = 5;
                 columnsNmb = 5;
             }
-           
+
             Grid ProductsView = VMachine.instance.MWindow.VMMainPage.ProductsView;
             ColumnDefinitionCollection columns = ProductsView.ColumnDefinitions;
             RowDefinitionCollection rows = ProductsView.RowDefinitions;
@@ -112,6 +120,33 @@ namespace VendingMachine.Core.Products
             while (rows.Count < rowsNmb)
             {
                 rows.Add(new RowDefinition());
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public static void ParseProductsOnView()
+        {
+            Grid ProductsView = VMachine.instance.MWindow.VMMainPage.ProductsView;
+            ColumnDefinitionCollection columns = ProductsView.ColumnDefinitions;
+            RowDefinitionCollection rows = ProductsView.RowDefinitions;
+            ProductsView.Children.Clear();
+            int row = 1;
+            int column = 1;
+            foreach (KeyValuePair<String, Product> node in Products)
+            {
+                AddProductToView(row, column, node.Value);
+                if (column == columns.Count)
+                {
+                    column = 1;
+                    row++;
+                }
+                if (row == rows.Count)
+                {
+                    return;
+                }
+                column++;
             }
         }
 

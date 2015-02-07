@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Xml;
 using System.Xml.Linq;
+using VendingMachine.Core.Misc;
 using VendingMachine.Core.Products;
 using VendingMachine.VMDialogs;
 
@@ -36,7 +37,7 @@ namespace VendingMachine.Core.Configuration
         /// Read config nodes from file and saves hem to dictionary
         /// </summary>
         /// <returns>dictionary of options nodes</returns>
-        public static Dictionary<XName, String> getConfigFileOptions()
+        public static Dictionary<XName, String> getOptionsFromFile()
         {
             Dictionary<XName, String> configXml = new Dictionary<XName, String>();
             XmlDocument xmlDoc = new XmlDocument();
@@ -55,16 +56,19 @@ namespace VendingMachine.Core.Configuration
         /// <returns></returns>
         public static Dictionary<ProductE, ProductData> getProductsFromFile()
         {
-            Dictionary<XName, String> configXml = new Dictionary<XName, String>();
             Dictionary<ProductE, ProductData> products = new Dictionary<ProductE, ProductData>();
             XmlDocument xmlDoc = new XmlDocument();
             xmlDoc.Load(Config.CONFIG_FILE_PATH);
-            XmlNodeList cHOSlotElems = xmlDoc.SelectNodes("GRM/VendingMachine/Slots/slot");
+            XmlNodeList cHOSlotElems = xmlDoc.SelectNodes("GRM/VendingMachine/Products/Product");
             foreach (XmlNode node in cHOSlotElems)
             {
-                configXml[node.Attributes["number"].Value] = node.InnerText;
+                int ID = Convert.ToInt32(node["ID"].InnerText);
+                ProductE productE = (ProductE)Enum.ToObject(typeof(ProductE),ID);
+                ProductData productData = new ProductData(productE);
+                productData.Product_Count = Convert.ToInt32(node["Count"].InnerText);
+                productData.Product_Price = Convert.ToDouble(node["Price"].InnerText);
+                products.Add(productE,productData);
             }
-            //TODO: convert dictionary to ProductE,ProductData
             return products;
         }
 
@@ -90,7 +94,6 @@ namespace VendingMachine.Core.Configuration
                 {
                     grmElem = xDoc.Element("GRM");
                 }
-
                 if (!grmElem.Elements("VendingMachine").Any())
                 {
                     vmElem = new XElement("VendingMachine");
@@ -100,7 +103,6 @@ namespace VendingMachine.Core.Configuration
                 {
                     vmElem = grmElem.Element("VendingMachine");
                 }
-
                 if (!vmElem.Elements("Options").Any())
                 {
                     elList = new XElement("Options");
@@ -110,7 +112,6 @@ namespace VendingMachine.Core.Configuration
                 {
                     elList = vmElem.Element("Options");
                 }
-
                 if (!elList.IsEmpty)
                 {
                     elList.RemoveAll();
@@ -194,6 +195,7 @@ namespace VendingMachine.Core.Configuration
                 Console.Out.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!");
                 Console.Out.WriteLine(e.ToString());
                 Console.Out.WriteLine("^^^^^^^^^^^^^^^^^^^^^^^^");
+                Logger.ExceptionLog(e,"Error while saving");
             }
         }
 

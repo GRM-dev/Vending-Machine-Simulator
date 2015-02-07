@@ -14,11 +14,10 @@ namespace VendingMachine.Core.Products
     public class ProductData
     {
         private int _productID;
-        private String _productName;
-        private double _productPrice;
-
-        private ImageSource _image;
         private int _productCount;
+        private double _productPrice;
+        private String _productName;
+        private ImageSource _image;
         private ResourceDictionary vmRD;
 
         /// <summary>

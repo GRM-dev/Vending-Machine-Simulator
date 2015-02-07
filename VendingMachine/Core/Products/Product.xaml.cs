@@ -52,6 +52,17 @@ namespace VendingMachine.Core.Products
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="productData"></param>
+        public Product(ProductData productData)
+            : this()
+        {
+            ProductDatas = productData;
+            this.Name = ProductDatas.Product_Name;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="productE"></param>
         /// <param name="price"></param>
         /// <param name="count"></param>
