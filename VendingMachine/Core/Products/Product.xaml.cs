@@ -46,6 +46,7 @@ namespace VendingMachine.Core.Products
             : this()
         {
             ProductDatas = new ProductData(productE);
+            this.Name = ProductDatas.Product_Name;
         }
 
         /// <summary>

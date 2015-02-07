@@ -21,12 +21,19 @@ namespace VendingMachine.Core.Products
         private int _productCount;
         private ResourceDictionary vmRD;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="productE"></param>
         public ProductData(ProductE productE)
         {
             ProductEn = productE;
             initProps();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void initProps()
         {
             vmRD = Config.VMRD;
@@ -38,6 +45,10 @@ namespace VendingMachine.Core.Products
                 default: break;
             }
             this.ProductImageSource = (ImageSource)image;
+            this.Product_Name = ProductEn.ToString();
+            this.Product_ID = (int)ProductEn;
+            this.Product_Price = 0;
+            this.Product_Count = 0;
         }
 
         /// <summary>

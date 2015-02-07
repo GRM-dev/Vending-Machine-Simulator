@@ -28,7 +28,7 @@ namespace VendingMachine.Core
             instance = this;
             MWindow = mainWindow;
             Config = new Config();
-            Config.Load();
+            Config.LoadAllConfigs();
         }
 
         /// <summary>
@@ -37,6 +37,7 @@ namespace VendingMachine.Core
         public static void closeProgram()
         {
             ConfigFileManager.saveConfigsToFile();
+            ConfigFileManager.saveProductsToFile();
             VMDialogManager.ShowClosingDialog(instance.MWindow);
         }
 

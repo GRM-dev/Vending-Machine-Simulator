@@ -9,6 +9,7 @@ using System.Windows.Controls;
 using System.Xml;
 using System.Xml.Linq;
 using VendingMachine.Core.Products;
+using VendingMachine.VMDialogs;
 
 namespace VendingMachine.Core.Configuration
 {
@@ -79,11 +80,15 @@ namespace VendingMachine.Core.Configuration
             try
             {
                 xDoc = XDocument.Load(Config.CONFIG_FILE_PATH);
-                grmElem = xDoc.Element("GRM");
-                if (grmElem == null)
+                if (!xDoc.Elements("GRM").Any() || xDoc.Root.Name != "GRM")
                 {
+                    xDoc.Root.Elements().Remove();
                     grmElem = new XElement("GRM");
-                    xDoc.Root.Add(grmElem);
+                    xDoc.Root.AddFirst(grmElem);
+                }
+                else
+                {
+                    grmElem = xDoc.Element("GRM");
                 }
 
                 if (!grmElem.Elements("VendingMachine").Any())
@@ -125,38 +130,62 @@ namespace VendingMachine.Core.Configuration
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public static void saveProductsToFile()
         {
+            XDocument xDoc;
+            XElement grmElem;
+            XElement vmElem;
+            XElement elList;
             try
             {
-                XDocument xDoc = XDocument.Load(Config.CONFIG_FILE_PATH);
-                XElement grmElem = xDoc.Element("GRM");
-                if (grmElem == null)
+                xDoc = XDocument.Load(Config.CONFIG_FILE_PATH);
+                if (!xDoc.Elements("GRM").Any() || xDoc.Root.Name != "GRM")
                 {
+                    xDoc.Root.Elements().Remove();
                     grmElem = new XElement("GRM");
-                    xDoc.Add(grmElem);
+                    xDoc.Root.AddFirst(grmElem);
                 }
-                XElement vmElem = grmElem.Element("VendingMachine");
-                if (vmElem == null)
+                else
+                {
+                    grmElem = xDoc.Element("GRM");
+                }
+                if (!grmElem.Elements("VendingMachine").Any())
                 {
                     vmElem = new XElement("VendingMachine");
                     grmElem.Add(vmElem);
                 }
-                XElement elList = vmElem.Element("Slots");
-                if (elList == null)
+                else
                 {
-                    elList = new XElement("Slots");
+                    vmElem = grmElem.Element("VendingMachine");
+                }
+                if (!vmElem.Elements("Products").Any())
+                {
+                    elList = new XElement("Products");
                     vmElem.Add(elList);
+                }
+                else
+                {
+                    elList = vmElem.Element("Products");
                 }
                 if (!elList.IsEmpty)
                 {
                     elList.RemoveAll();
                 }
-                foreach (var pair in ConfigProperties.instance.Properties)
+                Console.Out.WriteLine("Products Count: " + ProductsController.Products.Count);
+                foreach (var pair in ProductsController.Products)
                 {
-                    XElement cElement = new XElement("option", pair.Value.Value);
-                    cElement.SetAttributeValue("name", pair.Value.Name);
-                    elList.Add(cElement);
+                    Product product = pair.Value;
+                    ProductData productData = product.ProductDatas;
+                   Console.Out.WriteLine("Product: "+productData.Product_Name);
+                    XElement productElem = new XElement("Product");
+                    elList.Add(productElem);
+                    productElem.SetAttributeValue("name", productData.Product_Name);
+                    productElem.Add(new XElement("ID", productData.Product_ID));
+                    productElem.Add(new XElement("Price", productData.Product_Price));
+                    productElem.Add(new XElement("Count", productData.Product_Count));
                 }
                 xDoc.Save(Config.CONFIG_FILE_PATH);
             }
@@ -164,6 +193,7 @@ namespace VendingMachine.Core.Configuration
             {
                 Console.Out.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!");
                 Console.Out.WriteLine(e.ToString());
+                Console.Out.WriteLine("^^^^^^^^^^^^^^^^^^^^^^^^");
             }
         }
 
@@ -173,14 +203,6 @@ namespace VendingMachine.Core.Configuration
         public static void createNewConfigFile()
         {
             XDocument xDoc = new XDocument(new XElement("GRM", new XElement("VendingMachine")));
-            XElement el = xDoc.Element("GRM").Element("VendingMachine").Element("Options");
-            Dictionary<int, ConfigProperty> defConf = ConfigProperties.instance.Properties;
-            foreach (var pair in defConf)
-            {
-                XElement cElement = new XElement("option", pair.Value.Value);
-                cElement.SetAttributeValue("name", pair.Value.Name);
-                el.Add(cElement);
-            }
             xDoc.Save(Config.CONFIG_FILE_PATH);
         }
     }

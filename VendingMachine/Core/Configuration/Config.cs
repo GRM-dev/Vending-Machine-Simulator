@@ -58,7 +58,7 @@ namespace VendingMachine.Core.Configuration
         /// <summary>
         /// 
         /// </summary>
-        public void Load()
+        public void LoadAllConfigs()
         {
             readConfigFromFile();
             loadConfigToProgram();
@@ -82,17 +82,22 @@ namespace VendingMachine.Core.Configuration
                 {
                     ConfigProperties.LoadFromDictionary(ConfigFileManager.getConfigFileOptions());
                 }
-                Console.WriteLine("-------- Config Start --------");
-                foreach (KeyValuePair<int, ConfigProperty> entry in ConfigProperties.instance.Properties)
-                {
-                    Console.WriteLine(entry.Key + ": " + entry.Value.Name + " = " + entry.Value.Value);
-                }
-                Console.WriteLine("-------- Config End ----------");
+                printConfig();
             }
             catch (Exception e)
             {
                 VMDialogManager.ShowExceptionMessage(e);
             }
+        }
+
+        private static void printConfig()
+        {
+            Console.WriteLine("-------- Config Start --------");
+            foreach (KeyValuePair<int, ConfigProperty> entry in ConfigProperties.instance.Properties)
+            {
+                Console.WriteLine(entry.Key + ": " + entry.Value.Name + " = " + entry.Value.Value);
+            }
+            Console.WriteLine("-------- Config End ----------");
         }
 
         /// <summary>
@@ -127,13 +132,14 @@ namespace VendingMachine.Core.Configuration
         public void loadProductsToProgram(Dictionary<ProductE,ProductData> products)
         {
 
-
             try
             {
                 Product p1 = new Product(ProductE._3Bit);
                 Product p2 = new Product(ProductE.Mars);
-                ProductsController.AddProductTo(1, 1, p1);
-                ProductsController.AddProductTo(1, 2, p2);
+                Product p3 = new Product(ProductE.Cappy);
+                ProductsController.AddProduct(1, 1, p1);
+                ProductsController.AddProduct(1, 2, p2);
+                ProductsController.AddProduct(2, 2, p3);
             }
             catch (Exception e)
             {
