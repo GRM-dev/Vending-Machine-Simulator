@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Media;
 using VendingMachine.Core.Configuration;
+using VendingMachine.Core.Misc;
 
 namespace VendingMachine.Core.Products
 {
@@ -41,7 +42,10 @@ namespace VendingMachine.Core.Products
             {
                 case ProductE.Mars: image = vmRD["Mars"]; break;
                 case ProductE._3Bit: image = vmRD["_3Bit"]; break;
-                default: break;
+                case ProductE.Cappy: image = vmRD["Cappy"]; break;
+                case ProductE.Rogal: image = vmRD["Rogal"]; break;
+                default: Logger.Log("no image in dictionary or switch");
+                    break;
             }
             this.ProductImageSource = (ImageSource)image;
             this.Product_Name = ProductEn.ToString();

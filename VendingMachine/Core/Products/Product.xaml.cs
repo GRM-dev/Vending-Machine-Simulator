@@ -73,6 +73,10 @@ namespace VendingMachine.Core.Products
             ProductDatas.Product_Count = count;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="info"></param>
         private void NotifyPropertyChanged(string info)
         {
             if (PropertyChanged != null)

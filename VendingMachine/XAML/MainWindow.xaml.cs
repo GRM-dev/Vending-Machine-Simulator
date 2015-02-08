@@ -43,13 +43,13 @@ namespace VendingMachine
 
         private void Simulation_Button_Click(object sender, RoutedEventArgs e)
         {
-            var flyout = this.Flyouts.Items[0] as Flyout;
+            var flyout = this.Flyouts.Items[0] as Flyout;//TODO: simulation
             flyout.IsOpen = !flyout.IsOpen;
         }
 
         private void Servis_Button_Click(object sender, RoutedEventArgs e)
         {
-            VMDialogManager.ShowServiceDialog();
+            VMDialogManager.ShowServiceDialog(); //TODO: service dialog
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -58,7 +58,13 @@ namespace VendingMachine
             VMachine.closeProgram();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public MainPage VMMainPage { get; private set; }
+        /// <summary>
+        /// 
+        /// </summary>
         public Grid ProductsView { get; private set; }
     }
 }
