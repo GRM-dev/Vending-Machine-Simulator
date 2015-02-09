@@ -136,11 +136,11 @@
       <DependentUpon>InputCoinDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="VMDialogs\VMDialogManager.cs" />
-    <Compile Include="VMDialogs\VMExceptionDialog.xaml.cs">
-      <DependentUpon>VMExceptionDialog.xaml</DependentUpon>
+    <Compile Include="VMDialogs\ExceptionDialog.xaml.cs">
+      <DependentUpon>ExceptionDialog.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VMDialogs\ServisDialog.xaml.cs">
-      <DependentUpon>ServisDialog.xaml</DependentUpon>
+    <Compile Include="VMDialogs\ServisInputDialog.xaml.cs">
+      <DependentUpon>ServisInputDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="VMDialogs\VMInputDialog.xaml.cs">
       <DependentUpon>VMInputDialog.xaml</DependentUpon>
@@ -148,17 +148,36 @@
     <Compile Include="XAML\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="XAML\ServiceFlyout.xaml.cs">
+      <DependentUpon>ServiceFlyout.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="XAML\SimulationFlyout.xaml.cs">
+      <DependentUpon>SimulationFlyout.xaml</DependentUpon>
+    </Compile>
     <Page Include="Core\Products\Product.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Properties\DesignTimeResources.xaml" Condition="'$(DesignTime)'=='true' OR ('$(SolutionPath)'!='' AND Exists('$(SolutionPath)') AND '$(BuildingInsideVisualStudio)'!='true' AND '$(BuildingInsideExpressionBlend)'!='true')">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+      <ContainsDesignTimeResources>true</ContainsDesignTimeResources>
     </Page>
     <Page Include="VMDialogs\InputCoinDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="VMDialogs\ServisDialog.xaml">
+    <Page Include="VMDialogs\ServisInputDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="XAML\ServiceFlyout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="XAML\SimulationFlyout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="XAML\VMDictionary.xaml">
       <SubType>Designer</SubType>
@@ -172,7 +191,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="VMDialogs\VMExceptionDialog.xaml">
+    <Page Include="VMDialogs\ExceptionDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

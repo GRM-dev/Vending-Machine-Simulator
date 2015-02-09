@@ -17,6 +17,7 @@ using System.Windows.Shapes;
 using VendingMachine.Core;
 using VendingMachine.Core.Configuration;
 using VendingMachine.VMDialogs;
+using VendingMachine.XAML;
 
 namespace VendingMachine
 {
@@ -39,19 +40,30 @@ namespace VendingMachine
             ProductsView = VMMainPage.ProductsView;
             VMFrame.Navigate(VMMainPage);
             vMachine = new VMachine(this);
+            ServisFrame.Navigate(new ServiceFlyout());
+            SimulationFrame.Navigate(new SimulationFlyout());
         }
 
-        private void Simulation_Button_Click(object sender, RoutedEventArgs e)
+        private void Simulation_Button_Click(object sender, RoutedEventArgs e) //TODO: simulation
         {
-            var flyout = this.Flyouts.Items[0] as Flyout;//TODO: simulation
+            var flyout = this.Flyouts.Items[0] as Flyout;
+            var flyoutE = this.Flyouts.Items[1] as Flyout;
+            flyoutE.IsOpen = false;
             flyout.IsOpen = !flyout.IsOpen;
         }
 
         private void Servis_Button_Click(object sender, RoutedEventArgs e)
         {
-            VMDialogManager.ShowServiceDialog(); //TODO: service dialog
+            var flyoutE = this.Flyouts.Items[0] as Flyout; //make a passwd protection
+            var flyout = this.Flyouts.Items[1] as Flyout;
+            flyoutE.IsOpen = false;
+            flyout.IsOpen = !flyout.IsOpen;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnClosing(CancelEventArgs e)
         {
             e.Cancel = true;

@@ -21,17 +21,17 @@ namespace VendingMachine.VMDialogs
     /// <summary>
     /// Interaction logic for ExceptionDialog.xaml
     /// </summary>
-    public partial class HOExceptionDialog : BaseMetroDialog
+    public partial class ExceptionDialog : BaseMetroDialog
     {
-        internal HOExceptionDialog(MetroWindow parentWindow)
+        internal ExceptionDialog(MetroWindow parentWindow)
             : this(null, parentWindow)
         {
         }
-        internal HOExceptionDialog(string msg, MetroWindow parentWindow)
+        internal ExceptionDialog(string msg, MetroWindow parentWindow)
             : this(msg, parentWindow, null)
         {
         }
-        internal HOExceptionDialog(string msg, MetroWindow parentWindow, MetroDialogSettings settings)
+        internal ExceptionDialog(string msg, MetroWindow parentWindow, MetroDialogSettings settings)
             : base(parentWindow, settings)
         {
             InitializeComponent();

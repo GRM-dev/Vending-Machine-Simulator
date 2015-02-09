@@ -5,8 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
       xmlns:Dialogs="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
-	xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="VendingMachine.VMDialogs.HOExceptionDialog"
-	Title="       Error" FontWeight="Bold" Foreground="White" Background="Firebrick" MinWidth="200" MinHeight="160" >
+	xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="VendingMachine.VMDialogs.ExceptionDialog"
+	Title="     Error" FontWeight="Bold" Foreground="White" Background="Firebrick" MinWidth="200" MinHeight="160" >
     <Grid x:Name="MGrid">
         <Grid.RowDefinitions>
             <RowDefinition/>

@@ -6,15 +6,21 @@ using VendingMachine.Core.Configuration;
 
 namespace VendingMachine.VMDialogs
 {
-    partial class ServisDialog : BaseMetroDialog
+    partial class ServisInputDialog : BaseMetroDialog
     {
         private bool OK_Clicked=false;
 
-        internal ServisDialog(MetroWindow parentWindow)
+        internal ServisInputDialog(MetroWindow parentWindow)
             : this(parentWindow, null)
         {
         }
-        internal ServisDialog(MetroWindow parentWindow, MetroDialogSettings settings)
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="parentWindow"></param>
+        /// <param name="settings"></param>
+        public ServisInputDialog(MetroWindow parentWindow, MetroDialogSettings settings)
             : base(parentWindow, settings)
         {
             InitializeComponent();
@@ -26,20 +32,24 @@ namespace VendingMachine.VMDialogs
             OK_Clicked = true;
             RequestCloseAsync();
         }
-
-        /// <summary>
-        /// Window of app
-        /// </summary>
-        public MainWindow MainVMWindow { get; set; }
-
+        
         private void Cancel_Button_Click(object sender, RoutedEventArgs e)
         {
             RequestCloseAsync();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public bool wasOKClicked()
         {
             return OK_Clicked;
         }
+        
+        /// <summary>
+        /// Window of app
+        /// </summary>
+        public MainWindow MainVMWindow { get; set; }
     }
 }

@@ -5,13 +5,63 @@
         <GradientStop Color="#FF764141" Offset="0"/>
         <GradientStop Color="#FF660101" Offset="0.857"/>
     </RadialGradientBrush>
-    <Style TargetType="Button" x:Key="Nmb">
-        <Setter Property="Width" Value="30"/>
-        <Setter Property="Height" Value="30"/>
-    </Style>
+    <RadialGradientBrush x:Key="FlyoutBgBtnBrush">
+        <GradientStop Color="#FF166868" Offset="0.574"/>
+        <GradientStop Color="#FF10416A" Offset="1"/>
+        <GradientStop Color="#FF249B9B"/>
+    </RadialGradientBrush>
+    <RadialGradientBrush x:Key="FlyoutBackgroundBrush">
+        <GradientStop Color="#FF292D76" Offset="0.565"/>
+        <GradientStop Color="#FF18344B" Offset="1"/>
+        <GradientStop Color="#FF2A1E9E"/>
+    </RadialGradientBrush>
+    
     <BitmapImage x:Key="Default" UriSource="../Resources/wallpaper_ft.png"/>
     <BitmapImage x:Key="Mars" UriSource="../Resources/Bars/Mars.png"/>
     <BitmapImage x:Key="_3Bit" UriSource="../Resources/Bars/_3Bit.png"/>
     <BitmapImage x:Key="Cappy" UriSource="../Resources/Drinks/Cappy.png"/>
     <BitmapImage x:Key="Rogal" UriSource="../Resources/Snacks/Rogal.png"/>
+    
+    <Style TargetType="Button" x:Key="Nmb">
+        <Setter Property="Width" Value="30"/>
+        <Setter Property="Height" Value="30"/>
+    </Style>
+    <Style TargetType="TextBlock" x:Key="FlyOutTextBlock">
+        <Setter Property="Foreground" Value="DarkKhaki" />
+        <Setter Property="HorizontalAlignment" Value="Center"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Width" Value="150"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+    <Style TargetType="Button" x:Key="FlyOutButton">
+        <Setter Property="Background" Value="{StaticResource FlyoutBgBtnBrush}"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Stretch"/>
+        <Setter Property="Width" Value="120"/>
+        <Setter Property="Height" Value="Auto"/>
+        <Style.Triggers>
+            <EventTrigger RoutedEvent="MouseLeave">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.2" To="1"></DoubleAnimation>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="MouseEnter">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="1" To="0.2"></DoubleAnimation>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+            <EventTrigger RoutedEvent="Click">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0.8" To="1"></DoubleAnimation>
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>

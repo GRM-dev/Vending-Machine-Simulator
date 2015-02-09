@@ -1,0 +1,55 @@
+﻿<Page x:Class="VendingMachine.XAML.ServiceFlyout"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Naprawa:                  (Aktywuj po naprawie)" Style="{DynamicResource FlyOutTextBlock}" />
+            <Button Content="Napraw" Width="150" Style="{DynamicResource FlyOutButton}" Background="{DynamicResource FlyoutBgBtnBrush}" Click="Repair_Button_Click"/>
+        </StackPanel>
+        <TextBlock Text="Zarządzanie produktami" Grid.Row="1" Style="{DynamicResource FlyOutTextBlock}" FontWeight="Bold" FontSize="20" />
+        <StackPanel Orientation="Horizontal" Grid.Row="2" >
+            <TextBlock Text="Dodaj produkt" Style="{DynamicResource FlyOutTextBlock}" Width="80" />
+            <ComboBox x:Name="PMAddProduct" Width="100" Height="30" />
+            <StackPanel Width="50">
+                <TextBlock Text="Ilość: " Style="{DynamicResource FlyOutTextBlock}" Height="30" Width="50" HorizontalAlignment="Center" />
+                <TextBox x:Name="PMAddCount" Width="50" Height="30" />
+            </StackPanel>
+            <Button Content="Dodaj" Click="AddProduct_Button_Click" Style="{DynamicResource FlyOutButton}" Width="56" Height="30" Margin="7,0,0,0" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="3">
+            <TextBlock Text="Usuń produkt" Style="{DynamicResource FlyOutTextBlock}" Width="80" />
+            <ComboBox x:Name="PMRemoveProduct" Width="100" Height="30" />
+            <StackPanel Width="50">
+                <TextBlock Text="Ilość: " Style="{DynamicResource FlyOutTextBlock}" Height="30" Width="50" HorizontalAlignment="Center" />
+                <TextBox x:Name="PMRemoveCount" Width="50" Height="30"/>
+            </StackPanel>
+            <Button Content="Usuń" Click="RemoveProduct_Button_Click" Style="{DynamicResource FlyOutButton}" Width="56" Height="30" Margin="7,0,0,0" />
+        </StackPanel>
+        <TextBlock Text="Zarządzanie maszyną" Grid.Row="4" Style="{DynamicResource FlyOutTextBlock}" FontWeight="Bold" FontSize="20" />
+        <StackPanel Orientation="Horizontal" Grid.Row="5">
+            <TextBlock Text="Stan konta" Style="{DynamicResource FlyOutTextBlock}" FontSize="16" Margin="0,22" Width="79"/>
+            <TextBlock x:Name="AccountStateValue" Style="{DynamicResource FlyOutTextBlock}" Margin="0,25" Width="50" FontSize="16"/>
+            <Button x:Name="ChangeAccountButton" Content="Zmień stan" Style="{DynamicResource FlyOutButton}" Click="ChangeAccount_Button_Click" Width="75" />
+            <Button x:Name="ShowStats" Content="Statystyki" Style="{DynamicResource FlyOutButton}" IsEnabled="False" Click="ShowStats_Button_Click" Width="75" Margin="7,0,0,0" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="6">
+            
+        </StackPanel>
+    </Grid>
+</Page>

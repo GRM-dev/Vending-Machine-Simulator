@@ -23,10 +23,11 @@
     </Controls:MetroWindow.RightWindowCommands>
     <Controls:MetroWindow.Flyouts>
         <Controls:FlyoutsControl x:Name="FlyoutController">
-            <Controls:Flyout Header="Simulation Settings" Position="Right" Width="300">
-                <DockPanel>
-                    <Frame x:Name="SettingsFrame" />
-                </DockPanel>
+            <Controls:Flyout Header="Simulation Settings"  Position="Right" Width="300">
+                <Frame x:Name="SimulationFrame" />
+            </Controls:Flyout>
+            <Controls:Flyout Header="Service Panel" Position="Right" Width="300">
+                <Frame x:Name="ServisFrame" />
             </Controls:Flyout>
         </Controls:FlyoutsControl>
     </Controls:MetroWindow.Flyouts>

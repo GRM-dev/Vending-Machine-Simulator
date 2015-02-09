@@ -61,7 +61,7 @@ namespace VendingMachine.VMDialogs
             var metroWindow = (Application.Current.MainWindow as MainWindow);
             if (metroWindow.IsLoaded)
             {
-                await DialogManager.ShowMetroDialogAsync(metroWindow, new HOExceptionDialog(message, metroWindow));
+                await DialogManager.ShowMetroDialogAsync(metroWindow, new ExceptionDialog(message, metroWindow));
             }
             else
             {
@@ -104,7 +104,7 @@ namespace VendingMachine.VMDialogs
         public static async void ShowServiceDialog()
         {
             var metroWindow = (Application.Current.MainWindow as MainWindow);
-            await DialogManager.ShowMetroDialogAsync(metroWindow, new ServisDialog(metroWindow));
+            await DialogManager.ShowMetroDialogAsync(metroWindow, new ServisInputDialog(metroWindow));
         }
 
         /// <summary>
