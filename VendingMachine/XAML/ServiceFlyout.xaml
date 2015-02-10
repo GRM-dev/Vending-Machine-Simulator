@@ -20,7 +20,7 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal">
             <TextBlock Text="Naprawa:                  (Aktywuj po naprawie)" Style="{DynamicResource FlyOutTextBlock}" />
-            <Button Content="Napraw" Width="150" Style="{DynamicResource FlyOutButton}" Background="{DynamicResource FlyoutBgBtnBrush}" Click="Repair_Button_Click"/>
+            <Button x:Name="RepairButton" Content="Napraw" Width="150" Style="{DynamicResource FlyOutButton}" Background="{DynamicResource FlyoutBgBtnBrush}" Click="Repair_Button_Click"/>
         </StackPanel>
         <TextBlock Text="Zarządzanie produktami" Grid.Row="1" Style="{DynamicResource FlyOutTextBlock}" FontWeight="Bold" FontSize="20" />
         <StackPanel Orientation="Horizontal" Grid.Row="2" >
@@ -30,7 +30,7 @@
                 <TextBlock Text="Ilość: " Style="{DynamicResource FlyOutTextBlock}" Height="30" Width="50" HorizontalAlignment="Center" />
                 <TextBox x:Name="PMAddCount" Width="50" Height="30" />
             </StackPanel>
-            <Button Content="Dodaj" Click="AddProduct_Button_Click" Style="{DynamicResource FlyOutButton}" Width="56" Height="30" Margin="7,0,0,0" />
+            <Button x:Name="AddProductButton" Content="Dodaj" Click="AddProduct_Button_Click" Style="{DynamicResource FlyOutButton}" Width="56" Height="30" Margin="7,0,0,0" />
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="3">
             <TextBlock Text="Usuń produkt" Style="{DynamicResource FlyOutTextBlock}" Width="80" />
@@ -39,7 +39,7 @@
                 <TextBlock Text="Ilość: " Style="{DynamicResource FlyOutTextBlock}" Height="30" Width="50" HorizontalAlignment="Center" />
                 <TextBox x:Name="PMRemoveCount" Width="50" Height="30"/>
             </StackPanel>
-            <Button Content="Usuń" Click="RemoveProduct_Button_Click" Style="{DynamicResource FlyOutButton}" Width="56" Height="30" Margin="7,0,0,0" />
+            <Button x:Name="RemoveProductButton" Content="Usuń" Click="RemoveProduct_Button_Click" Style="{DynamicResource FlyOutButton}" Width="56" Height="30" Margin="7,0,0,0" />
         </StackPanel>
         <TextBlock Text="Zarządzanie maszyną" Grid.Row="4" Style="{DynamicResource FlyOutTextBlock}" FontWeight="Bold" FontSize="20" />
         <StackPanel Orientation="Horizontal" Grid.Row="5">

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace VendingMachine.Core
+namespace VendingMachine.Core.Misc
 {
     /// <summary>
     /// Keeps value with its type
@@ -11,33 +11,10 @@ namespace VendingMachine.Core
     public class ValueHandler
     {
         /// <summary>
-        /// Type of values
+        /// 
         /// </summary>
-        public enum ValueTypes
-        {
-            /// <summary>
-            /// Integer
-            /// </summary>
-            INT, 
-            /// <summary>
-            /// Float
-            /// </summary>
-            FLOAT, 
-            /// <summary>
-            /// Double
-            /// </summary>
-            DOUBLE, 
-            /// <summary>
-            /// String. It's setted when the value is not Numeric
-            /// </summary>
-            STRING, 
-            /// <summary>
-            /// Empty Value
-            /// </summary>
-            NULL
-        }
-
-        internal ValueHandler(ValueType value)
+        /// <param name="value"></param>
+        public  ValueHandler(ValueType value)
         {
             try
             {

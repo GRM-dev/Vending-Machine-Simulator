@@ -101,10 +101,37 @@ namespace VendingMachine.Core.Products
         /// </summary>
         public ProductData ProductDatas
         {
-            get { return _productData; }
-            set { _productData = value;
-            ProductImageSource = _productData.ProductImageSource;
-            NotifyPropertyChanged("ProductDatas");
+            get
+            {
+                NotifyPropertyChanged("ProductDatas"); return _productData;
+            }
+            set
+            {
+                _productData = value;
+                ProductImageSource = _productData.ProductImageSource;
+                NotifyPropertyChanged("ProductDatas");
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public double Price
+        {
+            get
+            {
+                return ProductDatas.Product_Price;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public int Count
+        {
+            get
+            {
+                return ProductDatas.Product_Count;
             }
         }
     }

@@ -131,7 +131,6 @@ namespace VendingMachine.Core.Configuration
         /// </summary>
         public void loadProductsToProgram(Dictionary<ProductE, ProductData> products)
         {
-           // testAddNewProducts();
             foreach (KeyValuePair<ProductE, ProductData> node in products)
             {
                 Product product = new Product(node.Value);

@@ -22,6 +22,7 @@ namespace VendingMachine.Core.Configuration
         private ConfigProperty WindowWidth = new ConfigProperty("Width", "600", ConfigPropertyType.WINDOWS_WIDTH);
         private ConfigProperty WindowHeight = new ConfigProperty("Height", "800", ConfigPropertyType.WINDOW_HEIGHT);
         private ConfigProperty SlotsCount = new ConfigProperty("SlotsCount", "20", ConfigPropertyType.SLOTS_COUNT);
+        private ConfigProperty SlotSize = new ConfigProperty("SlotSize", "12", ConfigPropertyType.SLOT_SIZE);
         private ConfigProperty MoneyCollected = new ConfigProperty("MoneyInMachine", "10", ConfigPropertyType.MONEY_COLLECTED);
         private ConfigProperty ServiceNeeded = new ConfigProperty("ServiceNeed", "0", ConfigPropertyType.SERVICE_NEEDED);
         private ConfigProperty ServicePasswd = new ConfigProperty("ServicePasswd", "654321", ConfigPropertyType.SERVICE_PASSWD);
@@ -41,6 +42,7 @@ namespace VendingMachine.Core.Configuration
             Add(WindowWidth);
             Add(WindowHeight);
             Add(SlotsCount);
+            Add(SlotSize);
             Add(MoneyCollected);
             Add(ServiceNeeded);
             Add(ServicePasswd);
@@ -121,6 +123,28 @@ namespace VendingMachine.Core.Configuration
             return false;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="propType"></param>
+        /// <returns></returns>
+        public bool Contains(ConfigPropertyType propType)
+        {
+            foreach (var property in Properties)
+            {
+                if (property.Key == (int)propType)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="property"></param>
+        /// <returns></returns>
         public ConfigProperty getProperty(ConfigPropertyType property)
         {
             foreach (var entry in Properties)
@@ -133,6 +157,11 @@ namespace VendingMachine.Core.Configuration
             return null;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public ConfigProperty getProperty(string name)
         {
             foreach (var entry in Properties)
@@ -145,6 +174,11 @@ namespace VendingMachine.Core.Configuration
             return null;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ConfigProperty getProperty(int id)
         {
             foreach (var entry in Properties)

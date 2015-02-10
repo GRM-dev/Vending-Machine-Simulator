@@ -41,18 +41,27 @@ namespace VendingMachine.Core
             VMDialogManager.ShowClosingDialog(instance.MWindow);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public MainWindow MWindow
         {
             get { return _mainWindow; }
             private set { _mainWindow = value; }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public Config Config
         {
             get { return _config; }
             private set { _config = value; }
         }
 
+        /// <summary>
+        /// Main running instance of VMachine class object
+        /// </summary>
         public static VMachine instance
         { get; private set; }
     }

@@ -20,9 +20,20 @@ namespace VendingMachine.XAML
     /// </summary>
     public partial class SimulationFlyout : UserControl
     {
+        /// <summary>
+        /// Main Constructor for Flyout
+        /// </summary>
         public SimulationFlyout()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Update()
+        {
+           
         }
     }
 }

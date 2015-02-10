@@ -3,18 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:Core="clr-namespace:VendingMachine.Core"
+             xmlns:Misc="clr-namespace:VendingMachine.Core.Misc"
              mc:Ignorable="d" 
              d:DesignHeight="100" d:DesignWidth="100">
+    <UserControl.Resources>
+        <Misc:StringConverter x:Key="StringConverter"></Misc:StringConverter>
+    </UserControl.Resources>
     <Border BorderBrush="#FF1A059C">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition MaxHeight="20" MinHeight="20"/>
-            <RowDefinition MinHeight="40"/>
-            <RowDefinition MaxHeight="20" MinHeight="25"/>
-        </Grid.RowDefinitions>
-        <Label x:Name="Product_ID_Lbl" Content="{Binding Path=Product_ID, Mode=TwoWay}"/>
-        <Image x:Name="Product_Image" Grid.Row="1" Source="../../Resources/wallpaper_ft.png"/>
-            <Label x:Name="Product_Price_Lbl" Content="{Binding Path=Product_Price, Mode=TwoWay}" Grid.Row="2" />
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition MaxHeight="20" MinHeight="20"/>
+                <RowDefinition MinHeight="40"/>
+                <RowDefinition MaxHeight="20" MinHeight="25"/>
+            </Grid.RowDefinitions>
+            <TextBlock x:Name="Product_Count_Lbl" Text="{Binding Path=Count, StringFormat='Pozostało: {0}', Converter={StaticResource StringConverter}}" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center" />
+            <Image x:Name="Product_Image" Grid.Row="1" Source="../../Resources/wallpaper_ft.png"/>
+            <TextBlock x:Name="Product_Price_Lbl" Text="{Binding Path=Price, StringFormat='Cena: {0}', Converter={StaticResource StringConverter}}" Grid.Row="2" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center" />
         </Grid>
     </Border>
 </UserControl>

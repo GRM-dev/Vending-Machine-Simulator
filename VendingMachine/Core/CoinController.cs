@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VendingMachine.Core.Misc;
 
 namespace VendingMachine.Core
 {
@@ -35,7 +36,7 @@ namespace VendingMachine.Core
         public static Boolean isCoinCorrect(string value)
         {
             ValueHandler prop = new ValueHandler(value);
-            if (prop.PropertyType != ValueHandler.ValueTypes.STRING && isCoinCorrect(Convert.ToDouble(prop.Value)))
+            if (prop.PropertyType != ValueTypes.STRING && isCoinCorrect(Convert.ToDouble(prop.Value)))
             {
                 return true;
             }

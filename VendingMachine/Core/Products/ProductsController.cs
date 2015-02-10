@@ -12,14 +12,11 @@ namespace VendingMachine.Core.Products
         private static Dictionary<String, Product> _products = new Dictionary<String, Product>();
 
         /// <summary>
-        /// Adds a product to Product Grid starting from collumn and row 1
+        /// 
         /// </summary>
-        /// <param name="row">row number from 0</param>
-        /// <param name="column">column number from 0</param>
-        /// <param name="product">product to add</param>
-        public static void AddProductToListAndView(int row, int column, Product product)
+        /// <param name="product"></param>
+        public static void AddProductToList(Product product)
         {
-            Console.Out.WriteLine("Adding " + product.Name + "  Total: " + Products.Count);
             if (Products.ContainsKey(product.Name))
             {
                 Products[product.Name] = product;
@@ -28,9 +25,26 @@ namespace VendingMachine.Core.Products
             {
                 Products.Add(product.Name, product);
             }
+        }
+
+        /// <summary>
+        /// Adds a product to Product Grid starting from collumn and row 1
+        /// </summary>
+        /// <param name="row">row number from 0</param>
+        /// <param name="column">column number from 0</param>
+        /// <param name="product">product to add</param>
+        public static void AddProductToListAndView(int row, int column, Product product)
+        {
+            AddProductToList(product);
             AddProductToView(row, column, product);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="row"></param>
+        /// <param name="column"></param>
+        /// <param name="product"></param>
         public static void AddProductToView(int row, int column, Product product)
         {
             Grid ProductsView = VMachine.instance.MWindow.VMMainPage.ProductsView;
@@ -58,12 +72,12 @@ namespace VendingMachine.Core.Products
         /// <summary>
         /// Removes specified Product
         /// </summary>
-        /// <param name="productNumber"></param>
-        public static void RemoveProduct(String productNumber)
+        /// <param name="productID"></param>
+        public static void RemoveProduct(String productID)
         {
-            if (Products.ContainsKey(productNumber))
+            if (Products.ContainsKey(productID))
             {
-                Product product = Products[productNumber];
+                Product product = Products[productID];
                 Grid ProductsView = VMachine.instance.MWindow.VMMainPage.ProductsView;
                 ProductsView.Children.Remove(product);
             }
@@ -72,11 +86,11 @@ namespace VendingMachine.Core.Products
         /// <summary>
         /// Checks if there is any product with specified number
         /// </summary>
-        /// <param name="number">product number</param>
+        /// <param name="ID">product id number</param>
         /// <returns>true if exists already</returns>
-        public Boolean hasProductWithNumber(String number)
+        public Boolean hasProductWithNumber(String ID)
         {
-            if (Products.ContainsKey(number))
+            if (Products.ContainsKey(ID))
             {
                 return true;
             }

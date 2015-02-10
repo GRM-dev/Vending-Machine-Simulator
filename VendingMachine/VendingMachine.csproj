@@ -124,6 +124,8 @@
     <Compile Include="Core\Configuration\ConfigProperty.cs" />
     <Compile Include="Core\Configuration\ConfigPropertyType.cs" />
     <Compile Include="Core\Misc\Logger.cs" />
+    <Compile Include="Core\Misc\StringConverter.cs" />
+    <Compile Include="Core\Misc\ValueTypes.cs" />
     <Compile Include="Core\Products\ProductData.cs" />
     <Compile Include="Core\Products\Product.xaml.cs">
       <DependentUpon>Product.xaml</DependentUpon>
