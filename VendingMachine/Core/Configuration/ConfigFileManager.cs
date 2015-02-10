@@ -63,11 +63,11 @@ namespace VendingMachine.Core.Configuration
             foreach (XmlNode node in cHOSlotElems)
             {
                 int ID = Convert.ToInt32(node["ID"].InnerText);
-                ProductE productE = (ProductE)Enum.ToObject(typeof(ProductE),ID);
+                ProductE productE = (ProductE)Enum.ToObject(typeof(ProductE), ID);
                 ProductData productData = new ProductData(productE);
                 productData.Product_Count = Convert.ToInt32(node["Count"].InnerText);
                 productData.Product_Price = Convert.ToDouble(node["Price"].InnerText);
-                products.Add(productE,productData);
+                products.Add(productE, productData);
             }
             return products;
         }
@@ -175,12 +175,10 @@ namespace VendingMachine.Core.Configuration
                 {
                     elList.RemoveAll();
                 }
-                Console.Out.WriteLine("Products Count: " + ProductsController.Products.Count);
                 foreach (var pair in ProductsController.Products)
                 {
                     Product product = pair.Value;
-                    ProductData productData = product.ProductDatas;
-                   Console.Out.WriteLine("Product: "+productData.Product_Name);
+                    ProductData productData = product.PData;
                     XElement productElem = new XElement("Product");
                     elList.Add(productElem);
                     productElem.SetAttributeValue("name", productData.Product_Name);
@@ -195,7 +193,7 @@ namespace VendingMachine.Core.Configuration
                 Console.Out.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!");
                 Console.Out.WriteLine(e.ToString());
                 Console.Out.WriteLine("^^^^^^^^^^^^^^^^^^^^^^^^");
-                Logger.ExceptionLog(e,"Error while saving");
+                Logger.ExceptionLog(e, "Error while saving");
             }
         }
 

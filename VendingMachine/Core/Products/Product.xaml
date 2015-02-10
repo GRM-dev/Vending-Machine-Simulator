@@ -17,9 +17,9 @@
                 <RowDefinition MinHeight="40"/>
                 <RowDefinition MaxHeight="20" MinHeight="25"/>
             </Grid.RowDefinitions>
-            <TextBlock x:Name="Product_Count_Lbl" Text="{Binding Path=Count, StringFormat='Pozostało: {0}', Converter={StaticResource StringConverter}}" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center" />
+            <TextBlock x:Name="Product_Count_Lbl" Foreground="#FFA3C3AA" FontWeight="Bold" HorizontalAlignment="Center" />
             <Image x:Name="Product_Image" Grid.Row="1" Source="../../Resources/wallpaper_ft.png"/>
-            <TextBlock x:Name="Product_Price_Lbl" Text="{Binding Path=Price, StringFormat='Cena: {0}', Converter={StaticResource StringConverter}}" Grid.Row="2" Foreground="White" FontWeight="Bold" HorizontalAlignment="Center" />
+            <TextBlock x:Name="Product_Price_Lbl" Grid.Row="2" Foreground="#FFBBE2E2" FontWeight="Bold" HorizontalAlignment="Center" />
         </Grid>
     </Border>
 </UserControl>

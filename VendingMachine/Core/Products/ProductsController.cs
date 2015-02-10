@@ -9,7 +9,7 @@ namespace VendingMachine.Core.Products
 {
     class ProductsController
     {
-        private static Dictionary<String, Product> _products = new Dictionary<String, Product>();
+        private static Dictionary<int, Product> _products = new Dictionary<int, Product>();
 
         /// <summary>
         /// 
@@ -17,14 +17,15 @@ namespace VendingMachine.Core.Products
         /// <param name="product"></param>
         public static void AddProductToList(Product product)
         {
-            if (Products.ContainsKey(product.Name))
+            if (hasProduct(product.PData.Product_ID))
             {
-                Products[product.Name] = product;
+                Products[product.PData.Product_ID] = product;
             }
             else
             {
-                Products.Add(product.Name, product);
+                Products.Add(product.PData.Product_ID, product);
             }
+            ParseProductsOnView();
         }
 
         /// <summary>
@@ -60,6 +61,30 @@ namespace VendingMachine.Core.Products
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="prodE"></param>
+        /// <returns></returns>
+        public static ProductData getProductData(ProductE prodE)
+        {
+            int ID = (int)prodE;
+            if (hasProduct(ID))
+            {
+                return Products[ID].PData;
+            }
+            return null;
+        }
+
+        public static ProductData getProductData(int ID)
+        {
+            if (hasProduct(ID))
+            {
+                return Products[ID].PData;
+            }
+            return null;
+        }
+
+        /// <summary>
         /// Removes a product from Grid
         /// </summary>
         /// <param name="product"></param>
@@ -72,15 +97,52 @@ namespace VendingMachine.Core.Products
         /// <summary>
         /// Removes specified Product
         /// </summary>
-        /// <param name="productID"></param>
-        public static void RemoveProduct(String productID)
+        /// <param name="ID"></param>
+        public static void RemoveProduct(int ID)
         {
-            if (Products.ContainsKey(productID))
+            if (hasProduct(ID))
             {
-                Product product = Products[productID];
+                Product product = Products[ID];
                 Grid ProductsView = VMachine.instance.MWindow.VMMainPage.ProductsView;
                 ProductsView.Children.Remove(product);
+                Products.Remove(ID);
             }
+        }
+
+        public static void RemoveProduct(string productName)
+        {
+            var values = Enum.GetValues(typeof(ProductE));
+            foreach (ProductE pE in values)
+            {
+                if (pE.ToString().Equals(productName))
+                {
+                    int ID = (int)pE;
+                    if (hasProduct(ID))
+                    {
+                        Product product = Products[ID];
+                        Grid ProductsView = VMachine.instance.MWindow.VMMainPage.ProductsView;
+                        ProductsView.Children.Remove(product);
+                        Products.Remove(ID);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public static ProductE getProductE(string name)
+        {
+             var values = Enum.GetValues(typeof(ProductE));
+             foreach (ProductE pE in values)
+             {
+                 if (pE.ToString().Equals(name))
+                 { 
+                     return pE; }
+             }
+             return ProductE.Null;
         }
 
         /// <summary>
@@ -88,7 +150,7 @@ namespace VendingMachine.Core.Products
         /// </summary>
         /// <param name="ID">product id number</param>
         /// <returns>true if exists already</returns>
-        public Boolean hasProductWithNumber(String ID)
+        public static Boolean hasProduct(int ID)
         {
             if (Products.ContainsKey(ID))
             {
@@ -97,6 +159,34 @@ namespace VendingMachine.Core.Products
             else
             {
                 return false;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <param name="newPrice"></param>
+        public static void ChangeProductPrice(int ID, double newPrice)
+        {
+            ProductData pData = getProductData(ID);
+            if (pData != null)
+            {
+                pData.Product_Price = newPrice;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="newCount"></param>
+        public static void ChangeProductCount(int id, int newCount)
+        {
+            ProductData pData = getProductData(id);
+            if (pData != null)
+            {
+                pData.Product_Count = newCount;
             }
         }
 
@@ -148,7 +238,7 @@ namespace VendingMachine.Core.Products
             ProductsView.Children.Clear();
             int row = 1;
             int column = 1;
-            foreach (KeyValuePair<String, Product> node in Products)
+            foreach (KeyValuePair<int, Product> node in Products)
             {
                 AddProductToView(row, column, node.Value);
                 if (column == columns.Count)
@@ -160,6 +250,7 @@ namespace VendingMachine.Core.Products
                 {
                     return;
                 }
+                node.Value.Update();
                 column++;
             }
         }
@@ -167,7 +258,7 @@ namespace VendingMachine.Core.Products
         /// <summary>
         /// 
         /// </summary>
-        public static Dictionary<String, Product> Products
+        public static Dictionary<int, Product> Products
         {
             get { return _products; }
             private set { _products = value; }

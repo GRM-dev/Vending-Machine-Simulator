@@ -56,7 +56,7 @@ namespace VendingMachine.Core.Configuration
         }
 
         /// <summary>
-        /// 
+        /// Its invoking all methods of loading configs
         /// </summary>
         public void LoadAllConfigs()
         {
@@ -121,41 +121,23 @@ namespace VendingMachine.Core.Configuration
                     case ConfigPropertyType.SERVICE_NEEDED: break;
                     case ConfigPropertyType.SERVICE_PASSWD: break;
                     case ConfigPropertyType.SLOTS_COUNT: ProductsController.setupSlots(property.Value); break;
+                    case ConfigPropertyType.SLOT_SIZE: break;
                     default: Logger.Log("There is no " + property.PropertyType.ToString() + " property in configuration loader switch statement!"); break;
                 }
             }
         }
 
         /// <summary>
-        /// Loads products to window page
+        /// Loads products to program product controller
         /// </summary>
         public void loadProductsToProgram(Dictionary<ProductE, ProductData> products)
         {
             foreach (KeyValuePair<ProductE, ProductData> node in products)
             {
                 Product product = new Product(node.Value);
-                ProductsController.Products.Add(node.Value.Product_Name,product);
+                ProductsController.Products.Add(node.Value.Product_ID, product);
             }
             ProductsController.ParseProductsOnView();
-        }
-
-        private static void testAddNewProducts() //TODO: delete after creating service panel
-        {
-            try
-            {
-                Product p1 = new Product(ProductE._3Bit);
-                Product p2 = new Product(ProductE.Mars);
-                Product p3 = new Product(ProductE.Cappy);
-                ProductsController.AddProductToListAndView(1, 1, p1);
-                ProductsController.AddProductToListAndView(1, 2, p2);
-                ProductsController.AddProductToListAndView(2, 2, p3);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.Source);
-                VMDialogManager.ShowExceptionMessage(e);
-            }
         }
     }
 }

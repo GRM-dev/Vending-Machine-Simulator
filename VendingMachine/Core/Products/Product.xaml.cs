@@ -20,14 +20,10 @@ namespace VendingMachine.Core.Products
     /// <summary>
     /// Interaction logic for IProduct.xaml
     /// </summary>
-    public partial class Product : UserControl, INotifyPropertyChanged
+    public partial class Product : UserControl
     {
         private ImageSource _image;
         private ProductData _productData;
-        /// <summary>
-        /// 
-        /// </summary>
-        public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
         /// Creates Product place holder
@@ -36,6 +32,7 @@ namespace VendingMachine.Core.Products
         {
             InitializeComponent();
             this.DataContext = this;
+            Update();
         }
 
         /// <summary>
@@ -45,8 +42,8 @@ namespace VendingMachine.Core.Products
         public Product(ProductE productE)
             : this()
         {
-            ProductDatas = new ProductData(productE);
-            this.Name = ProductDatas.Product_Name;
+            PData = new ProductData(productE);
+            this.Name = PData.Product_Name;
         }
 
         /// <summary>
@@ -56,8 +53,8 @@ namespace VendingMachine.Core.Products
         public Product(ProductData productData)
             : this()
         {
-            ProductDatas = productData;
-            this.Name = ProductDatas.Product_Name;
+            PData = productData;
+            this.Name = PData.Product_Name;
         }
 
         /// <summary>
@@ -69,18 +66,20 @@ namespace VendingMachine.Core.Products
         public Product(ProductE productE, double price, int count)
             : this(productE)
         {
-            ProductDatas.Product_Price = price;
-            ProductDatas.Product_Count = count;
+            PData.Product_Price = price;
+            PData.Product_Count = count;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="info"></param>
-        private void NotifyPropertyChanged(string info)
+        public void Update()
         {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(info));
+            if (PData != null)
+            {
+                Product_Count_Lbl.Text = "Pozostało: " + PData.Product_Count;
+                Product_Price_Lbl.Text = "Cena: " + PData.Product_Price;
+            }
         }
 
         /// <summary>
@@ -99,39 +98,16 @@ namespace VendingMachine.Core.Products
         /// <summary>
         /// 
         /// </summary>
-        public ProductData ProductDatas
+        public ProductData PData
         {
             get
             {
-                NotifyPropertyChanged("ProductDatas"); return _productData;
+                return _productData;
             }
             set
             {
                 _productData = value;
                 ProductImageSource = _productData.ProductImageSource;
-                NotifyPropertyChanged("ProductDatas");
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public double Price
-        {
-            get
-            {
-                return ProductDatas.Product_Price;
-            }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public int Count
-        {
-            get
-            {
-                return ProductDatas.Product_Count;
             }
         }
     }
