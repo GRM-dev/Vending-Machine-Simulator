@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using VendingMachine.Core.Configuration;
 using VendingMachine.Simulations;
 
 namespace VendingMachine.XAML
@@ -42,6 +43,10 @@ namespace VendingMachine.XAML
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
+            if (ConfigProperties.instance.getProperty(ConfigPropertyType.WORKS).Value == "true")
+            {
+                return;
+            }
             SimulationRunning = true;
             if (ClientGen == null)
             {

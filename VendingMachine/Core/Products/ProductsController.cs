@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using VendingMachine.Core.Configuration;
 
 namespace VendingMachine.Core.Products
 {
@@ -133,6 +134,7 @@ namespace VendingMachine.Core.Products
         {
             var values = Enum.GetValues(typeof(ProductE));
             Grid ProductsView = VMachine.instance.MWindow.VMMainPage.ProductsView;
+            int pCount = 0;
             foreach (ProductE pE in values)
             {
                 if (pE.ToString().Equals(productName))
@@ -141,7 +143,7 @@ namespace VendingMachine.Core.Products
                     if (hasProduct(ID))
                     {
                         Product product = Products[ID];
-                        if (product.PData.Product_Count > count)
+                        if ((pCount = product.PData.Product_Count) > count)
                         {
                             product.PData.Product_Count -= count;
                         }
@@ -152,6 +154,10 @@ namespace VendingMachine.Core.Products
                         }
                     }
                 }
+            }
+            if (pCount < 3)
+            {
+                ConfigProperties.Update(ConfigPropertyType.CALL_FOR_REFILL, "true");
             }
         }
 

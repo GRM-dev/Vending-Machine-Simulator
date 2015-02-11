@@ -24,7 +24,7 @@ namespace VendingMachine.Core.Configuration
         private ConfigProperty SlotsCount = new ConfigProperty("SlotsCount", "20", ConfigPropertyType.SLOTS_COUNT);
         private ConfigProperty SlotSize = new ConfigProperty("SlotSize", "12", ConfigPropertyType.SLOT_SIZE);
         private ConfigProperty MoneyCollected = new ConfigProperty("MoneyInMachine", "10", ConfigPropertyType.MONEY_COLLECTED);
-        private ConfigProperty ServiceNeeded = new ConfigProperty("ServiceNeed", "0", ConfigPropertyType.SERVICE_NEEDED);
+        private ConfigProperty ServiceNeeded = new ConfigProperty("ServiceNeed", "0", ConfigPropertyType.WORKS);
         private ConfigProperty ServicePasswd = new ConfigProperty("ServicePasswd", "654321", ConfigPropertyType.SERVICE_PASSWD);
         //private ConfigProperty  = new ConfigProperty("", "", ConfigPropertyType.);
 

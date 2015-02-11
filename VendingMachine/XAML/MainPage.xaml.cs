@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using VendingMachine.Core;
+using VendingMachine.Core.Configuration;
 using VendingMachine.Core.Products;
 using VendingMachine.VMDialogs;
 
@@ -120,6 +121,10 @@ namespace VendingMachine
         /// <param name="number"></param>
         private void Nmb_Button_Clicked(int number)
         {
+            if (ConfigProperties.instance.getProperty(ConfigPropertyType.WORKS).Value == "true")
+            {
+                return;
+            }
             if (!checkingIn)
             {
                 Console_2.Text = "";

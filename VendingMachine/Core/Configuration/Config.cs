@@ -121,10 +121,11 @@ namespace VendingMachine.Core.Configuration
                     case ConfigPropertyType.WINDOW_HEIGHT: VMachine.instance.MWindow.Height = Convert.ToInt32(property.Value); break;
                     case ConfigPropertyType.WINDOWS_WIDTH: VMachine.instance.MWindow.Width = Convert.ToInt32(property.Value); break;
                     case ConfigPropertyType.MONEY_COLLECTED: break;
-                    case ConfigPropertyType.SERVICE_NEEDED: break;
+                    case ConfigPropertyType.WORKS: if (ConfigProperties.instance.getProperty(prop).Value == "true") VMDialogManager.ShowExceptionMessage(new Exception("Automat zepsuty")); break;
                     case ConfigPropertyType.SERVICE_PASSWD: break;
                     case ConfigPropertyType.SLOTS_COUNT: ProductsController.setupSlots(property.Value); break;
                     case ConfigPropertyType.SLOT_SIZE: break;
+                    case ConfigPropertyType.CALL_FOR_REFILL: VMDialogManager.ShowInfoMessage("Obsługa do uzupełnienia wezwana ... chyba"); break;
                     default: Logger.Log("There is no " + property.PropertyType.ToString() + " property in configuration loader switch statement!"); break;
                 }
             }

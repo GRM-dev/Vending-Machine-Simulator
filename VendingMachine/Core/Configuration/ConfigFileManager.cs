@@ -183,17 +183,17 @@ namespace VendingMachine.Core.Configuration
                     elList.Add(productElem);
                     productElem.SetAttributeValue("name", productData.Product_Name);
                     productElem.Add(new XElement("ID", productData.Product_ID));
-                    productElem.Add(new XElement("Price", productData.Product_Price));
+                    string price = productData.Product_Price.ToString();
+                    price = price.Replace(".", ",");
+                    productElem.Add(new XElement("Price", price));
                     productElem.Add(new XElement("Count", productData.Product_Count));
                 }
                 xDoc.Save(Config.CONFIG_FILE_PATH);
             }
             catch (Exception e)
             {
-                Console.Out.WriteLine("!!!!!!!!!!!!!!!!!!!!!!!!");
-                Console.Out.WriteLine(e.ToString());
-                Console.Out.WriteLine("^^^^^^^^^^^^^^^^^^^^^^^^");
                 Logger.ExceptionLog(e, "Error while saving");
+                VMDialogManager.ShowExceptionMessage(e);
             }
         }
 

@@ -38,7 +38,7 @@ namespace VendingMachine.XAML
         /// </summary>
         public void Update()
         {
-            if (ConfigProperties.instance.Contains(ConfigPropertyType.SERVICE_NEEDED) && ConfigProperties.instance.getProperty(ConfigPropertyType.SERVICE_NEEDED).Value.Equals("true"))
+            if (ConfigProperties.instance.Contains(ConfigPropertyType.WORKS) && ConfigProperties.instance.getProperty(ConfigPropertyType.WORKS).Value.Equals("true"))
             {
                 RepairButton.IsEnabled = true;
             }
@@ -73,12 +73,16 @@ namespace VendingMachine.XAML
 
         private void Repair_Button_Click(object sender, RoutedEventArgs e)
         {
-            ConfigProperties.instance.getProperty(ConfigPropertyType.SERVICE_NEEDED).Value = "true";
+            ConfigProperties.instance.getProperty(ConfigPropertyType.WORKS).Value = "false";
             Update();
         }
 
         private void AddProduct_Button_Click(object sender, RoutedEventArgs e)
         {
+            if (ConfigProperties.instance.getProperty(ConfigPropertyType.WORKS).Value == "true")
+            {
+                return;
+            }
             if (PMAddProduct.SelectedItem is ProductE)
             {
                 string txt = PMAddCount.Text;
@@ -110,6 +114,10 @@ namespace VendingMachine.XAML
 
         private void RemoveProduct_Button_Click(object sender, RoutedEventArgs e)
         {
+            if (ConfigProperties.instance.getProperty(ConfigPropertyType.WORKS).Value == "true")
+            {
+                return;
+            }
             string txt = PMRemoveCount.Text;
             ValueHandler vh = new ValueHandler(txt);
             int count = 0;
@@ -123,6 +131,10 @@ namespace VendingMachine.XAML
         }
         private void ChangeProductCount_Button_Click(object sender, RoutedEventArgs e)
         {
+            if (ConfigProperties.instance.getProperty(ConfigPropertyType.WORKS).Value == "true")
+            {
+                return;
+            }
             if (PMChangeProductCount.SelectedItem != null)
             {
                 string txt = PMChangeCountNmb.Text;
@@ -147,6 +159,10 @@ namespace VendingMachine.XAML
 
         private void ChangeProductPrice_Button_Click(object sender, RoutedEventArgs e)
         {
+            if (ConfigProperties.instance.getProperty(ConfigPropertyType.WORKS).Value == "true")
+            {
+                return;
+            }
             if (PMChangeProductPrice.SelectedItem != null)
             {
                 string txt = PMChangePriceNmb.Text;
@@ -167,13 +183,19 @@ namespace VendingMachine.XAML
 
         private void ShowStats_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            if (ConfigProperties.instance.getProperty(ConfigPropertyType.WORKS).Value == "true")
+            {
+                return;
+            }
             Update();
         }
 
         private void ChangeAccount_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            if (ConfigProperties.instance.getProperty(ConfigPropertyType.WORKS).Value == "true")
+            {
+                return;
+            }
             Update();
         }
     }

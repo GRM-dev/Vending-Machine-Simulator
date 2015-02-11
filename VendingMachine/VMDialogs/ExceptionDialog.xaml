@@ -6,15 +6,15 @@
       xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
       xmlns:Dialogs="clr-namespace:MahApps.Metro.Controls.Dialogs;assembly=MahApps.Metro"
 	xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="VendingMachine.VMDialogs.ExceptionDialog"
-	Title="     Error" FontWeight="Bold" Foreground="White" Background="Firebrick" MinWidth="200" MinHeight="160" >
+	Title="Error" FontWeight="Bold" Foreground="White" Background="Firebrick" MinWidth="200" MinHeight="160" >
     <Grid x:Name="MGrid">
         <Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
         <ScrollViewer >
-            <TextBox Style="{StaticResource ReadOnlyTextBox}" ScrollViewer.HorizontalScrollBarVisibility="Auto" 
-         ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="ExceptionTextBlock" />
+            <TextBox ScrollViewer.HorizontalScrollBarVisibility="Auto" 
+         ScrollViewer.VerticalScrollBarVisibility="Auto" x:Name="ExceptionTextBlock" IsEnabled="False" />
         </ScrollViewer>
         <Button Content="Close" Click="Close_Button_Click" Grid.Row="1" Background="Wheat" IsDefault="True" FontWeight="Bold" Foreground="White" MinWidth="40" MinHeight="20" >
             <Button.Triggers>

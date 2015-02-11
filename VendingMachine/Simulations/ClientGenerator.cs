@@ -8,7 +8,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 using VendingMachine.Core;
+using VendingMachine.Core.Configuration;
 using VendingMachine.Core.Products;
+using VendingMachine.VMDialogs;
 using VendingMachine.XAML;
 
 namespace VendingMachine.Simulations
@@ -26,6 +28,9 @@ namespace VendingMachine.Simulations
         private SimulationFlyout simF = VMachine.instance.MWindow.SimulationFlyoutP;
         private Dispatcher disp = Application.Current.Dispatcher;
         private ArrayList clients = new ArrayList();
+        private int selSpeed=1;
+        private int soldProducts;
+        private double earnedMoney;
 
 
         /// <summary>
@@ -73,14 +78,19 @@ namespace VendingMachine.Simulations
                         Product product = ProductsController.getProduct(productID);
                         CoinController.transferMoneyToMainDepo(product.PData.Product_Price);
                         disp.BeginInvoke((Action)(() => ProductsController.RemoveProduct(productID, 1)));
+                        soldProducts++;
+                        earnedMoney+=price;
                     }
                     CoinController.ReturnTempDepo();
                 }
                 servicedClients++;
-                disp.BeginInvoke((Action)(() => simF.ServicedClientsCount.Text = servicedClients.ToString()));
-                int selSpeed = 1;
-                disp.BeginInvoke((Action)(() => selSpeed = Convert.ToInt32(simF.slValue.Value)));
-                Console.Out.WriteLine("" + selSpeed);
+                updateParams();
+                if (rand.Next(0,300) >= 200)
+                {
+                   disp.BeginInvoke((Action)(() => simF.SimulationRunning = false));
+                   disp.BeginInvoke((Action)(() => VMDialogManager.ShowExceptionMessage(new Exception("Błąd!"))));
+                   ConfigProperties.Update(ConfigPropertyType.WORKS,"true");
+                }
                 double rnD = rand.NextDouble() * 10;
                 int sleepTime = Convert.ToInt32(1000 * rnD / selSpeed);
                 try
@@ -89,6 +99,14 @@ namespace VendingMachine.Simulations
                 }
                 catch (ThreadInterruptedException e) { }
             }
+        }
+
+        private void updateParams()
+        {
+            disp.BeginInvoke((Action)(() => simF.ServicedClientsCount.Text = servicedClients.ToString()));
+            disp.BeginInvoke((Action)(() => selSpeed = Convert.ToInt32(simF.SpeedValue.Text)));
+            disp.BeginInvoke((Action)(() => simF.SoldProductsCount.Text = soldProducts.ToString()));
+            disp.BeginInvoke((Action)(() => simF.EarnedMoney.Text = earnedMoney.ToString()));
         }
 
         private void throwCoins(Client client)
