@@ -22,7 +22,19 @@ namespace VendingMachine.XAML
     /// </summary>
     public partial class SimulationFlyout : UserControl
     {
-        private Boolean _running;
+        private byte _simState;
+        /// <summary>
+        /// 
+        /// </summary>
+        public const byte STOPPED = 0;
+        /// <summary>
+        /// 
+        /// </summary>
+        public const byte RUNNING = 1;
+        /// <summary>
+        /// 
+        /// </summary>
+        public const byte PAUSED = 2;
 
         /// <summary>
         /// Main Constructor for Flyout
@@ -30,7 +42,7 @@ namespace VendingMachine.XAML
         public SimulationFlyout()
         {
             InitializeComponent();
-            SimulationRunning = false;
+            SimulationState = STOPPED;
         }
 
         /// <summary>
@@ -38,7 +50,7 @@ namespace VendingMachine.XAML
         /// </summary>
         public void Update()
         {
-           
+
         }
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
@@ -47,31 +59,57 @@ namespace VendingMachine.XAML
             {
                 return;
             }
-            SimulationRunning = true;
-            if (ClientGen == null)
+            if (ClientGen == null || SimulationState == STOPPED)
             {
                 ClientGen = new ClientGenerator(this);
             }
+            SimulationState = RUNNING;
             ClientGen.Start();
+        }
+
+        private void PauseButton_Click(object sender, RoutedEventArgs e)
+        {
+            SimulationState = PAUSED;
         }
 
         private void StopButton_Click(object sender, RoutedEventArgs e)
         {
-            SimulationRunning = false;
-            
+            SimulationState = STOPPED;
         }
 
         /// <summary>
         /// 
         /// </summary>
-        public Boolean SimulationRunning
+        private void UpdateSimulationButtons()
         {
-            get { return _running; }
-            set { _running = value;
-            StartButton.IsEnabled = !_running;
-            StopButton.IsEnabled = _running;
+            Boolean start=false;
+            Boolean pause=false;
+            Boolean stop=false;
+            switch (SimulationState)
+            {
+                case STOPPED: start = true; stop = false; pause = false; break;
+                case RUNNING: start = false; stop = true; pause = true; break;
+                case PAUSED: start = true; stop = true; pause = false; break;
+            }
+            StartButton.IsEnabled=start;
+            PauseButton.IsEnabled=pause;
+            StopButton.IsEnabled=stop;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public byte SimulationState
+        {
+            get { return _simState; }
+            set
+            {
+                _simState = value;
+                UpdateSimulationButtons();
             }
         }
+
+
 
         /// <summary>
         /// 

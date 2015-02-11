@@ -64,7 +64,7 @@ namespace VendingMachine.Simulations
         /// </summary>
         public void StartGenerator()
         {
-            while (simulationFlyout.SimulationRunning)
+            while (simulationFlyout.SimulationState==SimulationFlyout.RUNNING)
             {
                 Client client = new Client();
                 clients.Add(client);
@@ -85,9 +85,9 @@ namespace VendingMachine.Simulations
                 }
                 servicedClients++;
                 updateParams();
-                if (rand.Next(0,300) >= 200)
+                if (rand.Next(0,300) == 200)
                 {
-                   disp.BeginInvoke((Action)(() => simF.SimulationRunning = false));
+                   disp.BeginInvoke((Action)(() => simF.SimulationState = SimulationFlyout.STOPPED));
                    disp.BeginInvoke((Action)(() => VMDialogManager.ShowExceptionMessage(new Exception("Błąd!"))));
                    ConfigProperties.Update(ConfigPropertyType.WORKS,"true");
                 }

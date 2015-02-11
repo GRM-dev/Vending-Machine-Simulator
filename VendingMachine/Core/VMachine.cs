@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VendingMachine.Core.Configuration;
 using VendingMachine.VMDialogs;
+using VendingMachine.XAML;
 
 namespace VendingMachine.Core
 {
@@ -36,7 +37,7 @@ namespace VendingMachine.Core
         /// </summary>
         public static void closeProgram()
         {
-            VMachine.instance.MWindow.SimulationFlyoutP.SimulationRunning = false;
+            VMachine.instance.MWindow.SimulationFlyoutP.SimulationState = SimulationFlyout.STOPPED;
             ConfigFileManager.saveConfigsToFile();
             ConfigFileManager.saveProductsToFile();
             VMDialogManager.ShowClosingDialog(instance.MWindow);
