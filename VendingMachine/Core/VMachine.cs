@@ -36,13 +36,14 @@ namespace VendingMachine.Core
         /// </summary>
         public static void closeProgram()
         {
+            VMachine.instance.MWindow.SimulationFlyoutP.SimulationRunning = false;
             ConfigFileManager.saveConfigsToFile();
             ConfigFileManager.saveProductsToFile();
             VMDialogManager.ShowClosingDialog(instance.MWindow);
         }
 
         /// <summary>
-        /// 
+        /// Main Window instance
         /// </summary>
         public MainWindow MWindow
         {

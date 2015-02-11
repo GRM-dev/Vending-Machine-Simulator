@@ -44,7 +44,7 @@ namespace VendingMachine
             SimulationFrame.Navigate(SimulationFlyoutP = new SimulationFlyout());
         }
 
-        private void Simulation_Button_Click(object sender, RoutedEventArgs e) //TODO: simulation
+        private void Simulation_Button_Click(object sender, RoutedEventArgs e)
         {
             var flyout = this.Flyouts.Items[0] as Flyout;
             var flyoutE = this.Flyouts.Items[1] as Flyout;

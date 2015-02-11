@@ -24,11 +24,20 @@
             <TextBlock Text="Speed" Style="{DynamicResource FlyOutTextBlock}" Margin="10,22,10,23" Width="42" />
             <DockPanel VerticalAlignment="Center" Margin="10">
                 <TextBox Text="{Binding ElementName=slValue, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Right" Width="40" />
-                <Slider Maximum="20" Minimum="1" TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True" Name="slValue" Width="163" />
+                <Slider  Maximum="20" Minimum="1" TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True" Name="slValue" Width="163" />
             </DockPanel>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="2"></StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="3"></StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="4"></StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="2">
+            <TextBlock Text="Ilość obsłużonych klientów" Style="{DynamicResource FlyOutTextBlock}" Margin="10,22,10,23" />
+            <TextBlock x:Name="ServicedClientsCount" Style="{DynamicResource FlyOutTextBlock}" Margin="10,22,10,23" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="3">
+            <TextBlock Text="Ilość sprzedanych produktów" Style="{DynamicResource FlyOutTextBlock}" Margin="10,22,10,23" />
+            <TextBlock x:Name="SoldProductsCount" Style="{DynamicResource FlyOutTextBlock}" Margin="10,22,10,23" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="4">
+            <TextBlock Text="Pieniądze zarobione" Style="{DynamicResource FlyOutTextBlock}" Margin="10,22,10,23" />
+            <TextBlock x:Name="EarnedMoney" Style="{DynamicResource FlyOutTextBlock}" Margin="10,22,10,23" />            
+        </StackPanel>
     </Grid>
 </UserControl>

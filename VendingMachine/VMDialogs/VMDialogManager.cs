@@ -41,6 +41,10 @@ namespace VendingMachine.VMDialogs
             await DialogManager.ShowMetroDialogAsync(metroWindow, new InputCoinDialog(metroWindow));
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="product"></param>
         public static async void ShowDeployProductMessage(Product product)
         {
             var metroWindow = (Application.Current.MainWindow as MainWindow);

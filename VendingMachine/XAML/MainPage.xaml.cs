@@ -158,15 +158,15 @@ namespace VendingMachine
         {
             try
             {
-                int nmb = Convert.ToInt32(Console_2.Text);
-                if (ProductsController.hasProduct(nmb))
+                int ID = Convert.ToInt32(Console_2.Text);
+                if (ProductsController.hasProduct(ID))
                 {
-                    Product productO=ProductsController.getProduct(nmb);
+                    Product productO = ProductsController.getProduct(ID);
                     if (CoinController.hasEnoughMoney(productO.PData.Product_Price))
                     {
                         Product product = productO.clone();
                         CoinController.transferMoneyToMainDepo(productO.PData.Product_Price);
-                        ProductsController.RemoveProduct(nmb, 1);
+                        ProductsController.RemoveProduct(ID, 1);
                         VMDialogManager.ShowDeployProductMessage(product);
                         Console_1.Text = CoinController.TempCoinDepository.ToString();
                         Console_2.Text = "";

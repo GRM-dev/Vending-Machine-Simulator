@@ -61,10 +61,10 @@ namespace VendingMachine.Core.Products
         }
 
         /// <summary>
-        /// 
+        /// gets product from main dictionary
         /// </summary>
-        /// <param name="ID"></param>
-        /// <returns></returns>
+        /// <param name="ID">product ID</param>
+        /// <returns>Product corresponding to specified ID</returns>
         public static Product getProduct(int ID)
         {
             if (hasProduct(ID))

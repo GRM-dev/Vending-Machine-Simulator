@@ -33,7 +33,6 @@ namespace VendingMachine.VMDialogs
             if (CoinController.isCoinCorrect(coinS))
             {
                 double coin = Convert.ToDouble(coinS);
-                Console.WriteLine(coin);
                 CoinController.ThrowInCoin(coin);
                 string consoleTitle = "Stan konta: ";
                 string currentTempDepo = CoinController.TempCoinDepository.ToString();

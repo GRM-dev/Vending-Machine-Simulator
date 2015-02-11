@@ -78,7 +78,7 @@ namespace VendingMachine.Core.Products
             if (PData != null)
             {
                 Product_Count_Lbl.Text = "Pozostało: " + PData.Product_Count;
-                Product_Price_Lbl.Text = "Cena: " + PData.Product_Price;
+                Product_Price_Lbl.Text = "Cena: " + PData.Product_Price+ " zł";
                 Product_ID_Lbl.Text = "N: " + PData.Product_ID;
             }
         }

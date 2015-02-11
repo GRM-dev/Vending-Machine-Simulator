@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using VendingMachine.Simulations;
 
 namespace VendingMachine.XAML
 {
@@ -42,11 +43,17 @@ namespace VendingMachine.XAML
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
             SimulationRunning = true;
+            if (ClientGen == null)
+            {
+                ClientGen = new ClientGenerator(this);
+            }
+            ClientGen.Start();
         }
 
         private void StopButton_Click(object sender, RoutedEventArgs e)
         {
             SimulationRunning = false;
+            
         }
 
         /// <summary>
@@ -59,6 +66,15 @@ namespace VendingMachine.XAML
             StartButton.IsEnabled = !_running;
             StopButton.IsEnabled = _running;
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ClientGenerator ClientGen
+        {
+            get;
+            private set;
         }
     }
 }
