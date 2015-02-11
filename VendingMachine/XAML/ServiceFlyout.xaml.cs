@@ -34,7 +34,7 @@ namespace VendingMachine.XAML
         }
 
         /// <summary>
-        /// 
+        /// Updates view
         /// </summary>
         public void Update()
         {
