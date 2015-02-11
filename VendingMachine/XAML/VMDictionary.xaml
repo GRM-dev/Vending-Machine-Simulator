@@ -19,9 +19,17 @@
     <BitmapImage x:Key="Default" UriSource="../Resources/wallpaper_ft.png"/>
     <BitmapImage x:Key="Mars" UriSource="../Resources/Bars/Mars.png"/>
     <BitmapImage x:Key="_3Bit" UriSource="../Resources/Bars/_3Bit.png"/>
+    <BitmapImage x:Key="Princessa" UriSource="../Resources/Bars/Princessa.png"/>
+    <BitmapImage x:Key="Snicers" UriSource="../Resources/Bars/Snicers.png"/>
     <BitmapImage x:Key="Cappy" UriSource="../Resources/Drinks/Cappy.png"/>
+    <BitmapImage x:Key="Sprite" UriSource="../Resources/Drinks/Sprite.png"/>
+    <BitmapImage x:Key="Cola" UriSource="../Resources/Drinks/Cola.png"/>
+    <BitmapImage x:Key="Bull" UriSource="../Resources/Drinks/Bull.png"/>
     <BitmapImage x:Key="Rogal" UriSource="../Resources/Snacks/Rogal.png"/>
-    
+    <BitmapImage x:Key="Ciastka" UriSource="../Resources/Snacks/Ciastka.png"/> 
+    <BitmapImage x:Key="Paluszki" UriSource="../Resources/Snacks/Paluszki.png"/>
+    <BitmapImage x:Key="Sandwich" UriSource="../Resources/Snacks/Sandwich.png"/>
+
     <Style TargetType="Button" x:Key="Nmb">
         <Setter Property="Width" Value="30"/>
         <Setter Property="Height" Value="30"/>
