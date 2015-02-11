@@ -134,6 +134,8 @@
     <Compile Include="Core\Products\ProductsController.cs" />
     <Compile Include="Core\Products\ProductTypes.cs" />
     <Compile Include="Core\Misc\ValueHandler.cs" />
+    <Compile Include="Simulations\Client.cs" />
+    <Compile Include="Simulations\ClientGenerator.cs" />
     <Compile Include="VMDialogs\InputCoinDialog.xaml.cs">
       <DependentUpon>InputCoinDialog.xaml</DependentUpon>
     </Compile>
@@ -143,6 +145,9 @@
     </Compile>
     <Compile Include="VMDialogs\ServisInputDialog.xaml.cs">
       <DependentUpon>ServisInputDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="VMDialogs\VMDeployProductDialog.xaml.cs">
+      <DependentUpon>VMDeployProductDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="VMDialogs\VMInputDialog.xaml.cs">
       <DependentUpon>VMInputDialog.xaml</DependentUpon>
@@ -170,6 +175,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="VMDialogs\ServisInputDialog.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="VMDialogs\VMDeployProductDialog.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -290,9 +299,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Simulations\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
       <Visible>False</Visible>

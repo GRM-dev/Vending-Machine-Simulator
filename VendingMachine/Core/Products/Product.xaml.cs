@@ -86,6 +86,18 @@ namespace VendingMachine.Core.Products
         /// <summary>
         /// 
         /// </summary>
+        /// <returns></returns>
+        public Product clone()
+        {
+            Product product = new Product(this.PData.ProductEn);
+            product.PData.Product_Price = this.PData.Product_Price;
+            product.PData.Product_Count = this.PData.Product_Count;
+            return product;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         public ImageSource ProductImageSource
         {
             get { return _image; }

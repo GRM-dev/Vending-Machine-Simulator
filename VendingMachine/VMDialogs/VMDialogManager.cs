@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using VendingMachine.Core.Configuration;
 using VendingMachine.Core.Misc;
+using VendingMachine.Core.Products;
 
 namespace VendingMachine.VMDialogs
 {
@@ -38,6 +39,12 @@ namespace VendingMachine.VMDialogs
         {
             var metroWindow = (Application.Current.MainWindow as MainWindow);
             await DialogManager.ShowMetroDialogAsync(metroWindow, new InputCoinDialog(metroWindow));
+        }
+
+        public static async void ShowDeployProductMessage(Product product)
+        {
+            var metroWindow = (Application.Current.MainWindow as MainWindow);
+            await DialogManager.ShowMetroDialogAsync(metroWindow, new VMDeployProductDialog(product,metroWindow));
         }
 
         /// <summary>

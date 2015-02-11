@@ -100,6 +100,7 @@ namespace VendingMachine.XAML
                     {
                         Product product = new Product((ProductE)PMAddProduct.SelectedItem);
                         product.PData.Product_Count = pCount;
+                        product.PData.Product_Price = 2;
                         ProductsController.AddProductToList(product);
                     }
                 }
@@ -111,11 +112,12 @@ namespace VendingMachine.XAML
         {
             string txt = PMRemoveCount.Text;
             ValueHandler vh = new ValueHandler(txt);
-            if (PMRemoveProduct.SelectedItem != null && vh.PropertyType == ValueTypes.DOUBLE && ((int)vh.Value) > 0)
+            int count = 0;
+            if (PMRemoveProduct.SelectedItem != null && vh.PropertyType == ValueTypes.DOUBLE && (count=Convert.ToInt32(vh.Value)) > 0)
             {
                 var item = PMRemoveProduct.SelectedItem as string;
 
-                ProductsController.RemoveProduct(item);
+                ProductsController.RemoveProduct(item,count);
             }
             Update();
         }

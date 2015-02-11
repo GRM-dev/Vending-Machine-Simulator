@@ -90,6 +90,9 @@ namespace VendingMachine.Core.Configuration
             }
         }
 
+        /// <summary>
+        /// Prints config on console to debug
+        /// </summary>
         private static void printConfig()
         {
             Console.WriteLine("-------- Config Start --------");

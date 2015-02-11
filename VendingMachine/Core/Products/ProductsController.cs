@@ -63,18 +63,33 @@ namespace VendingMachine.Core.Products
         /// <summary>
         /// 
         /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
+        public static Product getProduct(int ID)
+        {
+            if (hasProduct(ID))
+            {
+                return Products[ID];
+            }
+            return null;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
         /// <param name="prodE"></param>
         /// <returns></returns>
         public static ProductData getProductData(ProductE prodE)
         {
             int ID = (int)prodE;
-            if (hasProduct(ID))
-            {
-                return Products[ID].PData;
-            }
-            return null;
+            return getProductData(ID);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <returns></returns>
         public static ProductData getProductData(int ID)
         {
             if (hasProduct(ID))
@@ -109,8 +124,71 @@ namespace VendingMachine.Core.Products
             }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="productName"></param>
+        /// <param name="count"></param>
+        public static void RemoveProduct(string productName, int count)
+        {
+            var values = Enum.GetValues(typeof(ProductE));
+            Grid ProductsView = VMachine.instance.MWindow.VMMainPage.ProductsView;
+            foreach (ProductE pE in values)
+            {
+                if (pE.ToString().Equals(productName))
+                {
+                    int ID = (int)pE;
+                    if (hasProduct(ID))
+                    {
+                        Product product = Products[ID];
+                        if (product.PData.Product_Count > count)
+                        {
+                            product.PData.Product_Count -= count;
+                        }
+                        else
+                        {
+                            ProductsView.Children.Remove(product);
+                            Products.Remove(ID);
+                        }
+                    }
+                }
+            }
+        }
+
+       /// <summary>
+       /// 
+       /// </summary>
+       /// <param name="ID"></param>
+       /// <param name="count"></param>
+        public static void RemoveProduct(int ID, int count)
+        {
+            var values = Enum.GetValues(typeof(ProductE));
+            Grid ProductsView = VMachine.instance.MWindow.VMMainPage.ProductsView;
+            foreach (ProductE pE in values)
+            {
+                if (((int)pE)==ID)
+                {
+                    if (hasProduct(ID))
+                    {
+                        Product product = Products[ID];
+                        if (product.PData.Product_Count > count)
+                        {
+                            product.PData.Product_Count -= count;
+                            product.Update();
+                        }
+                        else
+                        {
+                            ProductsView.Children.Remove(product);
+                            Products.Remove(ID);
+                        }
+                    }
+                }
+            }
+        }
+
         public static void RemoveProduct(string productName)
         {
+            Grid ProductsView = VMachine.instance.MWindow.VMMainPage.ProductsView;
             var values = Enum.GetValues(typeof(ProductE));
             foreach (ProductE pE in values)
             {
@@ -120,7 +198,6 @@ namespace VendingMachine.Core.Products
                     if (hasProduct(ID))
                     {
                         Product product = Products[ID];
-                        Grid ProductsView = VMachine.instance.MWindow.VMMainPage.ProductsView;
                         ProductsView.Children.Remove(product);
                         Products.Remove(ID);
                     }
@@ -135,14 +212,15 @@ namespace VendingMachine.Core.Products
         /// <returns></returns>
         public static ProductE getProductE(string name)
         {
-             var values = Enum.GetValues(typeof(ProductE));
-             foreach (ProductE pE in values)
-             {
-                 if (pE.ToString().Equals(name))
-                 { 
-                     return pE; }
-             }
-             return ProductE.Null;
+            var values = Enum.GetValues(typeof(ProductE));
+            foreach (ProductE pE in values)
+            {
+                if (pE.ToString().Equals(name))
+                {
+                    return pE;
+                }
+            }
+            return ProductE.Null;
         }
 
         /// <summary>

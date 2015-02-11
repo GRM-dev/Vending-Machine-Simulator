@@ -68,7 +68,7 @@ namespace VendingMachine.Core
         /// <param name="value"></param>
         /// <returns></returns>
         public static Boolean hasEnoughMoney(double value) {
-            return value < TempCoinDepository ? true : false;
+            return value <= TempCoinDepository ? true : false;
         }
 
         /// <summary>
