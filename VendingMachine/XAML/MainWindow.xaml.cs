@@ -73,19 +73,19 @@ namespace VendingMachine
         }
 
         /// <summary>
-        /// 
+        /// Main page
         /// </summary>
         public MainPage VMMainPage { get; private set; }
         /// <summary>
-        /// 
+        /// Grid of viewed products
         /// </summary>
         public Grid ProductsView { get; private set; }
         /// <summary>
-        /// 
+        /// Service card
         /// </summary>
         public ServiceFlyout ServiceFlyoutP { get; private set; }
         /// <summary>
-        /// 
+        /// Simulation card
         /// </summary>
         public SimulationFlyout SimulationFlyoutP { get; private set; }
     }

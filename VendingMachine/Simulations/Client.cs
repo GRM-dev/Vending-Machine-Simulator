@@ -9,7 +9,7 @@ using VendingMachine.Core.Products;
 namespace VendingMachine.Simulations
 {
     /// <summary>
-    /// 
+    /// Client constructor (randomizing wallet and request)
     /// </summary>
     public class Client
     {
@@ -17,7 +17,7 @@ namespace VendingMachine.Simulations
         double[] coinValues={0.2,0.5,1,2,5};
 
         /// <summary>
-        /// 
+        /// Client class
         /// </summary>
         public Client()
         {
@@ -34,11 +34,11 @@ namespace VendingMachine.Simulations
         }
 
         /// <summary>
-        /// 
+        /// Wallet array with random coins
         /// </summary>
         public ArrayList Wallet { get; set; }
         /// <summary>
-        /// 
+        /// Requested random product from product list
         /// </summary>
         public ProductE Product { get; set; }
     }

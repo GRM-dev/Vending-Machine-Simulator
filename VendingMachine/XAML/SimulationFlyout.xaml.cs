@@ -24,15 +24,15 @@ namespace VendingMachine.XAML
     {
         private byte _simState;
         /// <summary>
-        /// 
+        /// Simulation state (stopped)
         /// </summary>
         public const byte STOPPED = 0;
         /// <summary>
-        /// 
+        /// Simulation state (running)
         /// </summary>
         public const byte RUNNING = 1;
         /// <summary>
-        /// 
+        /// Simulation state (paused)
         /// </summary>
         public const byte PAUSED = 2;
 
@@ -46,7 +46,7 @@ namespace VendingMachine.XAML
         }
 
         /// <summary>
-        /// 
+        /// Updates main view
         /// </summary>
         public void Update()
         {
@@ -78,7 +78,7 @@ namespace VendingMachine.XAML
         }
 
         /// <summary>
-        /// 
+        /// Updates simulation buttons
         /// </summary>
         private void UpdateSimulationButtons()
         {
@@ -97,7 +97,7 @@ namespace VendingMachine.XAML
         }
 
         /// <summary>
-        /// 
+        /// Gets simulation states
         /// </summary>
         public byte SimulationState
         {

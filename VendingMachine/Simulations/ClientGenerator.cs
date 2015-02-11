@@ -16,7 +16,7 @@ using VendingMachine.XAML;
 namespace VendingMachine.Simulations
 {
     /// <summary>
-    /// 
+    /// Clients simulation
     /// </summary>
     public class ClientGenerator
     {
@@ -33,7 +33,7 @@ namespace VendingMachine.Simulations
 
 
         /// <summary>
-        /// 
+        /// Client Generation start
         /// </summary>
         /// <param name="simulationFlyout"></param>
         public ClientGenerator(SimulationFlyout simulationFlyout)
