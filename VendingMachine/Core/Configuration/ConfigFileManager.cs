@@ -66,7 +66,9 @@ namespace VendingMachine.Core.Configuration
                 ProductE productE = (ProductE)Enum.ToObject(typeof(ProductE), ID);
                 ProductData productData = new ProductData(productE);
                 productData.Product_Count = Convert.ToInt32(node["Count"].InnerText);
-                productData.Product_Price = Convert.ToDouble(node["Price"].InnerText);
+                string price = node["Price"].InnerText;
+                price = price.Replace(",", ".");
+                productData.Product_Price = Convert.ToDouble(price);
                 products.Add(productE, productData);
             }
             return products;
