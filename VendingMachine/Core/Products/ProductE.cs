@@ -11,6 +11,6 @@ namespace VendingMachine.Core.Products
     /// </summary>
     public enum ProductE
     {
-        Null=0, _3Bit, Mars, Cappy, Rogal
+        Null=0, _3Bit=12, Mars=13, Cappy=14, Rogal=15
     }
 }

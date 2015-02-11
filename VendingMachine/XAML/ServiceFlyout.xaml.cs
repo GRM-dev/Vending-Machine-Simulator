@@ -83,10 +83,25 @@ namespace VendingMachine.XAML
             {
                 string txt = PMAddCount.Text;
                 ValueHandler vh = new ValueHandler(txt);
-                if (vh.PropertyType != ValueTypes.STRING && ((double)vh.Value) > 0 &&
-                    ((double)vh.Value) <= (double)new ValueHandler(ConfigProperties.instance.getProperty(ConfigPropertyType.SLOT_SIZE).Value).Value)
+                int slotSize = Convert.ToInt32(ConfigProperties.instance.getProperty(ConfigPropertyType.SLOT_SIZE).Value);
+                int pCount=0;
+                if (vh.PropertyType == ValueTypes.DOUBLE && (pCount=Convert.ToInt32(vh.Value)) > 0 &&
+                    (pCount <= slotSize))
                 {
-                    ProductsController.AddProductToList(new Product((ProductE)PMAddProduct.SelectedItem));
+                    if (ProductsController.hasProduct((int)PMAddProduct.SelectedItem))
+                    {
+                        int count = ProductsController.getProductData((ProductE)PMAddProduct.SelectedItem).Product_Count;
+                        if (count < slotSize)
+                        {
+                            ProductsController.getProductData((ProductE)PMAddProduct.SelectedItem).Product_Count += pCount;
+                        }
+                    }
+                    else
+                    {
+                        Product product = new Product((ProductE)PMAddProduct.SelectedItem);
+                        product.PData.Product_Count = pCount;
+                        ProductsController.AddProductToList(product);
+                    }
                 }
             }
             Update();
@@ -96,7 +111,7 @@ namespace VendingMachine.XAML
         {
             string txt = PMRemoveCount.Text;
             ValueHandler vh = new ValueHandler(txt);
-            if (PMRemoveProduct.SelectedItem != null && vh.PropertyType != ValueTypes.STRING && ((double)vh.Value) > 0)
+            if (PMRemoveProduct.SelectedItem != null && vh.PropertyType == ValueTypes.DOUBLE && ((int)vh.Value) > 0)
             {
                 var item = PMRemoveProduct.SelectedItem as string;
 
@@ -135,7 +150,7 @@ namespace VendingMachine.XAML
                 string txt = PMChangePriceNmb.Text;
                 ValueHandler vh = new ValueHandler(txt);
                 double dbVal = 0;
-                if (vh.PropertyType != ValueTypes.STRING && (dbVal=(double)vh.Value) > 0)
+                if (vh.PropertyType != ValueTypes.STRING && (dbVal = (double)vh.Value) > 0)
                 {
                     var pName = PMChangeProductPrice.SelectedItem as string;
                     ProductE pE = ProductsController.getProductE(pName);

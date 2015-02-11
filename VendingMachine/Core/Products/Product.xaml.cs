@@ -79,6 +79,7 @@ namespace VendingMachine.Core.Products
             {
                 Product_Count_Lbl.Text = "Pozostało: " + PData.Product_Count;
                 Product_Price_Lbl.Text = "Cena: " + PData.Product_Price;
+                Product_ID_Lbl.Text = "N: " + PData.Product_ID;
             }
         }
 
