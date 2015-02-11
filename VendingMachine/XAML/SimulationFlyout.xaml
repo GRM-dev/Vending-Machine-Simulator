@@ -4,8 +4,31 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="600" d:DesignWidth="300">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="90"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Start/Stop"/>
+            <Button x:Name="StartButton" Click="StartButton_Click" Content="Start" Width="75" Margin="20,0,0,0"  Style="{DynamicResource FlyOutButton}"/>
+            <Button x:Name="StopButton" Click="StopButton_Click" Content="Stop" Width="75" Margin="20,0,0,0"  Style="{DynamicResource FlyOutButton}"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="1">
+            <TextBlock Text="Speed" Style="{DynamicResource FlyOutTextBlock}" Margin="10,22,10,23" Width="42" />
+            <DockPanel VerticalAlignment="Center" Margin="10">
+                <TextBox Text="{Binding ElementName=slValue, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Right" Width="40" />
+                <Slider Maximum="20" Minimum="1" TickPlacement="BottomRight" TickFrequency="1" IsSnapToTickEnabled="True" Name="slValue" Width="163" />
+            </DockPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="2"></StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="3"></StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="4"></StackPanel>
     </Grid>
 </UserControl>
