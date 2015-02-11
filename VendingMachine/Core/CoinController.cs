@@ -14,6 +14,8 @@ namespace VendingMachine.Core
     /// </summary>
     class CoinController
     {
+        private static Boolean initialized = false;
+
         /// <summary>
         /// When the v param is correct coin value than returns true
         /// </summary>
@@ -67,7 +69,8 @@ namespace VendingMachine.Core
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
-        public static Boolean hasEnoughMoney(double value) {
+        public static Boolean hasEnoughMoney(double value)
+        {
             return value <= TempCoinDepository ? true : false;
         }
 
@@ -80,6 +83,20 @@ namespace VendingMachine.Core
             double returnV = TempCoinDepository;
             TempCoinDepository = 0;
             return returnV;
+        }
+
+        public static void Init(string account)
+        {
+            if (!initialized)
+            {
+                try { MainCoinDepository = Convert.ToDouble(account); }
+                catch (FormatException e)
+                {
+                    MainCoinDepository = 100;
+                    Logger.ExceptionLog(e, "Main Depo set to default 100 cause of convert problem");
+                }
+                initialized = true;
+            }
         }
 
         /// <summary>

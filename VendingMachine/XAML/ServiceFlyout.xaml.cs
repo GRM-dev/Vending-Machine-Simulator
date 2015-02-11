@@ -38,7 +38,7 @@ namespace VendingMachine.XAML
         /// </summary>
         public void Update()
         {
-            if (ConfigProperties.instance.Contains(ConfigPropertyType.WORKS) && ConfigProperties.instance.getProperty(ConfigPropertyType.WORKS).Value.Equals("true"))
+            if (ConfigProperties.instance.Contains(ConfigPropertyType.WORKS) && ConfigProperties.instance.getProperty(ConfigPropertyType.WORKS).Value.Equals("True"))
             {
                 RepairButton.IsEnabled = true;
             }
@@ -73,13 +73,13 @@ namespace VendingMachine.XAML
 
         private void Repair_Button_Click(object sender, RoutedEventArgs e)
         {
-            ConfigProperties.instance.getProperty(ConfigPropertyType.WORKS).Value = "false";
+            ConfigProperties.instance.getProperty(ConfigPropertyType.WORKS).Value = "False";
             Update();
         }
 
         private void AddProduct_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (ConfigProperties.instance.getProperty(ConfigPropertyType.WORKS).Value == "true")
+            if (ConfigProperties.instance.getProperty(ConfigPropertyType.WORKS).Value == "True")
             {
                 return;
             }
@@ -114,7 +114,7 @@ namespace VendingMachine.XAML
 
         private void RemoveProduct_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (ConfigProperties.instance.getProperty(ConfigPropertyType.WORKS).Value == "true")
+            if (ConfigProperties.instance.getProperty(ConfigPropertyType.WORKS).Value == "True")
             {
                 return;
             }
@@ -131,7 +131,7 @@ namespace VendingMachine.XAML
         }
         private void ChangeProductCount_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (ConfigProperties.instance.getProperty(ConfigPropertyType.WORKS).Value == "true")
+            if (ConfigProperties.instance.getProperty(ConfigPropertyType.WORKS).Value == "True")
             {
                 return;
             }
@@ -159,7 +159,7 @@ namespace VendingMachine.XAML
 
         private void ChangeProductPrice_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (ConfigProperties.instance.getProperty(ConfigPropertyType.WORKS).Value == "true")
+            if (ConfigProperties.instance.getProperty(ConfigPropertyType.WORKS).Value == "True")
             {
                 return;
             }
@@ -183,7 +183,7 @@ namespace VendingMachine.XAML
 
         private void ShowStats_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (ConfigProperties.instance.getProperty(ConfigPropertyType.WORKS).Value == "true")
+            if (ConfigProperties.instance.getProperty(ConfigPropertyType.WORKS).Value == "True")
             {
                 return;
             }
@@ -192,7 +192,7 @@ namespace VendingMachine.XAML
 
         private void ChangeAccount_Button_Click(object sender, RoutedEventArgs e)
         {
-            if (ConfigProperties.instance.getProperty(ConfigPropertyType.WORKS).Value == "true")
+            if (ConfigProperties.instance.getProperty(ConfigPropertyType.WORKS).Value == "True")
             {
                 return;
             }

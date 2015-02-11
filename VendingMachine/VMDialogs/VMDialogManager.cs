@@ -33,6 +33,28 @@ namespace VendingMachine.VMDialogs
         }
 
         /// <summary>
+        /// Shows Message with only confirm action
+        /// </summary>
+        /// <param name="title"></param>
+        /// <param name="message"></param>
+        /// <param name="dialogStyle"></param>
+        /// <returns></returns>
+        public static async Task<MessageDialogResult> ShowMessage(string title, string message, MessageDialogStyle dialogStyle)
+        {
+            var metroWindow = (Application.Current.MainWindow as MainWindow);
+            if (metroWindow.IsLoaded)
+            {
+                metroWindow.MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Accented;
+                await metroWindow.ShowMessageAsync(title, message, dialogStyle);
+            }
+            else
+            {
+                MessageBox.Show(message);
+            }
+            return MessageDialogResult.Affirmative;
+        }
+
+        /// <summary>
         /// Shows Input Coin Dialog Box
         /// </summary>
         public static async void ShowInputCoinDialog()
@@ -80,21 +102,6 @@ namespace VendingMachine.VMDialogs
             }
             Console.WriteLine(exception);
             Logger.Log(exception);
-        }
-
-        /// <summary>
-        /// Shows Message with only confirm action
-        /// </summary>
-        /// <param name="title"></param>
-        /// <param name="message"></param>
-        /// <param name="dialogStyle"></param>
-        /// <returns></returns>
-        public static async Task<MessageDialogResult> ShowMessage(string title, string message, MessageDialogStyle dialogStyle)
-        {
-            var metroWindow = (Application.Current.MainWindow as MainWindow);
-            metroWindow.MetroDialogOptions.ColorScheme = MetroDialogColorScheme.Accented;
-            await metroWindow.ShowMessageAsync(title, message, dialogStyle);
-            return MessageDialogResult.Affirmative;
         }
 
         /// <summary>

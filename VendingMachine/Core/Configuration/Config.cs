@@ -87,6 +87,7 @@ namespace VendingMachine.Core.Configuration
             catch (Exception e)
             {
                 VMDialogManager.ShowExceptionMessage(e);
+                Logger.ExceptionLog(e,"Read config error");
             }
         }
 
@@ -95,12 +96,14 @@ namespace VendingMachine.Core.Configuration
         /// </summary>
         private static void printConfig()
         {
-            Console.WriteLine("-------- Config Start --------");
+            string cs = "-------- Config Start --------";
+            string confs="";
             foreach (KeyValuePair<int, ConfigProperty> entry in ConfigProperties.instance.Properties)
             {
-                Console.WriteLine(entry.Key + ": " + entry.Value.Name + " = " + entry.Value.Value);
+                confs=confs+"\n"+entry.Key + ": " + entry.Value.Name + " = " + entry.Value.Value;
             }
-            Console.WriteLine("-------- Config End ----------");
+            string ce = "\n-------- Config End ----------";
+            Logger.Log(cs+confs+ce);
         }
 
         /// <summary>
@@ -120,12 +123,14 @@ namespace VendingMachine.Core.Configuration
                 {
                     case ConfigPropertyType.WINDOW_HEIGHT: VMachine.instance.MWindow.Height = Convert.ToInt32(property.Value); break;
                     case ConfigPropertyType.WINDOWS_WIDTH: VMachine.instance.MWindow.Width = Convert.ToInt32(property.Value); break;
+                    case ConfigPropertyType.WINDOW_FULLSCREEN: break;
                     case ConfigPropertyType.MONEY_COLLECTED: break;
-                    case ConfigPropertyType.WORKS: if (ConfigProperties.instance.getProperty(prop).Value == "true") VMDialogManager.ShowExceptionMessage(new Exception("Automat zepsuty")); break;
+                    case ConfigPropertyType.WORKS: if (ConfigProperties.instance.getProperty(prop).Value == "True") VMDialogManager.ShowExceptionMessage(new Exception("Automat zepsuty")); break;
                     case ConfigPropertyType.SERVICE_PASSWD: break;
                     case ConfigPropertyType.SLOTS_COUNT: ProductsController.setupSlots(property.Value); break;
                     case ConfigPropertyType.SLOT_SIZE: break;
-                    case ConfigPropertyType.CALL_FOR_REFILL: VMDialogManager.ShowInfoMessage("Obsługa do uzupełnienia wezwana ... chyba"); break;
+                    case ConfigPropertyType.CALL_FOR_REFILL: if (ConfigProperties.instance.getProperty(prop).Value == "True") VMDialogManager.ShowInfoMessage("Obsługa do uzupełnienia wezwana ... chyba"); break;
+                    case ConfigPropertyType.ACCOUNT: CoinController.Init(ConfigProperties.instance.getProperty(prop).Value); break;
                     default: Logger.Log("There is no " + property.PropertyType.ToString() + " property in configuration loader switch statement!"); break;
                 }
             }

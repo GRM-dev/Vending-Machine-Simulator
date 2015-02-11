@@ -55,7 +55,7 @@ namespace VendingMachine.XAML
 
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
-            if (ConfigProperties.instance.getProperty(ConfigPropertyType.WORKS).Value == "true")
+            if (ConfigProperties.instance.getProperty(ConfigPropertyType.WORKS).Value == "True")
             {
                 return;
             }

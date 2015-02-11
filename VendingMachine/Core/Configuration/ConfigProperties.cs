@@ -18,14 +18,16 @@ namespace VendingMachine.Core.Configuration
         /// </summary>
         public static ConfigProperties instance = new ConfigProperties();
         private Dictionary<int, ConfigProperty> _properties;
-        private ConfigProperty FullScreen = new ConfigProperty("FullScreen", "false", ConfigPropertyType.WINDOW_FULLSCREEN);
+        private ConfigProperty FullScreen = new ConfigProperty("FullScreen", "False", ConfigPropertyType.WINDOW_FULLSCREEN);
         private ConfigProperty WindowWidth = new ConfigProperty("Width", "600", ConfigPropertyType.WINDOWS_WIDTH);
         private ConfigProperty WindowHeight = new ConfigProperty("Height", "800", ConfigPropertyType.WINDOW_HEIGHT);
         private ConfigProperty SlotsCount = new ConfigProperty("SlotsCount", "20", ConfigPropertyType.SLOTS_COUNT);
         private ConfigProperty SlotSize = new ConfigProperty("SlotSize", "12", ConfigPropertyType.SLOT_SIZE);
         private ConfigProperty MoneyCollected = new ConfigProperty("MoneyInMachine", "10", ConfigPropertyType.MONEY_COLLECTED);
-        private ConfigProperty ServiceNeeded = new ConfigProperty("ServiceNeed", "0", ConfigPropertyType.WORKS);
+        private ConfigProperty Works = new ConfigProperty("Works", "0", ConfigPropertyType.WORKS);
         private ConfigProperty ServicePasswd = new ConfigProperty("ServicePasswd", "654321", ConfigPropertyType.SERVICE_PASSWD);
+        private ConfigProperty CallForRefill = new ConfigProperty("CallForRefill", "False", ConfigPropertyType.CALL_FOR_REFILL);
+        private ConfigProperty  Account= new ConfigProperty("Account", "100", ConfigPropertyType.ACCOUNT);
         //private ConfigProperty  = new ConfigProperty("", "", ConfigPropertyType.);
 
         private ConfigProperties()
@@ -44,8 +46,10 @@ namespace VendingMachine.Core.Configuration
             Add(SlotsCount);
             Add(SlotSize);
             Add(MoneyCollected);
-            Add(ServiceNeeded);
+            Add(Works);
             Add(ServicePasswd);
+            Add(CallForRefill);
+            Add(Account);
         }
 
         /// <summary>
@@ -64,7 +68,14 @@ namespace VendingMachine.Core.Configuration
         /// <param name="value"></param>
         public static void Update(ConfigPropertyType property, string value)
         {
-            instance.Properties[(int)property].Value = value;
+            if (instance.Properties.ContainsKey((int)property))
+            {
+                instance.Properties[(int)property].Value = value;
+            }
+            else
+            {
+                Logger.Log("Property Value Update " + property.ToString() + " not found");
+            }
         }
 
         /// <summary>

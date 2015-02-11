@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VendingMachine.Core.Configuration;
+using VendingMachine.Core.Misc;
 using VendingMachine.VMDialogs;
 using VendingMachine.XAML;
 
@@ -30,6 +31,7 @@ namespace VendingMachine.Core
             MWindow = mainWindow;
             Config = new Config();
             Config.LoadAllConfigs();
+            Logger.Log("Uruchamianie symulatora");
         }
 
         /// <summary>

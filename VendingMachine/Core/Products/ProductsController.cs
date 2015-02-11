@@ -27,6 +27,23 @@ namespace VendingMachine.Core.Products
                 Products.Add(product.PData.Product_ID, product);
             }
             ParseProductsOnView();
+            CheckForRefill();
+        }
+
+        public static void CheckForRefill()
+        {
+            Boolean refill = false;
+            if (Products.Count >= Enum.GetValues(typeof(ProductE)).Length - 1)
+            {
+                foreach (KeyValuePair<int, Product> node in Products)
+                {
+                    if (node.Value.PData.Product_Count < 3)
+                    {
+                        refill = true;
+                    }
+                }
+            } 
+            ConfigProperties.Update(ConfigPropertyType.CALL_FOR_REFILL, refill.ToString());
         }
 
         /// <summary>
@@ -155,24 +172,21 @@ namespace VendingMachine.Core.Products
                     }
                 }
             }
-            if (pCount < 3)
-            {
-                ConfigProperties.Update(ConfigPropertyType.CALL_FOR_REFILL, "true");
-            }
+            CheckForRefill();
         }
 
-       /// <summary>
-       /// 
-       /// </summary>
-       /// <param name="ID"></param>
-       /// <param name="count"></param>
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="ID"></param>
+        /// <param name="count"></param>
         public static void RemoveProduct(int ID, int count)
         {
             var values = Enum.GetValues(typeof(ProductE));
             Grid ProductsView = VMachine.instance.MWindow.VMMainPage.ProductsView;
             foreach (ProductE pE in values)
             {
-                if (((int)pE)==ID)
+                if (((int)pE) == ID)
                 {
                     if (hasProduct(ID))
                     {
@@ -190,25 +204,7 @@ namespace VendingMachine.Core.Products
                     }
                 }
             }
-        }
-
-        public static void RemoveProduct(string productName)
-        {
-            Grid ProductsView = VMachine.instance.MWindow.VMMainPage.ProductsView;
-            var values = Enum.GetValues(typeof(ProductE));
-            foreach (ProductE pE in values)
-            {
-                if (pE.ToString().Equals(productName))
-                {
-                    int ID = (int)pE;
-                    if (hasProduct(ID))
-                    {
-                        Product product = Products[ID];
-                        ProductsView.Children.Remove(product);
-                        Products.Remove(ID);
-                    }
-                }
-            }
+            CheckForRefill();
         }
 
         /// <summary>

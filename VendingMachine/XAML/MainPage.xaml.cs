@@ -121,7 +121,7 @@ namespace VendingMachine
         /// <param name="number"></param>
         private void Nmb_Button_Clicked(int number)
         {
-            if (ConfigProperties.instance.getProperty(ConfigPropertyType.WORKS).Value == "true")
+            if (ConfigProperties.instance.getProperty(ConfigPropertyType.WORKS).Value == "True")
             {
                 return;
             }

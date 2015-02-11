@@ -23,7 +23,6 @@ namespace VendingMachine.Simulations
         private SimulationFlyout simulationFlyout;
         private Random rand = new Random();
         private Thread thread;
-        private int servicedClients = 0;
         private MainPage mPage = VMachine.instance.MWindow.VMMainPage;
         private SimulationFlyout simF = VMachine.instance.MWindow.SimulationFlyoutP;
         private Dispatcher disp = Application.Current.Dispatcher;
@@ -83,13 +82,12 @@ namespace VendingMachine.Simulations
                     }
                     CoinController.ReturnTempDepo();
                 }
-                servicedClients++;
                 updateParams();
                 if (rand.Next(0,300) == 200)
                 {
                    disp.BeginInvoke((Action)(() => simF.SimulationState = SimulationFlyout.STOPPED));
                    disp.BeginInvoke((Action)(() => VMDialogManager.ShowExceptionMessage(new Exception("Błąd!"))));
-                   ConfigProperties.Update(ConfigPropertyType.WORKS,"true");
+                   ConfigProperties.Update(ConfigPropertyType.WORKS,"True");
                 }
                 double rnD = rand.NextDouble() * 10;
                 int sleepTime = Convert.ToInt32(1000 * rnD / selSpeed);
@@ -103,7 +101,7 @@ namespace VendingMachine.Simulations
 
         private void updateParams()
         {
-            disp.BeginInvoke((Action)(() => simF.ServicedClientsCount.Text = servicedClients.ToString()));
+            disp.BeginInvoke((Action)(() => simF.ServicedClientsCount.Text = clients.Count.ToString()));
             disp.BeginInvoke((Action)(() => selSpeed = Convert.ToInt32(simF.SpeedValue.Text)));
             disp.BeginInvoke((Action)(() => simF.SoldProductsCount.Text = soldProducts.ToString()));
             disp.BeginInvoke((Action)(() => simF.EarnedMoney.Text = earnedMoney.ToString()));
