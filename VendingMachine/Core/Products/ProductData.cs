@@ -42,8 +42,16 @@ namespace VendingMachine.Core.Products
             {
                 case ProductE.Mars: image = vmRD["Mars"]; break;
                 case ProductE._3Bit: image = vmRD["_3Bit"]; break;
+                case ProductE.Snicers: image = vmRD["Snicers"]; break;
+                case ProductE.Princessa: image = vmRD["Princessa"]; break;
                 case ProductE.Cappy: image = vmRD["Cappy"]; break;
+                case ProductE.Sprite: image = vmRD["Sprite"]; break;
+                case ProductE.Cola: image = vmRD["Cola"]; break;
+                case ProductE.Bull: image = vmRD["Bull"]; break;
                 case ProductE.Rogal: image = vmRD["Rogal"]; break;
+                case ProductE.Paluszki: image = vmRD["Paluszki"]; break;
+                case ProductE.Ciastka: image = vmRD["Ciastka"]; break;
+                case ProductE.Sandwich: image = vmRD["Sandwich"]; break;
                 default: Logger.Log("no image in dictionary or switch");
                     break;
             }
