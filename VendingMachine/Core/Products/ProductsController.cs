@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Documents;
 using VendingMachine.Core.Configuration;
 
 namespace VendingMachine.Core.Products
@@ -42,7 +43,7 @@ namespace VendingMachine.Core.Products
                         refill = true;
                     }
                 }
-            } 
+            }
             ConfigProperties.Update(ConfigPropertyType.CALL_FOR_REFILL, refill.ToString());
         }
 
@@ -318,12 +319,17 @@ namespace VendingMachine.Core.Products
             ProductsView.Children.Clear();
             int row = 1;
             int column = 1;
-            foreach (KeyValuePair<int, Product> node in Products)
+            List<KeyValuePair<int,Product>> pSList = Products.ToList();
+            pSList.Sort(delegate(KeyValuePair<int, Product> fPair, KeyValuePair<int, Product> sPair)
+            {
+                return fPair.Value.PData.Product_ID.CompareTo(sPair.Value.PData.Product_ID);
+            });
+            foreach (KeyValuePair<int, Product> node in pSList)
             {
                 AddProductToView(row, column, node.Value);
                 if (column == columns.Count)
                 {
-                    column = 1;
+                    column = 0;
                     row++;
                 }
                 if (row == rows.Count)
