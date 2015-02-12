@@ -89,22 +89,29 @@ namespace VendingMachine.XAML
                 string txt = PMAddCount.Text;
                 ValueHandler vh = new ValueHandler(txt);
                 int slotSize = Convert.ToInt32(ConfigProperties.instance.getProperty(ConfigPropertyType.SLOT_SIZE).Value);
-                int pCount=0;
-                if (vh.PropertyType == ValueTypes.DOUBLE && (pCount=Convert.ToInt32(vh.Value)) > 0 &&
-                    (pCount <= slotSize))
+                int pAddedCount=0;
+                if (vh.PropertyType == ValueTypes.DOUBLE && (pAddedCount=Convert.ToInt32(vh.Value)) > 0 &&
+                    (pAddedCount <= slotSize))
                 {
                     if (ProductsController.hasProduct((int)PMAddProduct.SelectedItem))
                     {
                         int count = ProductsController.getProductData((ProductE)PMAddProduct.SelectedItem).Product_Count;
                         if (count < slotSize)
                         {
-                            ProductsController.getProductData((ProductE)PMAddProduct.SelectedItem).Product_Count += pCount;
+                            if (ProductsController.getProductData((ProductE)PMAddProduct.SelectedItem).Product_Count + pAddedCount > slotSize)
+                            {
+                                ProductsController.getProductData((ProductE)PMAddProduct.SelectedItem).Product_Count = 12;
+                            }
+                            else
+                            {
+                                ProductsController.getProductData((ProductE)PMAddProduct.SelectedItem).Product_Count += pAddedCount;
+                            }
                         }
                     }
                     else
                     {
                         Product product = new Product((ProductE)PMAddProduct.SelectedItem);
-                        product.PData.Product_Count = pCount;
+                        product.PData.Product_Count = pAddedCount;
                         product.PData.Product_Price = 2;
                         ProductsController.AddProductToList(product);
                     }

@@ -14,7 +14,7 @@ namespace VendingMachine.Core.Products
         private static Dictionary<int, Product> _products = new Dictionary<int, Product>();
 
         /// <summary>
-        /// 
+        /// Adds product to the list
         /// </summary>
         /// <param name="product"></param>
         public static void AddProductToList(Product product)
@@ -31,6 +31,9 @@ namespace VendingMachine.Core.Products
             CheckForRefill();
         }
 
+        /// <summary>
+        /// When there is a lack of product than calls for service
+        /// </summary>
         public static void CheckForRefill()
         {
             Boolean refill = false;
@@ -60,7 +63,7 @@ namespace VendingMachine.Core.Products
         }
 
         /// <summary>
-        /// 
+        /// Adds product just to view grid
         /// </summary>
         /// <param name="row"></param>
         /// <param name="column"></param>
@@ -144,7 +147,7 @@ namespace VendingMachine.Core.Products
         }
 
         /// <summary>
-        /// 
+        /// Removes specified amount of products
         /// </summary>
         /// <param name="productName"></param>
         /// <param name="count"></param>
@@ -177,7 +180,7 @@ namespace VendingMachine.Core.Products
         }
 
         /// <summary>
-        /// 
+        /// as above
         /// </summary>
         /// <param name="ID"></param>
         /// <param name="count"></param>
@@ -209,7 +212,7 @@ namespace VendingMachine.Core.Products
         }
 
         /// <summary>
-        /// 
+        /// gets ProductE of name product
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -258,14 +261,14 @@ namespace VendingMachine.Core.Products
         }
 
         /// <summary>
-        /// 
+        /// Change Product Count
         /// </summary>
         /// <param name="id"></param>
         /// <param name="newCount"></param>
         public static void ChangeProductCount(int id, int newCount)
         {
             ProductData pData = getProductData(id);
-            if (pData != null)
+            if (pData != null&&newCount<=Convert.ToInt32(ConfigProperties.instance.getProperty(ConfigPropertyType.SLOT_SIZE).Value))
             {
                 pData.Product_Count = newCount;
             }
@@ -342,7 +345,7 @@ namespace VendingMachine.Core.Products
         }
 
         /// <summary>
-        /// 
+        /// Products Dictionary List
         /// </summary>
         public static Dictionary<int, Product> Products
         {
