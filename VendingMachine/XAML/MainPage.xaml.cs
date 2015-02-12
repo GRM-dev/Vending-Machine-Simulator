@@ -30,7 +30,7 @@ namespace VendingMachine
         public MainPage()
         {
             InitializeComponent();
-            ProductsView.ShowGridLines = true; //TODO: just to test
+            ProductsView.ShowGridLines = true;
         }
 
         private void wrzut_Monety_Click(object sender, RoutedEventArgs e)

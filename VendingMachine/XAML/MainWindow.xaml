@@ -5,6 +5,7 @@
         Title="Vending Machine" Height="800" Width="800" WindowStartupLocation="CenterScreen" FontWeight="Bold" MinHeight="800" MinWidth="800" Icon="pack://siteoforigin:,,,/Resources/favicon.ico">
     <Controls:MetroWindow.RightWindowCommands>
         <Controls:WindowCommands>
+            <Button Content="Info" Click="Info_Button_Click" />
             <Button Content="Simulation" Click="Simulation_Button_Click" />
             <Button Click="Servis_Button_Click">
                 <StackPanel Orientation="Horizontal">

@@ -1,4 +1,5 @@
 ﻿using MahApps.Metro.Controls;
+using MahApps.Metro.Controls.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -63,7 +64,7 @@ namespace VendingMachine
         }
 
         /// <summary>
-        /// 
+        /// When app closing is requested
         /// </summary>
         /// <param name="e"></param>
         protected override void OnClosing(CancelEventArgs e)
@@ -88,5 +89,10 @@ namespace VendingMachine
         /// Simulation card
         /// </summary>
         public SimulationFlyout SimulationFlyoutP { get; private set; }
+
+        private void Info_Button_Click(object sender, RoutedEventArgs e)
+        {
+            VMDialogManager.ShowInfoMessage("Info", "Aplikację wykonali: A.Gulik, M.Tycner, K.Imburski, Ł.Lewandowski.");
+        }
     }
 }
