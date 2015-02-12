@@ -113,7 +113,7 @@ namespace VendingMachine.VMDialogs
         public static async void ShowInputMessage(string title, string message, ConfigPropertyType propertyType)
         {
             var metroWindow = (Application.Current.MainWindow as MainWindow);
-            await DialogManager.ShowMetroDialogAsync(metroWindow, new VMInputDialog(metroWindow));
+            await DialogManager.ShowMetroDialogAsync(metroWindow, new VMInputDialog(metroWindow,title,message,propertyType));
         }
 
         /// <summary>

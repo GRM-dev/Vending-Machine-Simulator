@@ -65,7 +65,7 @@
             <TextBlock Text="Stan konta" Style="{DynamicResource FlyOutTextBlock}" FontSize="16" Margin="0,22" Width="79"/>
             <TextBlock x:Name="AccountStateValue" Style="{DynamicResource FlyOutTextBlock}" Margin="0,25" Width="50" FontSize="16"/>
             <Button x:Name="ChangeAccountButton" Content="Zmień stan" Style="{DynamicResource FlyOutButton}" Click="ChangeAccount_Button_Click" Width="75" />
-            <Button x:Name="ShowStats" Content="Statystyki" Style="{DynamicResource FlyOutButton}" IsEnabled="False" Click="ShowStats_Button_Click" Width="75" Margin="7,0,0,0" />
+            <Button x:Name="ShowStats" Content="Statystyki" Style="{DynamicResource FlyOutButton}" Click="ShowStats_Button_Click" Width="75" Margin="7,0,0,0" />
         </StackPanel>
     </Grid>
 </Page>

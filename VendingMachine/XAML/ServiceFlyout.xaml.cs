@@ -17,6 +17,7 @@ using VendingMachine.Core;
 using VendingMachine.Core.Configuration;
 using VendingMachine.Core.Misc;
 using VendingMachine.Core.Products;
+using VendingMachine.VMDialogs;
 
 namespace VendingMachine.XAML
 {
@@ -187,6 +188,8 @@ namespace VendingMachine.XAML
             {
                 return;
             }
+            string msg = ConfigProperties.instance.getProperty(ConfigPropertyType.ACCOUNT).Value;
+            VMDialogManager.ShowInfoMessage("Stan konta",msg+" zł");
             Update();
         }
 
@@ -196,6 +199,7 @@ namespace VendingMachine.XAML
             {
                 return;
             }
+            VMDialogManager.ShowInputMessage("Zmień Stan konta", "Stan:", ConfigPropertyType.ACCOUNT);
             Update();
         }
     }
