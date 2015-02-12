@@ -91,9 +91,14 @@ namespace VendingMachine.XAML
                 case RUNNING: start = false; stop = true; pause = true; break;
                 case PAUSED: start = true; stop = true; pause = false; break;
             }
-            StartButton.IsEnabled=start;
-            PauseButton.IsEnabled=pause;
-            StopButton.IsEnabled=stop;
+            Dispatcher.BeginInvoke((Action)(() =>
+            {
+                StartButton.IsEnabled = start;
+                PauseButton.IsEnabled = pause;
+                StopButton.IsEnabled = stop;
+            }));
+
+            
         }
 
         /// <summary>

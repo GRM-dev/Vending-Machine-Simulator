@@ -63,7 +63,15 @@ namespace VendingMachine.Simulations
         /// </summary>
         public void StartGenerator()
         {
-            while (simulationFlyout.SimulationState==SimulationFlyout.RUNNING)
+            string cL="0";
+             string pL="0";
+            disp.Invoke(DispatcherPriority.Normal, new Action(delegate() { cL =simF.ClientsMaxLimit.Text; }));
+            disp.Invoke(DispatcherPriority.Normal, new Action(delegate() { pL = simF.ProductsMaxLimit.Text; }));
+            int clientsLimit = Convert.ToInt32(cL);
+            int soldProductsLimit=Convert.ToInt32(pL);
+            clientsLimit = clientsLimit == 0 ? int.MaxValue : clientsLimit;
+            soldProductsLimit = soldProductsLimit == 0 ? int.MaxValue : soldProductsLimit;
+            while (simulationFlyout.SimulationState==SimulationFlyout.RUNNING&&clients.Count<clientsLimit&&soldProducts<soldProductsLimit)
             {
                 Client client = new Client();
                 clients.Add(client);
@@ -97,6 +105,7 @@ namespace VendingMachine.Simulations
                 }
                 catch (ThreadInterruptedException e) { }
             }
+            simF.SimulationState = SimulationFlyout.STOPPED;
         }
 
         private void updateParams()

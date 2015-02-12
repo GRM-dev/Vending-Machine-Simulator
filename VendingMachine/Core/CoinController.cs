@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using VendingMachine.Core.Configuration;
 using VendingMachine.Core.Misc;
 
 namespace VendingMachine.Core
@@ -53,15 +54,7 @@ namespace VendingMachine.Core
         {
             TempCoinDepository -= value;
             MainCoinDepository += value;
-        }
-
-        /// <summary>
-        /// Throws temporary container to the main money container.
-        /// </summary>
-        public static void addAllTempToMainCoinDepository()
-        {
-            MainCoinDepository += TempCoinDepository;
-            TempCoinDepository = 0f;
+            ConfigProperties.Update(ConfigPropertyType.ACCOUNT, MainCoinDepository.ToString());
         }
 
         /// <summary>
