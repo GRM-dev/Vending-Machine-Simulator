@@ -54,13 +54,23 @@ namespace VendingMachine
             flyout.IsOpen = !flyout.IsOpen;
         }
 
-        private void Servis_Button_Click(object sender, RoutedEventArgs e)
+        private async void Servis_Button_Click(object sender, RoutedEventArgs e)
         {
-            var flyoutE = this.Flyouts.Items[0] as Flyout; //make a passwd protection
-            var flyout = this.Flyouts.Items[1] as Flyout;
-            ServiceFlyoutP.Update();
-            flyoutE.IsOpen = false;
-            flyout.IsOpen = !flyout.IsOpen;
+            string passwd = await DialogManager.ShowInputAsync(this, "Passwd", "passwd:");
+            string passwdO = ConfigProperties.instance.getProperty(ConfigPropertyType.SERVICE_PASSWD).Value;
+            if (passwd != null && passwd.Equals(passwdO))
+            {
+                var flyoutE = this.Flyouts.Items[0] as Flyout;
+                var flyout = this.Flyouts.Items[1] as Flyout;
+                ServiceFlyoutP.Update();
+                flyoutE.IsOpen = false;
+                flyout.IsOpen = !flyout.IsOpen;
+            }
+        }
+
+        private void Info_Button_Click(object sender, RoutedEventArgs e)
+        {
+            VMDialogManager.ShowInfoMessage("Info", "Aplikację wykonali:\nA. Gulik,\n\tM. Tycner,\n\tK. Imburski,\n\tŁ. Lewandowski.\n\nW ramach projektu naukowego");
         }
 
         /// <summary>
@@ -89,10 +99,5 @@ namespace VendingMachine
         /// Simulation card
         /// </summary>
         public SimulationFlyout SimulationFlyoutP { get; private set; }
-
-        private void Info_Button_Click(object sender, RoutedEventArgs e)
-        {
-            VMDialogManager.ShowInfoMessage("Info", "Aplikację wykonali: A.Gulik, M.Tycner, K.Imburski, Ł.Lewandowski.");
-        }
     }
 }

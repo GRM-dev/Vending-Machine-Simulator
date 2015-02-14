@@ -25,9 +25,11 @@
     <CppCommentsFixup>False</CppCommentsFixup>
     <CleanIntermediates>True</CleanIntermediates>
     <DocumentationSources>
-      <DocumentationSource sourceFile="VendingMachine\bin\Debug\VendingMachine.exe" xmlns="" />
-      <DocumentationSource sourceFile="VendingMachine\bin\Debug\VendingMachine.xml" xmlns="" />
-    </DocumentationSources>
+      <DocumentationSource sourceFile="..\VendingMachine\bin\Release\MahApps.Metro.dll" />
+<DocumentationSource sourceFile="..\VendingMachine\bin\Release\MahApps.Metro.xml" />
+<DocumentationSource sourceFile="..\VendingMachine\bin\Release\VendingMachine.exe" />
+<DocumentationSource sourceFile="VendingMachine\bin\Debug\VendingMachine.exe" />
+<DocumentationSource sourceFile="VendingMachine\bin\Debug\VendingMachine.xml" /></DocumentationSources>
     <MaximumGroupParts>2</MaximumGroupParts>
     <NamespaceGrouping>True</NamespaceGrouping>
     <SyntaxFilters>C#, Visual Basic, Managed C++, F#, XAML Usage, ASP.NET</SyntaxFilters>
@@ -50,12 +52,13 @@
     <VisibleItems>Attributes, ExplicitInterfaceImplementations, Internals, Privates, PrivateFields, Protected, ProtectedInternalAsProtected</VisibleItems>
     <NamespaceSummaries>
       <NamespaceSummaryItem name="VendingMachine" isDocumented="True">Vending Machine Simulator</NamespaceSummaryItem>
-<NamespaceSummaryItem name="VendingMachine.Core" isDocumented="True">Core operations classes</NamespaceSummaryItem>
-<NamespaceSummaryItem name="VendingMachine.Core.Configuration" isDocumented="True">reading, applying saving configurations</NamespaceSummaryItem>
-<NamespaceSummaryItem name="VendingMachine.Core.Misc" isDocumented="True">additional classes</NamespaceSummaryItem>
-<NamespaceSummaryItem name="VendingMachine.Core.Products" isDocumented="True">Products</NamespaceSummaryItem>
-<NamespaceSummaryItem name="VendingMachine.VMDialogs" isDocumented="True">Dialog Boxes XAML</NamespaceSummaryItem>
-<NamespaceSummaryItem name="(global)" isDocumented="True" /></NamespaceSummaries>
+      <NamespaceSummaryItem name="VendingMachine.Core" isDocumented="True">Core operations classes</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="VendingMachine.Core.Configuration" isDocumented="True">reading, applying saving configurations</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="VendingMachine.Core.Misc" isDocumented="True">additional classes</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="VendingMachine.Core.Products" isDocumented="True">Products</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="VendingMachine.VMDialogs" isDocumented="True">Dialog Boxes XAML</NamespaceSummaryItem>
+      <NamespaceSummaryItem name="(global)" isDocumented="True" />
+    </NamespaceSummaries>
     <HeaderText>MNIS Project for learning purposes</HeaderText>
     <WorkingPath>..\VS-Workspace\Docs\</WorkingPath>
   </PropertyGroup>

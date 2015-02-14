@@ -13,7 +13,6 @@ namespace VendingMachine.VMDialogs
     partial class VMInputDialog : BaseMetroDialog
     {
         private bool OK_Clicked = false;
-        private MainWindow metroWindow;
         private ConfigPropertyType propType;
 
         internal VMInputDialog(MetroWindow parentWindow)
